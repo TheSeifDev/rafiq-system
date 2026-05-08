@@ -1,0 +1,26 @@
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+exclude = [".venv", ".test_artifacts"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "C4", "SIM"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.12"
+exclude = "^(\\.venv|\\.test_artifacts)/"
+check_untyped_defs = true
+warn_unused_configs = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+no_implicit_optional = true
+plugins = ["pydantic.mypy"]
+
+[[tool.mypy.overrides]]
+module = ["test_all", "test_db_constraints"]
+ignore_errors = true
+
+[tool.bandit]
+exclude_dirs = [".venv", ".test_artifacts"]
+skips = ["B101"]
