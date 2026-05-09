@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.bandit/
+
+# Local runtime artifacts
+*.db
+*.sqlite
+*.sqlite3
+*.zip
+
+# Test/runtime folders
+.test_artifacts/
+reports/
