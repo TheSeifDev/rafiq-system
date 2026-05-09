@@ -1,0 +1,3 @@
+[submodule "rafiq-app"]
+	path = rafiq-app
+	url = https://github.com/TheSeifDev/rafiq-app.git
