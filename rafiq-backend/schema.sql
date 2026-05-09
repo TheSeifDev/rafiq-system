@@ -1,103 +1,94 @@
--- Rafiq local DB — SQLite schema implementing the 6-table Read/Write mapping
--- from "خريطة العمليات النهائية لنظام رفيق". Designed for offline operation.
+-- rafiq-backend/schema.sql
+-- Main local database schema (mirrors Supabase schema)
+-- All timestamps in ISO 8601 with Cairo timezone
 
+PRAGMA journal_mode = WAL;
 PRAGMA foreign_keys = ON;
 
--- 1. PATIENTS — identity + medical history.
---    Read by AI/LLM, written by the mobile app.
 CREATE TABLE IF NOT EXISTS patients (
-    id              INTEGER PRIMARY KEY AUTOINCREMENT,
-    name            TEXT    NOT NULL,
-    age             INTEGER,
-    gender          TEXT    CHECK (gender IN ('male', 'female')),
-    blood_type      TEXT    CHECK (blood_type IN ('A+','A-','B+','B-','AB+','AB-','O+','O-')),
-    medical_history TEXT,
-    created_at      TEXT    DEFAULT CURRENT_TIMESTAMP,
-    updated_at      TEXT    DEFAULT CURRENT_TIMESTAMP
+  id              INTEGER PRIMARY KEY AUTOINCREMENT,
+  name            TEXT NOT NULL,
+  age             INTEGER,
+  medical_history TEXT,
+  notes           TEXT,
+  created_at      TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%S+02:00', 'now', '+2 hours')),
+  updated_at      TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%S+02:00', 'now', '+2 hours'))
 );
 
--- 2. ALERTS — emergencies and risks detected by the system/AI.
---    Read by App + AI, written by System + AI.
 CREATE TABLE IF NOT EXISTS alerts (
-    id          INTEGER PRIMARY KEY AUTOINCREMENT,
-    patient_id  INTEGER NOT NULL,
-    type        TEXT    NOT NULL,
-    message     TEXT    NOT NULL,
-    severity    TEXT    NOT NULL CHECK (severity IN ('low','medium','high','critical')),
-    is_read     INTEGER NOT NULL DEFAULT 0,
-    created_at  TEXT    DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (patient_id) REFERENCES patients(id) ON DELETE CASCADE
+  id          INTEGER PRIMARY KEY AUTOINCREMENT,
+  patient_id  INTEGER REFERENCES patients(id) ON DELETE CASCADE,
+  type        TEXT NOT NULL,        -- fall | high_pulse | sos | smarthome
+  message     TEXT NOT NULL,
+  severity    TEXT NOT NULL DEFAULT 'medium',  -- low | medium | high | critical
+  source      TEXT,                 -- device id or sensor name
+  resolved    INTEGER NOT NULL DEFAULT 0,
+  created_at  TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%S+02:00', 'now', '+2 hours'))
 );
 
--- 3. DEVICES — peripheral sensors + wearables on the mini-PC.
---    Read by System Check, written by ESP32 / Wearable.
 CREATE TABLE IF NOT EXISTS devices (
-    id           INTEGER PRIMARY KEY AUTOINCREMENT,
-    patient_id   INTEGER NOT NULL,
-    device_name  TEXT    NOT NULL,
-    type         TEXT    NOT NULL,
-    status       TEXT    NOT NULL DEFAULT 'offline'
-                         CHECK (status IN ('online','offline','error')),
-    last_seen    TEXT,
-    FOREIGN KEY (patient_id) REFERENCES patients(id) ON DELETE CASCADE
+  id          INTEGER PRIMARY KEY AUTOINCREMENT,
+  patient_id  INTEGER REFERENCES patients(id) ON DELETE CASCADE,
+  name        TEXT NOT NULL,
+  type        TEXT NOT NULL,        -- wearable | esp32 | relay | sensor
+  status      TEXT NOT NULL DEFAULT 'offline',  -- online | offline | error
+  last_seen   TEXT,
+  metadata    TEXT                  -- JSON blob for extra device data
 );
 
--- 4. EMERGENCY CONTACTS — people to call in danger.
---    Read by AI, written by App.
 CREATE TABLE IF NOT EXISTS emergency_contacts (
-    id            INTEGER PRIMARY KEY AUTOINCREMENT,
-    patient_id    INTEGER NOT NULL,
-    name          TEXT    NOT NULL,
-    relationship  TEXT,
-    phone_number  TEXT    NOT NULL,
-    priority      INTEGER NOT NULL DEFAULT 1,
-    FOREIGN KEY (patient_id) REFERENCES patients(id) ON DELETE CASCADE
+  id          INTEGER PRIMARY KEY AUTOINCREMENT,
+  patient_id  INTEGER REFERENCES patients(id) ON DELETE CASCADE,
+  name        TEXT NOT NULL,
+  phone       TEXT NOT NULL,
+  relation    TEXT
 );
 
--- 5. LOCATIONS — GPS history. Latest row = current location.
---    Read by AI/App, written by GPS module / smart watch.
 CREATE TABLE IF NOT EXISTS locations (
-    id          INTEGER PRIMARY KEY AUTOINCREMENT,
-    patient_id  INTEGER NOT NULL,
-    latitude    REAL    NOT NULL,
-    longitude   REAL    NOT NULL,
-    recorded_at TEXT    DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (patient_id) REFERENCES patients(id) ON DELETE CASCADE
+  id          INTEGER PRIMARY KEY AUTOINCREMENT,
+  patient_id  INTEGER REFERENCES patients(id) ON DELETE CASCADE,
+  lat         REAL NOT NULL,
+  lng         REAL NOT NULL,
+  accuracy    REAL,
+  created_at  TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%S+02:00', 'now', '+2 hours'))
 );
 
--- 6. REMINDERS — meds, sessions, daily tasks.
---    Read by AI/App, written by App + AI (voice).
 CREATE TABLE IF NOT EXISTS reminders (
-    id           INTEGER PRIMARY KEY AUTOINCREMENT,
-    patient_id   INTEGER NOT NULL,
-    title        TEXT    NOT NULL,
-    description  TEXT,
-    time         TEXT    NOT NULL,
-    is_active    INTEGER NOT NULL DEFAULT 1,
-    created_at   TEXT    DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (patient_id) REFERENCES patients(id) ON DELETE CASCADE
+  id          INTEGER PRIMARY KEY AUTOINCREMENT,
+  patient_id  INTEGER REFERENCES patients(id) ON DELETE CASCADE,
+  title       TEXT NOT NULL,
+  description TEXT,
+  time        TEXT NOT NULL,        -- ISO 8601 with explicit TZ (+02:00)
+  repeat      TEXT DEFAULT 'none',  -- none | daily | weekly
+  done        INTEGER NOT NULL DEFAULT 0,
+  created_at  TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%S+02:00', 'now', '+2 hours'))
 );
 
--- Indexes for the hottest queries.
-CREATE INDEX IF NOT EXISTS idx_alerts_patient    ON alerts(patient_id, created_at DESC);
-CREATE INDEX IF NOT EXISTS idx_alerts_unread     ON alerts(patient_id, is_read);
-CREATE INDEX IF NOT EXISTS idx_alerts_severity   ON alerts(severity, is_read);
-CREATE INDEX IF NOT EXISTS idx_devices_patient   ON devices(patient_id);
-CREATE INDEX IF NOT EXISTS idx_locations_patient ON locations(patient_id, recorded_at DESC);
-CREATE INDEX IF NOT EXISTS idx_reminders_active  ON reminders(patient_id, is_active, time);
-CREATE INDEX IF NOT EXISTS idx_contacts_patient  ON emergency_contacts(patient_id, priority);
+-- Smart home state table (local only, not synced)
+CREATE TABLE IF NOT EXISTS smarthome_devices (
+  id        INTEGER PRIMARY KEY AUTOINCREMENT,
+  mqtt_id   TEXT UNIQUE NOT NULL,   -- e.g. "esp32/room1/relay1"
+  label     TEXT NOT NULL,
+  room      TEXT,
+  type      TEXT NOT NULL,          -- relay | sensor | camera | lock
+  state     TEXT NOT NULL DEFAULT 'off',
+  last_val  TEXT,                   -- last sensor reading (JSON)
+  updated_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%S+02:00', 'now', '+2 hours'))
+);
 
--- ─── Supabase sync queue ───
--- When Supabase env vars are set, every local write enqueues a row here.
--- A background flusher pushes them up via REST. If offline, they stay queued
--- until reconnect, so nothing is ever lost.
+-- Sync queue (outbound to Supabase)
 CREATE TABLE IF NOT EXISTS _sync_queue (
-    id          INTEGER PRIMARY KEY AUTOINCREMENT,
-    table_name  TEXT    NOT NULL,
-    row_id      INTEGER NOT NULL,
-    operation   TEXT    NOT NULL CHECK (operation IN ('upsert', 'delete')),
-    error_count INTEGER NOT NULL DEFAULT 0,
-    queued_at   TEXT    DEFAULT CURRENT_TIMESTAMP
+  id          INTEGER PRIMARY KEY AUTOINCREMENT,
+  table_name  TEXT NOT NULL,
+  operation   TEXT NOT NULL,        -- INSERT | UPDATE | DELETE
+  record_id   INTEGER NOT NULL,
+  payload     TEXT NOT NULL,        -- JSON
+  attempts    INTEGER NOT NULL DEFAULT 0,
+  created_at  TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%S+02:00', 'now', '+2 hours'))
 );
-CREATE INDEX IF NOT EXISTS idx_sync_queue_order ON _sync_queue(id);
-CREATE INDEX IF NOT EXISTS idx_sync_queue_table ON _sync_queue(table_name);
+
+-- Indexes
+CREATE INDEX IF NOT EXISTS idx_alerts_patient   ON alerts(patient_id, created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_reminders_time   ON reminders(time);
+CREATE INDEX IF NOT EXISTS idx_locations_patient ON locations(patient_id, created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_sync_queue_table  ON _sync_queue(table_name, operation);

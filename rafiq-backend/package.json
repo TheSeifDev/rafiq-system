@@ -1,0 +1,28 @@
+{
+  "name": "rafiq-backend",
+  "version": "3.0.0",
+  "description": "Rafiq Edge AI backend — Fastify + SQLite + MQTT + Ollama",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.24.0",
+    "@fastify/cors": "^9.0.1",
+    "@supabase/supabase-js": "^2.45.0",
+    "better-sqlite3": "^11.3.0",
+    "dotenv": "^16.4.5",
+    "fastify": "^4.28.1",
+    "mqtt": "^5.10.1",
+    "pino-pretty": "^11.2.2",
+    "sql.js": "^1.10.3"
+  },
+  "optionalDependencies": {
+    "better-sqlite3": "^11.3.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Select-String -Pattern \"server\")",
+      "Bash(npm install *)",
+      "Bash(node src/server.js)",
+      "Bash(npm start *)",
+      "Bash(npm search *)"
+    ]
+  }
+}
