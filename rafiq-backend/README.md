@@ -1,135 +1,73 @@
-# نظام رفيق - منصة الرعاية الطبية الذكية (Rafiq V3) 🏥
+# RAFIQ — Edge AI Healthcare & Smart Assistant
 
-[![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com/)
-[![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white)](https://sqlite.org/)
-[![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.com/)
-[![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)](https://www.python.org/)
+<div align="center">
 
-**رفيق (Rafiq)** هو نظام طبي متكامل يعمل على خوادم الحافة (Edge Nodes) للرعاية الصحية، مصمم للعمل محلياً بالكامل مع مزامنة سحابية غير متزامنة مع Supabase لضمان استمرارية العمل حتى مع انقطاع الإنترنت.
+![Status](https://img.shields.io/badge/status-active-success)
+![Backend](https://img.shields.io/badge/backend-Fastify-black)
+![Database](https://img.shields.io/badge/database-SQLite-blue)
+![AI](https://img.shields.io/badge/AI-Ollama%20%2B%20Whisper-orange)
+![Platform](https://img.shields.io/badge/platform-Edge%20AI-green)
 
----
+Offline-First Edge AI Healthcare & Smart Home Assistant
 
-
-
-## ⏰ التوقيت المصري (Egypt Timezone) - ملاحظة هامة جداً
-نظراً لأن النظام مخصص لخدمة المرضى، **جميع مواعيد التذكيرات (`reminders`) والجداول الزمنية تم ضبطها وتُعامل بتوقيت مصر (Africa/Cairo - UTC+2 / UTC+3)**.
-- يقبل الـ API صيغ `ISO 8601` الكاملة (مثال: `2024-04-28T14:30:00+02:00`).
-- يجب أن يحتوي وقت التذكير على `timezone` صريح (`Z` أو `+/-HH:MM`) وإلا سيتم رفض الطلب.
-- **للمطورين:** يُرجى التأكد من أن تطبيق الموبايل يرسل ويعرض التوقيتات بناءً على التوقيت المصري لتجنب إزعاج المريض في أوقات خاطئة.
+</div>
 
 ---
 
-## 📂 بنية المشروع (دليل المطورين)
+# 📌 Overview | نظرة عامة
 
-صُمم النظام ليكون **سهلاً للتعديل والإضافة**. كل شيء موجود في مكانه المنطقي:
+## English
 
-| الملف | الدور (وماذا تعدل فيه؟) |
-|---|---|
-| [`schema.sql`](schema.sql) | **قاعدة البيانات:** لإضافة جدول جديد أو عمود، ضعه هنا. |
-| [`db.py`](db.py) | **طبقة البيانات (DAO):** كل دوال `SELECT`, `INSERT`, `UPDATE` هنا. استخدم الـ Cursor الجاهز للتعامل مع `SQLite`. |
-| [`api.py`](api.py) | **نهايات الـ API:** لعمل مسار جديد (مثلاً `/new-feature`)، أضف `@app.get` هنا. هنا أيضاً توجد النماذج (`Pydantic Models`) لضبط قيود الإدخال. |
-| [`sync.py`](sync.py) | **المزامنة السحابية:** المسؤول عن رفع الطابور `_sync_queue` للسحابة. |
-| [`test_all.py`](test_all.py) | **الاختبارات الشاملة:** لكتابة اختبارات جديدة (Tests) والتأكد من سلامة النظام. |
+RAFIQ is an offline-first Edge AI healthcare assistant designed for elderly care, patient monitoring, smart-home automation, and emergency handling.
 
----
+The system runs locally on a Mini PC and is optimized for:
+- low latency
+- local AI inference
+- offline operation
+- real-time alerts
+- smart-home communication
+- healthcare monitoring
 
-## 🛠️ كيف تضيف ميزة جديدة؟ (دليل عملي للمبتدئين)
-هل تريد إضافة ميزة جديدة كـ **"الوصفات الطبية" (Prescriptions)**؟ الموضوع سهل ولا يحتاج لتعقيد:
-
-1. **في قاعدة البيانات:** افتح `schema.sql` وأضف `CREATE TABLE prescriptions...`.
-2. **في العمليات:** افتح `db.py` وأضف دالة كـ `create_prescription()`، وتأكد من إضافة اسم الجدول للقائمة البيضاء `VALID_COLUMNS` في أعلى الملف لضمان الحماية من الاختراق.
-3. **في الـ API:** افتح `api.py`، قم بإنشاء كلاس للبيانات `PrescriptionIn(BaseModel)`، وأضف المسار `@app.post("/prescriptions")`.
-4. **في السحابة (اختياري):** افتح `supabase_schema.sql` وأضف الجدول هناك. مبروك، الميزة تعمل وتتزامن!
-
----
-
-## 🗄️ جداول النظام الأساسية (Data Models)
-
-النظام مبني على 6 جداول رئيسية لتغطية كل احتياجات الرعاية:
-1. **`patients` (المرضى):** البيانات الأساسية والتاريخ الطبي (App يكتب، AI يقرأ).
-2. **`alerts` (التنبيهات):** سجل الحالات الطارئة مثل سقوط أو ارتفاع نبض (System يكتب، App يقرأ).
-3. **`devices` (الأجهزة):** حالة المستشعرات (Wearable/ESP32) كمتصل/غير متصل.
-4. **`emergency_contacts` (جهات الاتصال):** الأرقام التي يتصل بها النظام في حالات الخطر.
-5. **`locations` (المواقع):** سجل GPS لتتبع المريض.
-6. **`reminders` (التذكيرات):** مواعيد الأدوية والمهام (بتوقيت مصر).
-*بالإضافة لجدول `_sync_queue` الخفي المسؤول عن تنظيم المزامنة بدون تعطيل الخادم.*
+The project combines:
+- AI voice assistant
+- local LLMs
+- MQTT smart-home devices
+- SQLite local database
+- Electron GUI
+- React Native mobile app
+- cloud synchronization
 
 ---
 
-## 🚀 دليل التشغيل السريع (Quick Start)
+## العربية
 
-لا تحتاج لبرامج معقدة (لا Docker ولا Laravel). فقط Python!
+رفيق هو مساعد ذكي للرعاية الصحية يعمل محليًا (Offline-First) ومصمم لمتابعة المرضى وكبار السن والتحكم في المنزل الذكي وإدارة حالات الطوارئ.
 
-### 1. إعداد البيئة (Windows/Linux/Mac)
-```bash
-# إنشاء بيئة افتراضية
-python -m venv .venv
+النظام يعمل على Mini PC داخل المنزل ومصمم ليكون:
+- سريع جدًا
+- يعمل بدون إنترنت
+- يدعم الذكاء الاصطناعي المحلي
+- يدعم التنبيهات الفورية
+- يدعم أجهزة المنزل الذكي
+- يدعم متابعة الحالة الصحية
 
-# تفعيل البيئة (Windows)
-.\.venv\Scripts\activate
-
-# تثبيت المكتبات
-pip install -r requirements.txt
-
-# إنشاء ملف البيئة
-copy .env.example .env   # Windows
-# أو:
-# cp .env.example .env   # Linux/Mac
-```
-
-### 2. تجهيز البيانات وتشغيل السيرفر
-```bash
-# بناء قاعدة البيانات وإنشاء بيانات وهمية للتجربة (أحمد محمود)
-python seed.py
-
-# تشغيل خادم التطوير السريع
-uvicorn api:app --port 8001 --reload
-```
-
-> **مهم:** يجب ضبط `API_KEY` داخل ملف `.env` قبل تشغيل السيرفر في أي بيئة حقيقية.
-
-### 3. تجربة النظام (Swagger UI)
-افتح المتصفح واذهب إلى: **[http://127.0.0.1:8001/docs](http://127.0.0.1:8001/docs)**
-ستجد واجهة تفاعلية لتجربة كل مسارات الـ API (إضافة مرضى، جلب تنبيهات) بضغطة زر.
+المشروع يجمع بين:
+- مساعد صوتي ذكي
+- نماذج ذكاء اصطناعي محلية
+- MQTT للأجهزة الذكية
+- قاعدة بيانات SQLite
+- واجهة Electron
+- تطبيق موبايل React Native
+- مزامنة سحابية
 
 ---
 
-## 🛡️ أمان الـ API (المصادقة)
-الـ API محمي بالكامل. لا يمكن لأحد الاستعلام أو الإضافة بدون تمرير المفتاح السري في رأس الطلب (Header):
-```http
-X-API-Key: <your-secure-api-key>
-```
-*يجب دمج هذا المفتاح في تطبيق الموبايل، وإلا سيرفض الخادم الطلب بـ `401 Unauthorized`.*
-*بدءاً من الإصدار الحالي: `API_KEY` إلزامي. إذا لم يتم ضبطه سيفشل التشغيل برسالة واضحة.*
-*في التطوير المحلي فقط يمكن تفعيل `ALLOW_INSECURE_DEV_API_KEY=1`.*
+# 🏗️ System Architecture | معمارية النظام
 
----
-
-## ☁️ تفعيل المزامنة السحابية (Supabase)
-النظام يعمل محلياً بامتياز. لكن لربطه بالسحابة لعمل نسخة احتياطية:
-1. قم بإنشاء ملف `.env` في المجلد الرئيسي:
-2. ضع بيانات مشروعك على Supabase (مع مكتبة `python-dotenv`):
-   ```env
-   API_KEY=my-secure-key-123
-   ALLOW_INSECURE_DEV_API_KEY=0
-
-   SUPABASE_URL=https://xxxxxx.supabase.co
-   SUPABASE_KEY=eyJhbGci... 
-   ```
-   > ⚠️ **تحذير أمني:** إذا استخدمت `Service_Role Key`، تأكد من أن جهاز الخادم المحلي آمن تماماً ولا يمكن اختراقه. للاستخدام العام، يفضل استخدام `anon` key وتكوين RLS Policies في Supabase.
-
-بمجرد الحفظ وإعادة التشغيل، سيتكفل خيط المزامنة `sync.py` بنقل وتحديث كل البيانات بصمت في الخلفية.
-
----
-## ✅ بوابة الجودة الصارمة
-لتشغيل الفحص الكامل (اختبارات + lint + type-check + security):
-
-```bash
-pip install -r requirements-dev.txt
-python quality_gate.py
-```
-
-التقرير التفصيلي موجود في `AUDIT_REPORT.md` وقرارات التعديل في `PROVENANCE.md`.
-
----
-**تم هندسته ليخدم، يراقب، وينقذ حياة المرضى.**
+```text
+rafiq-system/
+│
+├── rafiq-ai         → AI Runtime (Whisper + Ollama + TTS)
+├── rafiq-gui        → Electron GUI
+├── rafiq-backend    → Main Backend System
+└── rafiq-app        → Mobile Application
