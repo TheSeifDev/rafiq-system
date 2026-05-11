@@ -16,7 +16,12 @@
       "Bash(findstr :8081)",
       "Bash(taskkill //F //PID 2492)",
       "Bash(npx expo *)",
-      "Bash(Select-Object -First 80)"
+      "Bash(Select-Object -First 80)",
+      "Bash(npx tsc *)",
+      "Bash(python3 -c ' *)",
+      "Bash(Select-String -Pattern \"ble\\\\.service|ble\\\\.native\")",
+      "Bash(Select-Object -First 30)",
+      "Bash(python *)"
     ]
   }
 }
