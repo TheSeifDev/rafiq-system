@@ -12,7 +12,11 @@
       "Bash(taskkill //F //PID 14116)",
       "Bash(npx electron *)",
       "Bash(curl -s http://localhost:5173)",
-      "Bash(node --check src/server.js)"
+      "Bash(node --check src/server.js)",
+      "Bash(findstr :8081)",
+      "Bash(taskkill //F //PID 2492)",
+      "Bash(npx expo *)",
+      "Bash(Select-Object -First 80)"
     ]
   }
 }

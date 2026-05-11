@@ -2,15 +2,33 @@
  * sync/supabase.js
  * Background sync: SQLite _sync_queue → Supabase
  * Runs every 30s, handles INSERT / UPDATE / DELETE
+ * Enhanced with realtime subscriptions and bidirectional sync
  */
 
 import { createClient } from '@supabase/supabase-js';
 import { getDb, popSyncQueue, deleteSyncItems, incrementSyncAttempts } from '../db/index.js';
+import { broadcastAlert } from '../sockets/sse.js';
 
-// Tables allowed to push to Supabase (not smarthome_devices — local only)
-const PUSH_TABLES = new Set(['patients', 'alerts', 'reminders', 'emergency_contacts', 'locations', 'devices']);
+// Tables allowed to push to Supabase
+const PUSH_TABLES = new Set([
+  'patients', 'alerts', 'reminders', 'emergency_contacts',
+  'locations', 'devices', 'notifications', 'medications',
+  'medication_logs', 'vitals', 'wearables', 'gas_alerts',
+  'fall_events', 'ai_conversations', 'ai_messages',
+  'forbidden_foods', 'favorite_foods', 'smart_home_devices'
+]);
+
+// Tables for realtime subscriptions
+const REALTIME_TABLES = [
+  'notifications',
+  'emergency_logs',
+  'gas_alerts',
+  'fall_events',
+  'vitals',
+];
 
 let supabase = null;
+const realtimeChannels = new Map();
 
 export function initSupabase() {
   const url = process.env.SUPABASE_URL;
@@ -22,6 +40,10 @@ export function initSupabase() {
   supabase = createClient(url, key);
   console.log('[sync] Supabase client ready');
   return true;
+}
+
+export function getSupabase() {
+  return supabase;
 }
 
 export async function flushQueue() {
@@ -62,7 +84,7 @@ export async function flushQueue() {
     } catch (err) {
       console.error(`[sync] Failed ${item.table_name}#${item.record_id}:`, err.message);
       if (item.attempts >= 5) {
-        dropped.push(item.id);  // give up after 5 tries
+        dropped.push(item.id);
       } else {
         failed.push(item.id);
       }
@@ -116,4 +138,115 @@ export async function pullFromSupabase(db) {
   }
 
   return { pulled: total };
+}
+
+// ── Realtime Subscriptions ───────────────────────────────────────────────────
+
+export function subscribeToRealtime(userId, callback) {
+  if (!supabase) return () => {};
+
+  // Subscribe to critical alerts
+  const channel = supabase
+    .channel(`rafiq:${userId}`)
+    .on('postgres_changes', {
+      event: 'INSERT',
+      schema: 'public',
+      table: 'notifications',
+      filter: `user_id=eq.${userId}`,
+    }, (payload) => {
+      const notification = payload.new;
+      // Broadcast to WebSocket clients
+      broadcastAlert({
+        type: 'notification',
+        data: notification,
+        timestamp: new Date().toISOString(),
+      });
+      callback(notification);
+    })
+    .on('postgres_changes', {
+      event: 'INSERT',
+      schema: 'public',
+      table: 'emergency_logs',
+      filter: `user_id=eq.${userId}`,
+    }, (payload) => {
+      broadcastAlert({
+        type: 'emergency_alert',
+        data: payload.new,
+        timestamp: new Date().toISOString(),
+      });
+      callback({ type: 'emergency', data: payload.new });
+    })
+    .on('postgres_changes', {
+      event: 'INSERT',
+      schema: 'public',
+      table: 'gas_alerts',
+    }, (payload) => {
+      if (payload.new.level === 'danger' || payload.new.level === 'critical') {
+        broadcastAlert({
+          type: 'gas_alert',
+          data: payload.new,
+          timestamp: new Date().toISOString(),
+        });
+        callback({ type: 'gas_alert', data: payload.new });
+      }
+    })
+    .on('postgres_changes', {
+      event: 'INSERT',
+      schema: 'public',
+      table: 'fall_events',
+    }, (payload) => {
+      broadcastAlert({
+        type: 'fall_detected',
+        data: payload.new,
+        timestamp: new Date().toISOString(),
+      });
+      callback({ type: 'fall', data: payload.new });
+    })
+    .subscribe();
+
+  realtimeChannels.set(userId, channel);
+
+  return () => {
+    channel.unsubscribe();
+    realtimeChannels.delete(userId);
+  };
+}
+
+// ── Push helpers for notifications ──────────────────────────────────────────
+
+export async function pushNotification(notification) {
+  if (!supabase) return null;
+
+  const { data, error } = await supabase
+    .from('notifications')
+    .insert(notification)
+    .select()
+    .single();
+
+  if (error) {
+    console.error('[sync] Push notification failed:', error);
+    return null;
+  }
+
+  // Broadcast immediately
+  broadcastAlert({
+    type: 'notification',
+    data,
+    timestamp: new Date().toISOString(),
+  });
+
+  return data;
+}
+
+// ── Health check ─────────────────────────────────────────────────────────────
+
+export async function checkSupabaseHealth() {
+  if (!supabase) return { healthy: false, reason: 'Not initialized' };
+
+  try {
+    const { error } = await supabase.from('patients').select('id').limit(1);
+    return { healthy: !error, reason: error?.message };
+  } catch (err) {
+    return { healthy: false, reason: err.message };
+  }
 }
