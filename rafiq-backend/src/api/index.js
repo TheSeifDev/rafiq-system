@@ -6,6 +6,7 @@ import { registerAiRoutes } from './routes/ai.js';
 import { registerPatientRoutes } from './routes/patients.js';
 import { registerAlertRoutes } from './routes/alerts.js';
 import { registerSmartHomeRoutes, setMqttClient } from './routes/smarthome.js';
+import { registerTestRoutes } from './routes/test.js';
 
 import { registerSSE } from '../sockets/sse.js';
 import { flushQueue, pullFromSupabase } from '../sync/supabase.js';
@@ -14,9 +15,15 @@ import { getDb } from '../db/index.js';
 const API_KEY = process.env.RAFIQ_API_KEY || process.env.API_KEY;
 
 export async function registerAllRoutes(app) {
-  // Auth hook for all routes except health, events
+  // Auth hook for all routes except health, events, and test routes
   app.addHook('onRequest', async (req, reply) => {
-    const skipAuth = ['/health', '/events', '/ai/health', '/smarthome/status'];
+    const skipAuth = [
+      '/health',
+      '/events',
+      '/ai/health',
+      '/smarthome/status',
+      '/test/'
+    ];
     if (skipAuth.some(path => req.url.startsWith(path))) return;
 
     const key = req.headers['x-api-key'];
@@ -42,6 +49,9 @@ export async function registerAllRoutes(app) {
   await registerPatientRoutes(app);
   await registerAlertRoutes(app);
   await registerSmartHomeRoutes(app);
+
+  // Test routes for GUI development
+  await registerTestRoutes(app);
 
   // Sync endpoints
   app.post('/sync/push', async () => {

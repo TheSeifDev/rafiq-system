@@ -1,0 +1,20 @@
+[Unit]
+Description=RAFIQ AI Healthcare Assistant
+After=network.target display-manager.target
+
+[Service]
+Type=simple
+User=user
+Group=user
+Environment=DISPLAY=:0
+Environment=XDG_RUNTIME_DIR=/run/user/1000
+WorkingDirectory=/home/user/rafiq-system/rafiq-gui
+ExecStartPre=/bin/sleep 5
+ExecStart=/usr/bin/electron /home/user/rafiq-system/rafiq-gui --kiosk --fullscreen --no-sandbox
+Restart=on-failure
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=graphical.target

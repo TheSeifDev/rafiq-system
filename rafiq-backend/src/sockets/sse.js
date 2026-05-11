@@ -33,6 +33,31 @@ export function broadcast(event, data) {
 }
 
 /**
+ * Broadcast AI state change
+ */
+export function broadcastAIState(state, emotion = null) {
+  const data = { state };
+  if (emotion) data.emotion = emotion;
+  broadcast('ai_state', data);
+}
+
+/**
+ * Broadcast speaking text
+ */
+export function broadcastSpeaking(text, emotion = null) {
+  const data = { text };
+  if (emotion) data.emotion = emotion;
+  broadcast('speaking', data);
+}
+
+/**
+ * Broadcast emotion change
+ */
+export function broadcastEmotion(emotion) {
+  broadcast('emotion', { emotion });
+}
+
+/**
  * Convenience: broadcast alert
  */
 export function broadcastAlert(alert) {
@@ -42,8 +67,8 @@ export function broadcastAlert(alert) {
 /**
  * Convenience: broadcast emergency
  */
-export function broadcastEmergency(event) {
-  broadcast('emergency', event);
+export function broadcastEmergency(level, message = '') {
+  broadcast('emergency', { level, message });
 }
 
 /**
@@ -51,6 +76,13 @@ export function broadcastEmergency(event) {
  */
 export function broadcastDeviceState(device) {
   broadcast('device', device);
+}
+
+/**
+ * Broadcast offline status
+ */
+export function broadcastOffline() {
+  broadcast('offline', {});
 }
 
 /**

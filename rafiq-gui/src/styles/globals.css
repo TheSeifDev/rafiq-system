@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #0a0f1a;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Kiosk lockdown - disable all selection and drag */
+* {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+  -webkit-highlight: none;
+  -moz-user-select: none;
+}
+
+/* Hide scrollbar for all elements */
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Fullscreen mode optimizations */
+:root {
+  --rafiq-bg: #0a0f1a;
+  --rafiq-glow: #00d4ff;
+  --rafiq-glow-dim: #0066cc;
+  --rafiq-accent: #00ffcc;
+  --rafiq-warning: #ff9500;
+  --rafiq-danger: #ff3b5c;
+  --rafiq-text: #e0f7ff;
+  --rafiq-text-dim: #6b8fa3;
+}
+
+/* GPU acceleration hint */
+.gpu-accelerated {
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Glow effect */
+.glow {
+  filter: drop-shadow(0 0 10px currentColor);
+}
+
+/* Touch feedback */
+@layer utilities {
+  .touch-feedback {
+    -webkit-tap-highlight-color: rgba(0, 212, 255, 0.2);
+  }
+
+  .font-display {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+}
+
+/* Prevent pull-to-refresh on mobile */
+html {
+  overscroll-behavior: none;
+}
+
+/* Prevent iOS input zoom */
+input, textarea, select {
+  font-size: 16px;
+}
+
+/* Loading animation */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+}
+
+/* Breathing animation */
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+/* Wave animation for audio bars */
+@keyframes wave {
+  0%, 100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(1.5);
+  }
+}
