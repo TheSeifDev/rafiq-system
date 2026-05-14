@@ -67,8 +67,12 @@ export function broadcastAlert(alert) {
 /**
  * Convenience: broadcast emergency
  */
-export function broadcastEmergency(level, message = '') {
-  broadcast('emergency', { level, message });
+export function broadcastEmergency(eventOrLevel, message = '') {
+  if (typeof eventOrLevel === 'object' && eventOrLevel !== null) {
+    broadcast('emergency', eventOrLevel);
+    return;
+  }
+  broadcast('emergency', { level: eventOrLevel, message });
 }
 
 /**

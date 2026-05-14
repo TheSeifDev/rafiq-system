@@ -20,7 +20,7 @@ export async function registerPatientRoutes(app) {
 
   // Get single patient
   app.get('/patients/:id', async (req, reply) => {
-    const p = getPatient(Number(req.params.id));
+    const p = getPatient(req.params.id);
     if (!p) {
       return reply.code(404).send({ success: false, error: { code: 'not_found', message: 'Patient not found' } });
     }
@@ -29,9 +29,9 @@ export async function registerPatientRoutes(app) {
 
   // Create patient
   app.post('/patients', async (req, reply) => {
-    const { name } = req.body;
-    if (!name?.trim()) {
-      return reply.code(422).send({ success: false, error: { code: 'validation_error', message: 'name is required' } });
+    const { name, full_name } = req.body;
+    if (!(full_name ?? name)?.trim()) {
+      return reply.code(422).send({ success: false, error: { code: 'validation_error', message: 'full_name or name is required' } });
     }
     const p = createPatient(req.body);
     return { success: true, data: p };
@@ -39,7 +39,7 @@ export async function registerPatientRoutes(app) {
 
   // Update patient
   app.put('/patients/:id', async (req, reply) => {
-    const id = Number(req.params.id);
+    const id = req.params.id;
     const existing = getPatient(id);
     if (!existing) {
       return reply.code(404).send({ success: false, error: { code: 'not_found', message: 'Patient not found' } });
@@ -53,7 +53,7 @@ export async function registerPatientRoutes(app) {
 
   // Delete patient
   app.delete('/patients/:id', async (req) => {
-    deletePatient(Number(req.params.id));
+    deletePatient(req.params.id);
     return { success: true };
   });
 
@@ -63,7 +63,7 @@ export async function registerPatientRoutes(app) {
     return {
       success: true,
       data: listReminders({
-        patientId: patient_id ? Number(patient_id) : undefined,
+        patientId: patient_id ? String(patient_id) : undefined,
         done: done !== undefined ? done === 'true' : undefined,
       }),
     };
@@ -83,7 +83,7 @@ export async function registerPatientRoutes(app) {
   });
 
   app.patch('/reminders/:id/done', async (req) => {
-    const r = markReminderDone(Number(req.params.id));
+    const r = markReminderDone(req.params.id);
     return { success: true, data: r };
   });
 
@@ -93,6 +93,6 @@ export async function registerPatientRoutes(app) {
     if (!patient_id) {
       return { success: true, data: [] };
     }
-    return { success: true, data: listContacts(Number(patient_id)) };
+    return { success: true, data: listContacts(String(patient_id)) };
   });
 }

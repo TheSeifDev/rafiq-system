@@ -1,253 +1,206 @@
-# RAFIQ AI - Production-Ready Offline Healthcare Assistant
+# RAFIQ
 
-## System Architecture
+RAFIQ is an offline-first healthcare, AI, emergency, and smart-home system. The ecosystem is built around local SQLite runtime databases, a Node/Fastify orchestration backend, an Expo mobile app, MQTT/ESP32 device ingestion, Supabase Auth/Postgres/Realtime for cloud sync, and SSE for local GUI/mobile wake-up events.
 
+## Current Architecture
+
+```text
+rafiq-app (Expo / React Native)
+  SQLite runtime DB + durable sync queue
+  Supabase Auth + background cloud sync
+
+rafiq-backend (Node / Fastify)
+  SQLite runtime DB + MQTT + SSE + AI orchestration
+  Supabase sync worker
+
+Supabase
+  Postgres schema + RLS + realtime publication + storage buckets
+
+ESP32 / MQTT
+  gas, fall, relay, radar, sensor, smart-home events
+
+rafiq-gui
+  Electron local dashboard consuming backend SSE
 ```
-rafiq-ai (Whisper/STT + Ollama/Claude LLM + TTS)
-    ↓ HTTP
-rafiq-backend (Fastify + SQLite + SSE + MQTT)
-    ↓ SSE
-rafiq-gui (Electron + React + Framer Motion)
-```
 
-**IMPORTANT:** GUI NEVER talks directly to AI. All communication flows through the backend.
+Python/FastAPI files in `rafiq-backend` are legacy. Production database and API work should target `rafiq-backend/src`.
 
----
+## Database Model
 
-## Quick Start
+RAFIQ now standardizes on UUID primary keys everywhere:
+- Expo SQLite
+- Backend SQLite
+- Supabase Postgres
+- API route params and DTOs
+- MQTT/SSE payloads
+- TypeScript types
+- Sync queues
 
-### 1. Start Backend
+Canonical schema groups:
+- Patients: `patients`, `patient_conditions`, `emergency_contacts`
+- Medical: `vitals`, `vitals_readings`, `medications`, `medication_logs`, `reminders`
+- Safety: `emergency_events`, `alerts`, `fall_detection_events`, `gas_alerts`, `oxygen_alerts`, `heart_rate_alerts`, `respiratory_alerts`
+- Notifications: `notifications`, `notification_receipts`
+- IoT: `devices`, `esp32_devices`, `wearables`, `mqtt_events`, `sensor_readings`, `smart_home_devices`, `smart_home_commands`, `automation_logs`, `relay_logs`, `radar_presence_logs`
+- AI: `ai_conversations`, `ai_messages`, `ai_memory`, `ai_context`, `ai_personality`, `ai_voice_sessions`, `ai_emotion_logs`, `ai_reminders`
+- Sync: `pending_sync`, `failed_sync`, `sync_logs`, `realtime_events`
+
+See [docs/DATABASE_ARCHITECTURE.md](docs/DATABASE_ARCHITECTURE.md).
+
+## Offline-First Sync
+
+SQLite is the primary runtime database. Supabase is cloud sync, backup, Auth, and realtime wake-up.
+
+Write flow:
+1. App/backend creates a UUID locally.
+2. Data is saved to SQLite.
+3. A durable `pending_sync` row is queued with an idempotency key.
+4. Background sync pushes batches to Supabase.
+5. Failures retry with backoff, then move to `failed_sync`.
+6. Supabase Realtime wakes clients, but pull sync recovers missed events.
+
+Conflict policy:
+- Emergency events, alerts, notifications, MQTT events, sensor readings, and logs are append-only/idempotent.
+- Patients, reminders, medications, devices, and AI context use versioned last-write-wins.
+- JSON fields are structured for future field merge.
+
+## Setup
+
+### Requirements
+
+- Node.js 20+
+- npm
+- Expo CLI or `npx expo`
+- Supabase CLI
+- MQTT broker such as Mosquitto
+- Optional Ollama or external LLM provider for AI flows
+
+### Backend
 
 ```bash
 cd rafiq-backend
+npm install
+copy .env.example .env
 npm start
 ```
 
-Backend runs on `http://localhost:3001`
+Important backend env:
 
-### 2. Start GUI (Development)
-
-```bash
-cd rafiq-gui
-npm install  # if not done
-npm run electron:dev
-```
-
-This starts:
-- Vite dev server on port 5173
-- Electron app pointing to dev server
-
-### 3. Start GUI (Production)
-
-```bash
-cd rafiq-gui
-npm start
-```
-
----
-
-## Testing the GUI
-
-The backend includes test endpoints to simulate AI events:
-
-### Trigger AI States
-
-```bash
-# Test listening state
-curl -X POST http://localhost:3001/test/ai-state -H "Content-Type: application/json" -d "{\"state\":\"listening\"}"
-
-# Test thinking state
-curl -X POST http://localhost:3001/test/ai-state -H "Content-Type: application/json" -d "{\"state\":\"thinking\"}"
-
-# Test speaking with text
-curl -X POST http://localhost:3001/test/speaking -H "Content-Type: application/json" -d "{\"text\":\"Hello, how can I help you today?\"}"
-
-# Test idle
-curl -X POST http://localhost:3001/test/ai-state -H "Content-Type: application/json" -d "{\"state\":\"idle\"}"
-
-# Test emergency
-curl -X POST http://localhost:3001/test/emergency -H "Content-Type: application/json" -d "{\"level\":\"high\",\"message\":\"Fall detected\"}"
-
-# Run demo sequence
-curl -X POST http://localhost:3001/test/demo
-```
-
----
-
-## Backend API Endpoints
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/health` | Health check |
-| GET | `/events` | SSE stream |
-| POST | `/test/ai-state` | Test AI state |
-| POST | `/test/speaking` | Test speaking |
-| POST | `/test/emergency` | Test emergency |
-| POST | `/test/demo` | Run demo sequence |
-| POST | `/ai/chat` | AI chat |
-| GET | `/patients` | List patients |
-| POST | `/alerts` | Create alert |
-| GET | `/smarthome` | Smart home status |
-
----
-
-## SSE Events
-
-The backend broadcasts these events to all connected clients:
-
-```javascript
-// AI state change
-broadcast('ai_state', { state: 'listening' | 'thinking' | 'speaking' | 'idle' | 'sleep' | 'offline' | 'warning' | 'emergency' })
-
-// Speaking text
-broadcast('speaking', { text: 'مرحبا' })
-
-// Emotion
-broadcast('emotion', { emotion: 'happy' | 'calm' | 'focused' })
-
-// Emergency
-broadcast('emergency', { level: 'low' | 'medium' | 'high', message: '...' })
-
-// Offline
-broadcast('offline', {})
-```
-
----
-
-## AI States
-
-| State | Color | Description |
-|-------|-------|-------------|
-| `idle` | Cyan | Ready, breathing glow |
-| `listening` | Mint | Active, faster pulse |
-| `thinking` | Blue | Processing, thinking dots visible |
-| `speaking` | Mint | Displaying text, mouth animation |
-| `sleep` | Slate | Dimmed, no particles |
-| `offline` | Gray | Disconnected |
-| `warning` | Orange | Alert warning |
-| `emergency` | Red | Critical alert |
-
----
-
-## GUI Features
-
-### AI Face
-- Glowing neon orb (164px diameter)
-- 3 orbit rings with particles
-- White glowing eyes
-- SVG smile/mouth animation
-- Multi-layer neon box-shadow glow
-
-### Layout (800x480 Portrait)
-```
-┌─────────────────────┐
-│     RAFIQ AI        │ ← Header (top: 38px)
-│                     │
-│       ╭─────╮      │
-│    ╭──┤  ◉   ├──╮   │ ← Face scene (centered)
-│    │  ╰─────╯  │   │
-│    │   ◯ ◯     │   │ ← Orbit rings
-│    ╰──────────╯    │
-│                     │
-│  Hello, how can I   │ ← Speaking area (73%)
-│  assist you today?  │
-│       • • •         │ ← Thinking dots (ONLY during thinking)
-│  ∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿∿  │ ← Bottom waves (30% height)
-└─────────────────────┘
-```
-
----
-
-## Build Commands
-
-### GUI Build
-```bash
-cd rafiq-gui
-npm run build    # Production build
-npm run dev      # Vite dev server only
-npm run electron:dev  # Vite + Electron
-npm start        # Production Electron
-```
-
-### Backend Check
-```bash
-cd rafiq-backend
-node --check src/server.js
-npm start
-```
-
----
-
-## Configuration
-
-### Backend (.env)
-```
-RAFIQ_API_KEY=your-secret-key
+```env
 PORT=3001
 HOST=0.0.0.0
-NODE_ENV=production
+RAFIQ_API_KEY=replace-me
+DB_PATH=./data/rafiq.db
+SUPABASE_URL=https://your-project.supabase.co
+SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
+MQTT_BROKER=mqtt://localhost:1883
 ```
 
-### GUI (.env)
-```
-VITE_API_URL=http://localhost:3001
-```
+Backend SQLite initializes from `rafiq-backend/src/db/schema.sql`. If old integer-ID tables are detected, startup preserves them as `*_legacy_YYYYMMDDHHMMSS`, creates the UUID schema, and backfills core rows with `legacy_id`.
 
----
+### App
 
-## Ubuntu Kiosk Setup
-
-1. Copy service file:
 ```bash
-sudo cp rafiq-gui/scripts/rafiq-gui.service /etc/systemd/system/
+cd rafiq-app
+npm install
+npm run typecheck
+npm start
 ```
 
-2. Enable and start:
+App runtime SQLite initializes from `rafiq-app/src/local/schema.ts`. Domain feature writes should go through local repositories and queue sync; Supabase Auth remains cloud-backed.
+
+### Supabase
+
 ```bash
-sudo systemctl daemon-reload
-sudo systemctl enable rafiQ-gui
-sudo systemctl start rafiQ-gui
+cd rafiq-app
+supabase login
+supabase link --project-ref <project-ref>
+supabase migration up
 ```
 
----
+Main repair migration:
 
-## System Status
+```text
+rafiq-app/supabase/migrations/20260514143000_unified_offline_repair.sql
+```
 
-| Component | Status | Location |
-|-----------|--------|----------|
-| Backend | ✅ Ready | rafiq-backend/ |
-| SSE Events | ✅ Working | /events endpoint |
-| GUI Build | ✅ Success | dist/ folder |
-| Test Routes | ✅ Added | /test/* |
-| CORS | ✅ Configured | localhost:5173 allowed |
+It creates canonical UUID tables, RLS policies, indexes, triggers, realtime publication setup, storage buckets, grants, and `NOTIFY pgrst, 'reload schema'`.
 
----
+### MQTT
 
-## Running Full System
+Backend subscribes to:
 
-1. Start backend:
+```text
+rafiq/#
+```
+
+Supported topics:
+- `rafiq/smarthome/{room}/{device}/state`
+- `rafiq/smarthome/{room}/{device}/cmd`
+- `rafiq/alerts/{patient_id}`
+- `rafiq/sensor/{room}/{sensor}`
+
+Gas/fall alerts create canonical alert subtype rows, emergency events where critical, SSE broadcasts, and queued sync.
+
+### AI
+
+AI route orchestration lives in `rafiq-backend/src/api/routes/ai.js` and `rafiq-backend/src/services/ai.js`. AI memory and context tables are available locally and in Supabase for durable patient context.
+
+## API
+
+Backend endpoints use UUID strings:
+- `GET /health`
+- `GET /events`
+- `GET|POST /patients`
+- `GET|POST|PATCH /reminders`
+- `GET|POST|PATCH|DELETE /alerts`
+- `GET|POST|PATCH /emergency`
+- `GET|POST|PATCH /notifications`
+- `GET /devices`
+- `GET|POST /smarthome`
+- `POST /sync/push`
+- `POST /sync/pull`
+
+See [docs/API_CONTRACTS.md](docs/API_CONTRACTS.md).
+
+## Validation
+
 ```bash
-cd rafiq-backend && npm start
+cd rafiq-app
+npm run typecheck
+
+cd ../rafiq-backend
+Get-ChildItem -Path src -Recurse -Filter *.js | ForEach-Object { node --check $_.FullName }
 ```
 
-2. In another terminal, start GUI:
-```bash
-cd rafiq-gui && npm run electron:dev
-```
+Recommended integration checks:
+- Supabase migration on a fresh project
+- Supabase repair migration on a schema copy
+- App offline create/update of vitals, medications, reminders, notifications, and emergency events
+- Reconnect and confirm `pending_sync` drains without duplicate writes
+- Cross-user RLS denial and owner access success
+- MQTT gas, fall, sensor, and relay command simulation
 
-3. Test SSE events:
-```bash
-# In third terminal
-curl -X POST http://localhost:3001/test/ai-state -H "Content-Type: application/json" -d "{\"state\":\"thinking\"}"
-curl -X POST http://localhost:3001/test/speaking -H "Content-Type: application/json" -d "{\"text\":\"Hello from RAFIQ!\"}"
-```
+## Troubleshooting
 
----
+- PGRST204/PGRST205: run the latest Supabase migration or execute `NOTIFY pgrst, 'reload schema';`
+- Missing table or column in the app: confirm `rafiq-app/src/local/schema.ts` and the Supabase migration both include the table.
+- Backend IDs look numeric: check for an old DB path; startup should preserve incompatible tables and create UUID tables.
+- Notifications do not arrive: confirm local row exists, `pending_sync` has a queued row, SSE `/events` is connected, and MQTT broker is reachable for critical alerts.
+- Realtime missed an event: run pull sync; realtime is not treated as guaranteed delivery.
 
-## Development Notes
+## Documentation
 
-- GUI uses `isDev = !app.isPackaged` to detect dev vs prod mode
-- In dev mode: loads `http://localhost:5173`
-- In prod mode: loads `dist/index.html`
-- All SSE events come through the backend (not direct AI)
-- AI communicates with backend via HTTP, backend broadcasts to GUI via SSE
+- [Database architecture](docs/DATABASE_ARCHITECTURE.md)
+- [API contracts](docs/API_CONTRACTS.md)
+- [Migration guide](docs/MIGRATION_GUIDE.md)
+- [Reference ORM schemas](docs/REFERENCE_SCHEMAS.md)
+
+## Deployment Notes
+
+- Keep service-role keys only on the backend or trusted sync workers.
+- Keep mobile clients on anon key plus RLS.
+- Run SQLite with WAL enabled.
+- Back up SQLite before production repair migrations.
+- Apply Supabase migrations before releasing app builds that depend on new columns.
+- Use backend `/sync/push` and `/sync/pull` as operational repair endpoints, not as a replacement for app background sync.

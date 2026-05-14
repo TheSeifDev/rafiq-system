@@ -14,6 +14,11 @@ import {
   updateSmartDeviceState,
   upsertSmartDevice,
   createAlert,
+  createEmergencyEvent,
+  createFallDetectionEvent,
+  createGasAlert,
+  recordMqttEvent,
+  recordSensorReading,
 } from '../db/index.js';
 
 let client = null;
@@ -53,6 +58,14 @@ export function initMqtt(brokerUrl = 'mqtt://localhost:1883') {
 
 function handleMessage(topic, raw) {
   const parts = topic.split('/');
+  let parsed = null;
+  try { parsed = JSON.parse(raw); } catch {}
+  recordMqttEvent({
+    topic,
+    direction: 'inbound',
+    payload: parsed ?? { raw },
+    payload_text: raw,
+  });
   // e.g. ['rafiq', 'smarthome', 'room1', 'relay1', 'state']
   //      ['rafiq', 'alerts', '1']
   //      ['rafiq', 'sensor', 'room1', 'temperature']
@@ -67,16 +80,35 @@ function handleMessage(topic, raw) {
       // payload can be "on"/"off" or a JSON with val
       let state = raw.trim().toLowerCase();
       let lastVal = null;
-      try { lastVal = JSON.parse(raw); state = lastVal.state ?? state; } catch {}
+      try { lastVal = parsed ?? JSON.parse(raw); state = lastVal.state ?? state; } catch {}
       updateSmartDeviceState(mqttId, state, lastVal);
     }
   }
 
   if (parts[1] === 'alerts') {
     // rafiq/alerts/{patient_id}  payload: { type, message, severity, source }
-    const patientId = parseInt(parts[2], 10) || null;
-    let data = {};
-    try { data = JSON.parse(raw); } catch { data.message = raw; }
+    const patientId = parts[2] || null;
+    const data = parsed ?? { message: raw };
+
+    if (data.type === 'gas' || data.type === 'gas_alert') {
+      createGasAlert({
+        patient_id: patientId,
+        level: data.level ?? data.severity ?? 'warning',
+        concentration_ppm: data.concentration_ppm ?? data.concentration,
+        location: data.location,
+        raw_payload: data,
+      });
+    }
+
+    if (data.type === 'fall' || data.type === 'fall_detection') {
+      createFallDetectionEvent({
+        patient_id: patientId,
+        severity: data.severity ?? 'critical',
+        confidence: data.confidence,
+        location: data.location,
+        raw_payload: data,
+      });
+    }
 
     const alert = createAlert({
       patient_id: patientId,
@@ -84,7 +116,18 @@ function handleMessage(topic, raw) {
       message:    data.message  || raw,
       severity:   data.severity || 'high',
       source:     data.source   || topic,
+      data,
     });
+    if (alert.severity === 'critical' || alert.type === 'fall' || alert.type === 'gas') {
+      createEmergencyEvent({
+        patient_id: patientId,
+        type: alert.type,
+        severity: alert.severity,
+        message: alert.message,
+        source: topic,
+        data,
+      });
+    }
     _alertCallback?.(alert);
   }
 
@@ -92,10 +135,16 @@ function handleMessage(topic, raw) {
     // rafiq/sensor/{room}/{sensor}  payload: JSON { value, unit }
     const [, , room, sensor] = parts;
     const mqttId = `${room}/${sensor}`;
-    let val = {};
-    try { val = JSON.parse(raw); } catch { val = { raw }; }
+    const val = parsed ?? { raw };
     upsertSmartDevice(mqttId, sensor, room, 'sensor');
     updateSmartDeviceState(mqttId, 'online', val);
+    recordSensorReading({
+      sensor_type: sensor,
+      value: typeof val.value === 'number' ? val.value : Number(val.value) || null,
+      unit: val.unit ?? null,
+      room,
+      raw_payload: val,
+    });
   }
 }
 
@@ -113,6 +162,7 @@ export function publishCommand(room, device, command) {
   if (!client?.connected) throw new Error('MQTT not connected');
   const topic = `rafiq/smarthome/${room}/${device}/cmd`;
   client.publish(topic, JSON.stringify(command), { qos: 1 });
+  recordMqttEvent({ topic, direction: 'outbound', payload: command, payload_text: JSON.stringify(command) });
   updateSmartDeviceState(`${room}/${device}`, command.state ?? 'cmd', command);
 }
 

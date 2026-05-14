@@ -2,7 +2,7 @@
  * api/routes/smarthome.js - Smart home device routes
  */
 
-import { listSmartDevices, listDevices } from '../../db/index.js';
+import { getSmartDevice, listSmartDevices, listDevices } from '../../db/index.js';
 
 let mqttClient = null;
 let publishCommandFn = null;
@@ -20,9 +20,8 @@ export async function registerSmartHomeRoutes(app) {
   });
 
   // Get smart home device by ID
-  app.get('/smarthome/:mqttId', async (req, reply) => {
-    const devices = listSmartDevices();
-    const device = devices.find(d => d.mqtt_id === req.params.mqttId);
+  app.get('/smarthome/:id', async (req, reply) => {
+    const device = getSmartDevice(req.params.id);
     if (!device) {
       return reply.code(404).send({ success: false, error: { code: 'not_found', message: 'Device not found' } });
     }
@@ -77,7 +76,7 @@ export async function registerSmartHomeRoutes(app) {
   // List patient devices
   app.get('/devices', async (req) => {
     const { patient_id } = req.query;
-    return { success: true, data: listDevices(patient_id ? Number(patient_id) : undefined) };
+    return { success: true, data: listDevices(patient_id ? String(patient_id) : undefined) };
   });
 
   // MQTT connection status

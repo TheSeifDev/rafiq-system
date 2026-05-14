@@ -22,7 +22,7 @@ export async function registerAlertRoutes(app) {
     return {
       success: true,
       data: listAlerts({
-        patientId: patient_id ? Number(patient_id) : undefined,
+        patientId: patient_id ? String(patient_id) : undefined,
         limit: limit ? Number(limit) : 20,
         resolved: resolved !== undefined ? resolved === 'true' : undefined,
       }),
@@ -31,7 +31,7 @@ export async function registerAlertRoutes(app) {
 
   // Get single alert
   app.get('/alerts/:id', async (req, reply) => {
-    const alert = getAlert(Number(req.params.id));
+    const alert = getAlert(req.params.id);
     if (!alert) {
       return reply.code(404).send({ success: false, error: { code: 'not_found', message: 'Alert not found' } });
     }
@@ -51,13 +51,13 @@ export async function registerAlertRoutes(app) {
 
   // Resolve alert
   app.patch('/alerts/:id/resolve', async (req) => {
-    const alert = resolveAlert(Number(req.params.id));
+    const alert = resolveAlert(req.params.id);
     return { success: true, data: alert };
   });
 
   // Delete alert
   app.delete('/alerts/:id', async (req) => {
-    deleteAlert(Number(req.params.id));
+    deleteAlert(req.params.id);
     return { success: true };
   });
 
@@ -67,7 +67,7 @@ export async function registerAlertRoutes(app) {
     return {
       success: true,
       data: listEmergencyEvents({
-        patientId: patient_id ? Number(patient_id) : undefined,
+        patientId: patient_id ? String(patient_id) : undefined,
         status,
       }),
     };
@@ -87,7 +87,7 @@ export async function registerAlertRoutes(app) {
 
   // Resolve emergency event
   app.patch('/emergency/:id/resolve', async (req, reply) => {
-    const event = resolveEmergencyEvent(Number(req.params.id));
+    const event = resolveEmergencyEvent(req.params.id);
     broadcastEmergency(event);
     return { success: true, data: event };
   });

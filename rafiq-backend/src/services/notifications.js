@@ -1,149 +1,109 @@
 /**
  * RAFIQ Backend Notification Service
- * Real-time notifications, websocket events, Supabase sync
+ * Local-first notifications with SSE/MQTT delivery and Supabase queueing.
  */
 
-import { FastifyInstance } from 'fastify';
-import { supabaseAdmin } from '../sync/supabase.js';
-import { publishAlert, getMqttClient } from '../smarthome/mqtt.js';
+import { getDb } from '../db/index.js';
+import { createUuid, enqueueSync, isoNow, json } from '../db/utils.js';
+import { getMqttClient } from '../smarthome/mqtt.js';
 import { broadcastAlert } from '../sockets/sse.js';
 
-// ─── Notification Types ───────────────────────────────────────
-
-export type NotificationCategory =
-  | 'emergency'
-  | 'health'
-  | 'medication'
-  | 'device'
-  | 'chat'
-  | 'system'
-  | 'food'
-  | 'wearable';
-
-export interface NotificationPayload {
-  user_id: string;
-  title: string;
-  body: string;
-  type: string;
-  category: NotificationCategory;
-  severity?: 'low' | 'medium' | 'high' | 'critical';
-  data?: Record<string, unknown>;
-  screen?: string;
-  source?: 'local' | 'backend' | 'wearable' | 'ai' | 'system';
-}
-
-// ─── Notification Service ─────────────────────────────────────
+const VALID_CATEGORIES = new Set([
+  'emergency',
+  'health',
+  'medication',
+  'device',
+  'chat',
+  'system',
+  'food',
+  'wearable',
+]);
 
 export class NotificationService {
-  constructor() {}
+  createNotification(payload) {
+    const db = getDb();
+    const id = payload.id ?? createUuid();
+    const severity = payload.severity ?? 'medium';
+    const category = VALID_CATEGORIES.has(payload.category) ? payload.category : 'system';
 
-  /**
-   * Create notification in Supabase and broadcast to all connected clients
-   */
-  async createNotification(payload: NotificationPayload): Promise<string> {
-    const { user_id, title, body, type, category, severity = 'medium', data, screen, source = 'backend' } = payload;
+    db.prepare(
+      `INSERT INTO notifications
+        (id, user_id, patient_id, title, body, type, category, severity, is_read, is_pinned,
+         data, screen, source, idempotency_key, delivered_at)
+       VALUES
+        (@id, @user_id, @patient_id, @title, @body, @type, @category, @severity, 0, @is_pinned,
+         @data, @screen, @source, @idempotency_key, @delivered_at)
+       ON CONFLICT(user_id, idempotency_key) DO UPDATE SET
+        title = excluded.title,
+        body = excluded.body,
+        severity = excluded.severity,
+        data = excluded.data,
+        updated_at = datetime('now')`
+    ).run({
+      id,
+      user_id: payload.user_id,
+      patient_id: payload.patient_id ?? null,
+      title: payload.title,
+      body: payload.body,
+      type: payload.type ?? category,
+      category,
+      severity,
+      is_pinned: severity === 'critical' ? 1 : 0,
+      data: json(payload.data),
+      screen: payload.screen ?? 'NotificationCenter',
+      source: payload.source ?? 'backend',
+      idempotency_key: payload.idempotency_key ?? `${payload.user_id}:${payload.type ?? category}:${payload.title}`,
+      delivered_at: isoNow(),
+    });
 
-    // Insert into Supabase
-    const { data: inserted, error } = await supabaseAdmin
-      .from('notifications')
-      .insert({
-        user_id,
-        title,
-        body,
-        type,
-        category,
-        severity,
-        data: data ?? null,
-        screen: screen ?? 'NotificationCenter',
-        source,
-        is_read: false,
-        is_pinned: severity === 'critical',
-      })
-      .select()
-      .single();
+    const row = db.prepare('SELECT * FROM notifications WHERE id = ?').get(id)
+      ?? db.prepare('SELECT * FROM notifications WHERE user_id = ? AND idempotency_key = ?').get(
+        payload.user_id,
+        payload.idempotency_key ?? `${payload.user_id}:${payload.type ?? category}:${payload.title}`,
+      );
 
-    if (error) {
-      console.error('[NotificationService] Supabase insert failed:', error);
-      throw error;
-    }
+    enqueueSync(db, 'notifications', 'upsert', row.id, row, {
+      user_id: row.user_id,
+      priority: severity === 'critical' ? 'critical' : 'normal',
+    });
 
-    // Broadcast via SSE to connected clients
-    const alert = {
-      type: 'notification',
-      data: inserted,
-      timestamp: new Date().toISOString(),
-    };
-    broadcastAlert(alert);
+    broadcastAlert({ type: 'notification', data: row, timestamp: isoNow() });
 
-    // Publish to MQTT for Mini-PC integration
     if (category === 'emergency' || severity === 'critical') {
       try {
-        const mqttClient = getMqttClient();
-        if (mqttClient) {
-          mqttClient.publish(`rafiq/alerts/${user_id}`, JSON.stringify({
-            ...inserted,
-            alertType: category,
-            priority: severity,
-          }));
-        }
-      } catch (mqttErr) {
-        console.warn('[NotificationService] MQTT publish failed:', mqttErr);
+        getMqttClient()?.publish(`rafiq/alerts/${payload.user_id}`, JSON.stringify({
+          ...row,
+          alertType: category,
+          priority: severity,
+        }));
+      } catch (err) {
+        console.warn('[NotificationService] MQTT publish failed:', err.message);
       }
     }
 
-    return inserted.id;
+    return row.id;
   }
 
-  /**
-   * Emergency notification - broadcast to all channels
-   */
-  async sendEmergency(params: {
-    userId: string;
-    title: string;
-    body: string;
-    type: string;
-    data?: Record<string, unknown>;
-    location?: { lat: number; lng: number };
-  }): Promise<string> {
-    const id = await this.createNotification({
+  sendEmergency(params) {
+    const id = this.createNotification({
       user_id: params.userId,
       title: params.title,
       body: params.body,
       type: params.type,
       category: 'emergency',
       severity: 'critical',
-      data: params.data,
+      data: { ...(params.data ?? {}), location: params.location },
       screen: 'Emergency',
       source: 'system',
     });
-
-    // Emit websocket event for immediate delivery
-    const wsEvent = {
+    broadcastAlert({
       type: 'emergency_alert',
-      data: {
-        id,
-        title: params.title,
-        body: params.body,
-        location: params.location,
-        timestamp: new Date().toISOString(),
-      },
-    };
-    broadcastAlert(wsEvent);
-
+      data: { id, title: params.title, body: params.body, location: params.location, timestamp: isoNow() },
+    });
     return id;
   }
 
-  /**
-   * Health alert from wearable/device
-   */
-  async sendHealthAlert(params: {
-    userId: string;
-    title: string;
-    body: string;
-    severity?: 'low' | 'medium' | 'high';
-    vitalType?: string;
-    value?: string;
-  }): Promise<string> {
+  sendHealthAlert(params) {
     return this.createNotification({
       user_id: params.userId,
       title: params.title,
@@ -157,16 +117,7 @@ export class NotificationService {
     });
   }
 
-  /**
-   * Medication reminder
-   */
-  async sendMedicationReminder(params: {
-    userId: string;
-    title: string;
-    body: string;
-    medicationId?: string;
-    scheduledTime?: string;
-  }): Promise<string> {
+  sendMedicationReminder(params) {
     return this.createNotification({
       user_id: params.userId,
       title: params.title,
@@ -180,26 +131,18 @@ export class NotificationService {
     });
   }
 
-  /**
-   * Gas detection alert
-   */
-  async sendGasAlert(params: {
-    userId: string;
-    level: 'safe' | 'warning' | 'danger' | 'critical';
-    concentration?: number;
-    location?: string;
-  }): Promise<string> {
+  sendGasAlert(params) {
     const titles = {
       safe: 'Gas Sensor Active',
       warning: 'Gas Level Warning',
-      danger: 'Gas Leak Detected!',
-      critical: 'CRITICAL: Gas Emergency!',
+      danger: 'Gas Leak Detected',
+      critical: 'Critical Gas Emergency',
     };
     const bodies = {
       safe: 'Gas levels are normal',
-      warning: `Gas concentration elevated: ${params.concentration} PPM`,
+      warning: `Gas concentration elevated: ${params.concentration ?? 'unknown'} PPM`,
       danger: `Potential gas leak detected at ${params.location || 'home'}. Please check immediately.`,
-      critical: `DANGER: High gas levels detected at ${params.location || 'home'}. Evacuate immediately and call emergency services!`,
+      critical: `High gas levels detected at ${params.location || 'home'}. Evacuate immediately and call emergency services.`,
     };
 
     return this.createNotification({
@@ -215,18 +158,10 @@ export class NotificationService {
     });
   }
 
-  /**
-   * Fall detection alert
-   */
-  async sendFallAlert(params: {
-    userId: string;
-    confidence?: number;
-    location?: string;
-    timestamp?: string;
-  }): Promise<string> {
+  sendFallAlert(params) {
     return this.createNotification({
       user_id: params.userId,
-      title: 'Fall Detected!',
+      title: 'Fall Detected',
       body: `A fall was detected${params.location ? ` at ${params.location}` : ''}. Emergency response may be needed.`,
       type: 'fall_detection',
       category: 'emergency',
@@ -237,16 +172,7 @@ export class NotificationService {
     });
   }
 
-  /**
-   * AI health warning
-   */
-  async sendAIWarning(params: {
-    userId: string;
-    title: string;
-    body: string;
-    insightType?: string;
-    recommendations?: string[];
-  }): Promise<string> {
+  sendAIWarning(params) {
     return this.createNotification({
       user_id: params.userId,
       title: params.title,
@@ -260,14 +186,7 @@ export class NotificationService {
     });
   }
 
-  /**
-   * Wearable disconnect alert
-   */
-  async sendWearableDisconnect(params: {
-    userId: string;
-    deviceName?: string;
-    deviceId?: string;
-  }): Promise<string> {
+  sendWearableDisconnect(params) {
     return this.createNotification({
       user_id: params.userId,
       title: params.deviceName ? `Wearable Disconnected: ${params.deviceName}` : 'Wearable Disconnected',
@@ -281,14 +200,7 @@ export class NotificationService {
     });
   }
 
-  /**
-   * Device offline alert
-   */
-  async sendDeviceOffline(params: {
-    userId: string;
-    deviceName: string;
-    deviceType?: string;
-  }): Promise<string> {
+  sendDeviceOffline(params) {
     return this.createNotification({
       user_id: params.userId,
       title: `Device Offline: ${params.deviceName}`,
@@ -302,19 +214,11 @@ export class NotificationService {
     });
   }
 
-  /**
-   * Chat message notification
-   */
-  async sendChatMessage(params: {
-    userId: string;
-    senderName: string;
-    message: string;
-    conversationId?: string;
-  }): Promise<string> {
+  sendChatMessage(params) {
     return this.createNotification({
       user_id: params.userId,
       title: `Message from ${params.senderName}`,
-      body: params.message.substring(0, 100),
+      body: String(params.message ?? '').substring(0, 100),
       type: 'chat_message',
       category: 'chat',
       severity: 'low',
@@ -324,184 +228,117 @@ export class NotificationService {
     });
   }
 
-  /**
-   * Mark notification as read
-   */
-  async markAsRead(notificationId: string, userId: string): Promise<void> {
-    await supabaseAdmin
-      .from('notifications')
-      .update({ is_read: true })
-      .eq('id', notificationId)
-      .eq('user_id', userId);
+  markAsRead(notificationId, userId) {
+    const db = getDb();
+    db.prepare('UPDATE notifications SET is_read = 1, read_at = ?, updated_at = ? WHERE id = ? AND user_id = ?')
+      .run(isoNow(), isoNow(), notificationId, userId);
+    const row = db.prepare('SELECT * FROM notifications WHERE id = ?').get(notificationId);
+    if (row) enqueueSync(db, 'notifications', 'update', row.id, row, { user_id: row.user_id });
   }
 
-  /**
-   * Mark all notifications as read
-   */
-  async markAllAsRead(userId: string): Promise<void> {
-    await supabaseAdmin
-      .from('notifications')
-      .update({ is_read: true })
-      .eq('user_id', userId)
-      .eq('is_read', false);
+  markAllAsRead(userId) {
+    const db = getDb();
+    const rows = db.prepare('SELECT id FROM notifications WHERE user_id = ? AND is_read = 0').all(userId);
+    const mark = db.prepare('UPDATE notifications SET is_read = 1, read_at = ?, updated_at = ? WHERE id = ?');
+    const tx = db.transaction(() => {
+      for (const row of rows) mark.run(isoNow(), isoNow(), row.id);
+    });
+    tx();
+    for (const row of rows) {
+      const notification = db.prepare('SELECT * FROM notifications WHERE id = ?').get(row.id);
+      enqueueSync(db, 'notifications', 'update', row.id, notification, { user_id: userId });
+    }
   }
 
-  /**
-   * Get user notifications
-   */
-  async getNotifications(userId: string, limit = 50): Promise<any[]> {
-    const { data, error } = await supabaseAdmin
-      .from('notifications')
-      .select('*')
-      .eq('user_id', userId)
-      .order('created_at', { ascending: false })
-      .limit(limit);
-
-    if (error) throw error;
-    return data ?? [];
+  getNotifications(userId, limit = 50) {
+    return getDb().prepare(
+      'SELECT * FROM notifications WHERE user_id = ? ORDER BY created_at DESC LIMIT ?'
+    ).all(userId, limit);
   }
 
-  /**
-   * Get unread count
-   */
-  async getUnreadCount(userId: string): Promise<number> {
-    const { count, error } = await supabaseAdmin
-      .from('notifications')
-      .select('*', { count: 'exact', head: true })
-      .eq('user_id', userId)
-      .eq('is_read', false);
-
-    if (error) throw error;
-    return count ?? 0;
+  getUnreadCount(userId) {
+    return getDb().prepare(
+      'SELECT COUNT(*) AS count FROM notifications WHERE user_id = ? AND is_read = 0'
+    ).get(userId)?.count ?? 0;
   }
 }
 
-// Singleton instance
 export const notificationService = new NotificationService();
 
-// ─── Notification Routes ────────────────────────────────────
-
-export async function registerNotificationRoutes(app: FastifyInstance): Promise<void> {
-  // Create notification
+export async function registerNotificationRoutes(app) {
   app.post('/notifications', async (request, reply) => {
     try {
-      const body = request.body as NotificationPayload;
-      const id = await notificationService.createNotification(body);
+      const id = notificationService.createNotification(request.body);
       return reply.send({ success: true, id });
-    } catch (error: any) {
-      return reply.status(500).send({ error: error.message });
+    } catch (error) {
+      return reply.status(500).send({ success: false, error: { code: 'notification_error', message: error.message } });
     }
   });
 
-  // Get notifications
   app.get('/notifications/:userId', async (request, reply) => {
     try {
-      const { userId } = request.params as { userId: string };
-      const limit = Number(request.query['limit']) || 50;
-      const notifications = await notificationService.getNotifications(userId, limit);
-      return reply.send({ success: true, notifications });
-    } catch (error: any) {
-      return reply.status(500).send({ error: error.message });
+      const limit = Number(request.query?.limit) || 50;
+      return reply.send({ success: true, data: notificationService.getNotifications(request.params.userId, limit) });
+    } catch (error) {
+      return reply.status(500).send({ success: false, error: { code: 'notification_error', message: error.message } });
     }
   });
 
-  // Get unread count
   app.get('/notifications/:userId/unread', async (request, reply) => {
     try {
-      const { userId } = request.params as { userId: string };
-      const count = await notificationService.getUnreadCount(userId);
-      return reply.send({ success: true, count });
-    } catch (error: any) {
-      return reply.status(500).send({ error: error.message });
+      return reply.send({ success: true, count: notificationService.getUnreadCount(request.params.userId) });
+    } catch (error) {
+      return reply.status(500).send({ success: false, error: { code: 'notification_error', message: error.message } });
     }
   });
 
-  // Mark as read
   app.patch('/notifications/:id/read', async (request, reply) => {
     try {
-      const { id } = request.params as { id: string };
-      const { userId } = request.body as { userId: string };
-      await notificationService.markAsRead(id, userId);
+      notificationService.markAsRead(request.params.id, request.body.userId ?? request.body.user_id);
       return reply.send({ success: true });
-    } catch (error: any) {
-      return reply.status(500).send({ error: error.message });
+    } catch (error) {
+      return reply.status(500).send({ success: false, error: { code: 'notification_error', message: error.message } });
     }
   });
 
-  // Mark all as read
   app.post('/notifications/:userId/read-all', async (request, reply) => {
     try {
-      const { userId } = request.params as { userId: string };
-      await notificationService.markAllAsRead(userId);
+      notificationService.markAllAsRead(request.params.userId);
       return reply.send({ success: true });
-    } catch (error: any) {
-      return reply.status(500).send({ error: error.message });
+    } catch (error) {
+      return reply.status(500).send({ success: false, error: { code: 'notification_error', message: error.message } });
     }
   });
 
-  // Emergency alert
   app.post('/alerts/emergency', async (request, reply) => {
     try {
-      const body = request.body as {
-        userId: string;
-        title: string;
-        body: string;
-        type: string;
-        location?: { lat: number; lng: number };
-      };
-      const id = await notificationService.sendEmergency(body);
-      return reply.send({ success: true, id });
-    } catch (error: any) {
-      return reply.status(500).send({ error: error.message });
+      return reply.send({ success: true, id: notificationService.sendEmergency(request.body) });
+    } catch (error) {
+      return reply.status(500).send({ success: false, error: { code: 'notification_error', message: error.message } });
     }
   });
 
-  // Health alert
   app.post('/alerts/health', async (request, reply) => {
     try {
-      const body = request.body as {
-        userId: string;
-        title: string;
-        body: string;
-        severity?: 'low' | 'medium' | 'high';
-        vitalType?: string;
-        value?: string;
-      };
-      const id = await notificationService.sendHealthAlert(body);
-      return reply.send({ success: true, id });
-    } catch (error: any) {
-      return reply.status(500).send({ error: error.message });
+      return reply.send({ success: true, id: notificationService.sendHealthAlert(request.body) });
+    } catch (error) {
+      return reply.status(500).send({ success: false, error: { code: 'notification_error', message: error.message } });
     }
   });
 
-  // Gas alert
   app.post('/alerts/gas', async (request, reply) => {
     try {
-      const body = request.body as {
-        userId: string;
-        level: 'safe' | 'warning' | 'danger' | 'critical';
-        concentration?: number;
-        location?: string;
-      };
-      const id = await notificationService.sendGasAlert(body);
-      return reply.send({ success: true, id });
-    } catch (error: any) {
-      return reply.status(500).send({ error: error.message });
+      return reply.send({ success: true, id: notificationService.sendGasAlert(request.body) });
+    } catch (error) {
+      return reply.status(500).send({ success: false, error: { code: 'notification_error', message: error.message } });
     }
   });
 
-  // Fall alert
   app.post('/alerts/fall', async (request, reply) => {
     try {
-      const body = request.body as {
-        userId: string;
-        confidence?: number;
-        location?: string;
-      };
-      const id = await notificationService.sendFallAlert(body);
-      return reply.send({ success: true, id });
-    } catch (error: any) {
-      return reply.status(500).send({ error: error.message });
+      return reply.send({ success: true, id: notificationService.sendFallAlert(request.body) });
+    } catch (error) {
+      return reply.status(500).send({ success: false, error: { code: 'notification_error', message: error.message } });
     }
   });
 }

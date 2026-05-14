@@ -7,6 +7,7 @@ import { registerPatientRoutes } from './routes/patients.js';
 import { registerAlertRoutes } from './routes/alerts.js';
 import { registerSmartHomeRoutes, setMqttClient } from './routes/smarthome.js';
 import { registerTestRoutes } from './routes/test.js';
+import { registerNotificationRoutes } from '../services/notifications.js';
 
 import { registerSSE } from '../sockets/sse.js';
 import { flushQueue, pullFromSupabase } from '../sync/supabase.js';
@@ -49,6 +50,7 @@ export async function registerAllRoutes(app) {
   await registerPatientRoutes(app);
   await registerAlertRoutes(app);
   await registerSmartHomeRoutes(app);
+  await registerNotificationRoutes(app);
 
   // Test routes for GUI development
   await registerTestRoutes(app);
