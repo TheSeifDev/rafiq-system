@@ -2,11 +2,12 @@
  * sync/supabase.js
  * Background sync: SQLite _sync_queue → Supabase
  * Runs every 30s, handles INSERT / UPDATE / DELETE
- * Enhanced with realtime subscriptions and bidirectional sync
+ * Enhanced with priority-based sync and device tracking
  */
 
 import { createClient } from '@supabase/supabase-js';
-import { getDb, popSyncQueue, deleteSyncItems, incrementSyncAttempts } from '../db/index.js';
+import { getDb } from '../db/index.js';
+import { popSyncQueue, deleteSyncItems, incrementSyncAttempts, recordSyncAttempt, getSyncMetrics, TABLE_PRIORITY } from '../services/syncPriorities.js';
 import { broadcastAlert } from '../sockets/sse.js';
 
 // Tables allowed to push to Supabase

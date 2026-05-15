@@ -9,7 +9,12 @@
       "Bash(npm install *)",
       "Bash(npm remove *)",
       "Bash(Get-ChildItem -Force)",
-      "Bash(Select-Object Name, Mode)"
+      "Bash(Select-Object Name, Mode)",
+      "Bash(Get-ChildItem -Path . -Name -Directory)",
+      "Bash(Select-Object -First 50)",
+      "Bash(Get-ChildItem -Path rafiq-backend -Recurse -File -Include \"*.js\",\"*.sql\")",
+      "Bash(Select-Object FullName)",
+      "Bash(Format-Table -AutoSize)"
     ]
   }
 }

@@ -15,6 +15,7 @@ import { registerAllRoutes, setMqttClient } from './api/index.js';
 import { initSupabase, startSyncLoop } from './sync/supabase.js';
 import { initMqtt, onAlert, publishCommand, getMqttClient } from './smarthome/mqtt.js';
 import { broadcastAlert } from './sockets/sse.js';
+import { runStartupRecovery, getStartupRecoveryStatus } from './services/startupRecovery.js';
 
 // ── Config ───────────────────────────────────────────────────────────────────────
 const PORT = Number(process.env.PORT) || 3001;
@@ -52,6 +53,9 @@ await app.register(cors, {
 // ── Init Database ───────────────────────────────────────────────────────────────
 initDb();
 console.log('✅  SQLite ready at ./data/rafiq.db');
+
+// ── Startup Recovery ────────────────────────────────────────────────────────────
+runStartupRecovery().catch(console.error);
 
 // ── Init Supabase sync ─────────────────────────────────────────────────────────
 const syncReady = initSupabase();
