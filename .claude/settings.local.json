@@ -14,7 +14,10 @@
       "Bash(Select-Object -First 50)",
       "Bash(Get-ChildItem -Path rafiq-backend -Recurse -File -Include \"*.js\",\"*.sql\")",
       "Bash(Select-Object FullName)",
-      "Bash(Format-Table -AutoSize)"
+      "Bash(Format-Table -AutoSize)",
+      "Bash(dir \"D:\\\\Phantoms\\\\Rafiq\\\\rafiq-system\")",
+      "Bash(Get-ChildItem -Path \"D:\\\\Phantoms\\\\Rafiq\\\\rafiq-system\\\\rafiq-app\\\\src\\\\services\" -Recurse)",
+      "Bash(Select-Object Name)"
     ]
   }
 }
