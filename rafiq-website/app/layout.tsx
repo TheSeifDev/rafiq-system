@@ -77,7 +77,7 @@ export default function RootLayout({
       lang="en"
       className={`${montserrat.variable} ${alexandria.variable} ${playwrite.variable}`}
     >
-      <body className="bg-[#0A0F1C] text-white overflow-x-hidden">
+      <body className="bg-[#000109] text-white overflow-x-hidden">
         <Navbar />
 
         <main className="relative min-h-screen">

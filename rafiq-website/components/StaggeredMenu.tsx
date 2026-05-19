@@ -418,10 +418,10 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
           })()}
         </div>
 
-<header
-  className="staggered-menu-header absolute top-0 left-0 w-full flex items-center justify-between px-6 py-3 bg-transparent pointer-events-none z-20"
-  aria-label="Main navigation header"
->
+        <header
+          className="staggered-menu-header absolute top-0 left-0 w-full flex items-center justify-between px-6 py-3 bg-transparent pointer-events-none z-20"
+          aria-label="Main navigation header"
+        >
           <div
             className="sm-logo flex items-center gap-1 select-none pointer-events-auto"
             aria-label="Logo"
@@ -439,7 +439,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
               className="
     text-white
 text-xl
-font-black
+font-medium
 tracking-[0.15em]
 uppercase
 relative
