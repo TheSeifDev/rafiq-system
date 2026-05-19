@@ -1,0 +1,14 @@
+[
+  {
+    "from": "watch",
+    "to": "mqtt",
+    "speed": "fast",
+    "protocol": "BLE"
+  },
+  {
+    "from": "mqtt",
+    "to": "backend",
+    "speed": "medium",
+    "protocol": "MQTT"
+  }
+]

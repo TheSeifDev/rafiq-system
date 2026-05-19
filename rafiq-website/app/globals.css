@@ -1,0 +1,23 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/* EN */
+html[lang="en"] body {
+  font-family: var(--font-en), sans-serif;
+}
+
+/* AR */
+html[lang="ar"] body {
+  font-family: var(--font-ar), sans-serif;
+}
+
+/* Display Fonts */
+
+.font-display-en {
+  font-family: var(--font-en-display), cursive;
+}
+
+.font-display-ar {
+  font-family: var(--font-ar-display), sans-serif;
+}

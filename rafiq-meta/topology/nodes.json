@@ -1,0 +1,15 @@
+[
+  {
+    "id": "watch",
+    "type": "wearable",
+    "label": "RAFIQ Watch",
+    "protocol": "BLE",
+    "status": "online"
+  },
+  {
+    "id": "mqtt",
+    "type": "broker",
+    "label": "Mosquitto MQTT",
+    "status": "online"
+  }
+]
