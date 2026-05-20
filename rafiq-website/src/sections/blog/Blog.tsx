@@ -64,14 +64,7 @@ export default function Blog() {
           >
             <span
               className="
-                inline-flex items-center
-                rounded-full border border-white/10
-                bg-white/3
-                px-4 py-1.5
-                text-[11px] font-semibold uppercase
-                tracking-[0.25em]
-                text-[#FF3B3B]
-                backdrop-blur-xl
+                text-xs font-semibold uppercase tracking-[0.15em] text-white/40
               "
             >
               Blog & Insights
@@ -80,10 +73,10 @@ export default function Blog() {
             <h2
               className="
                 mt-6
-                text-4xl font-black leading-[1.05]
+                text-3xl font-black leading-[1.05]
                 tracking-tight text-white
-                sm:text-5xl
-                lg:text-6xl
+                sm:text-4xl
+                lg:text-5xl font-display
               "
             >
               Modern Thinking <br />

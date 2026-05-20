@@ -7,19 +7,8 @@ html[lang="en"] body {
   font-family: var(--font-en), sans-serif;
 }
 
-/* AR */
-html[lang="ar"] body {
-  font-family: var(--font-ar), sans-serif;
-}
-
-/* Display Fonts */
-
-.font-display-en {
+.font-display {
   font-family: var(--font-en-display), cursive;
-}
-
-.font-display-ar {
-  font-family: var(--font-ar-display), sans-serif;
 }
 
 @layer utilities {
@@ -34,5 +23,62 @@ html[lang="ar"] body {
     box-shadow: 0 0 0px 1000px transparent inset;
     transition: background-color 9999s ease-in-out 0s;
     caret-color: white;
+  }
+}
+
+/* =========================
+   TEXT SELECTION
+========================= */
+
+::selection {
+  background: #ff3b3b;
+  color: #ffffff;
+}
+
+/* =========================
+   SCROLLBAR
+========================= */
+
+/* Chrome / Edge / Brave */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ff3b3b;
+  border: 2px solid #050505;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #811d1d;
+}
+
+/* ============================================================
+   BACK/FORWARD NAVIGATION GLITCH FIX
+   Prevents stale compositing layers from persisting after
+   browser bfcache restore. Forces GPU layer invalidation.
+============================================================ */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

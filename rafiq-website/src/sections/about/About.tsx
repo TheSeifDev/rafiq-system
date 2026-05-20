@@ -47,7 +47,52 @@ const containerVariants = {
 
 const About = () => {
   return (
+        <>
+      <div className="absolute inset-0 overflow-hidden">
+
+        {/* glow */}
+        <div
+          className="
+            absolute left-[-10%] top-[10%]
+
+            h-105 w-105
+
+            rounded-full
+
+            bg-[#FF3B3B]/10
+
+            blur-[140px]
+          "
+        />
+
+        <div
+          className="
+            absolute bottom-[-10%] right-[-5%]
+
+            h-95 w-95
+
+            rounded-full
+
+            bg-white/4
+
+            blur-[140px]
+          "
+        />
+
+        {/* grid */}
+        <div
+          className="
+            absolute inset-0
+
+            bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)]
+            bg-size-[70px_70px]
+            mask-[radial-gradient(circle_at_center,black,transparent_85%)]
+          "
+        />
+      </div>
     <section className="relative overflow-hidden px-4 py-24 sm:px-6 lg:px-8">
+
+      
       {/* Subtle background glow */}
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
         <div className="h-125 w-125 rounded-full bg-[#FF3B3B]/5 blur-[120px]" />
@@ -65,7 +110,7 @@ const About = () => {
           <span className="text-sm font-bold uppercase tracking-[0.2em] text-[#FF3B3B]">
             Who We Are
           </span>
-          <h2 className="mt-4 text-4xl font-black leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
+          <h2 className="mt-4 text-4xl font-black leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl font-display ">
             About <span className="text-[#FF3B3B]">Phantoms</span>
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-white/60">
@@ -115,6 +160,7 @@ const About = () => {
         </motion.div>
       </div>
     </section>
+    </>
   );
 };
 

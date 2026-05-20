@@ -3,11 +3,11 @@ import Navbar from "@/src/components/navigation/Navbar";
 
 import {
   Montserrat,
-  Alexandria,
-  Playwrite_GB_J_Guides,
+  Playwrite_NZ,
 } from "next/font/google";
 
 import "./globals.css";
+import Footer from "@/src/sections/footer/Footer";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -15,13 +15,8 @@ const montserrat = Montserrat({
   display: "swap",
 });
 
-const alexandria = Alexandria({
-  subsets: ["arabic"],
-  variable: "--font-ar",
-  display: "swap",
-});
 
-const playwrite = Playwrite_GB_J_Guides({
+const playwrite = Playwrite_NZ({
   weight: "400",
   variable: "--font-en-display",
   display: "swap",
@@ -75,7 +70,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${montserrat.variable} ${alexandria.variable} ${playwrite.variable}`}
+      className={`${montserrat.variable} ${playwrite.variable}`}
     >
       <body className="bg-[#000109] text-white overflow-x-hidden">
         <Navbar />
@@ -83,6 +78,7 @@ export default function RootLayout({
         <main className="relative min-h-screen">
           {children}
         </main>
+        <Footer />
       </body>
     </html>
   );

@@ -21,7 +21,7 @@ export default function HeroSection() {
             className="w-full max-w-md py-16 sm:max-w-lg sm:py-20 lg:max-w-xl"
           >
             {/* TITLE */}
-            <h1 className="text-3xl font-black leading-[1.1] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
+            <h1 className="text-3xl font-black leading-[1.1] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl font-display">
               We Are <br />
               <span className="text-[#FF3B3B]">Phantoms</span>
             </h1>

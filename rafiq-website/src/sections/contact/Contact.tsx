@@ -134,7 +134,7 @@ export default function Contact() {
               text-3xl font-black leading-[1.05]
               tracking-tight text-white
               sm:text-4xl
-              lg:text-5xl
+              lg:text-5xl font-display
             "
           >
             Let’s Create Something <br />

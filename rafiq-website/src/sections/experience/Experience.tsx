@@ -78,7 +78,7 @@ export default function Experience() {
   return (
     <section className="bg-[#000109] py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
-        
+
         {/* Top Label */}
         <motion.span
           initial={{ opacity: 0, y: 10 }}
@@ -98,13 +98,14 @@ export default function Experience() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="mt-8 grid grid-cols-1 gap-6 border-b border-white/10 pb-10 sm:grid-cols-2 sm:gap-12 sm:pb-14"
         >
-          <h2 className="text-3xl font-semibold leading-[1.15] tracking-tight text-white sm:text-4xl lg:text-[2.75rem]">
+          <h2 className="text-3xl font-semibold leading-[1.15] tracking-tight text-white sm:text-4xl lg:text-[2.75rem] font-display ">
             A yearly snapshot of<br />our creative growth
           </h2>
           <p className="self-end text-sm leading-relaxed text-white/50 sm:text-base">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor 
-            incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit 
-            in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            We craft intelligent digital systems focused on AI, healthcare,
+            smart automation, and immersive user experiences combining
+            modern engineering with futuristic design to build impactful
+            technology for the real world.
           </p>
         </motion.div>
 
@@ -124,12 +125,12 @@ export default function Experience() {
             >
               {/* Hover Background */}
               <div className="absolute inset-0 -mx-4 -my-2 rounded-2xl bg-white/2 opacity-0 transition-all duration-500 group-hover:opacity-100 sm:-mx-6 sm:-my-4" />
-              
+
               {/* Hover Glow Line */}
               <div className="absolute bottom-0 left-0 h-px w-0 bg-[#FF3B3B] transition-all duration-700 group-hover:w-full" />
 
               <div className="relative flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center sm:gap-8">
-                
+
                 {/* Left: Role + Company + Description */}
                 <div className="max-w-lg">
                   <div className="flex items-center gap-2">
@@ -138,9 +139,9 @@ export default function Experience() {
                     </h3>
                     <span className="font-normal text-white/40">at</span>
                     <span className="font-semibold text-white transition-colors duration-300 group-hover:text-white/90">{exp.company}</span>
-                    <ArrowUpRight 
-                      size={16} 
-                      className="ml-1 text-white/0 transition-all duration-300 group-hover:text-[#FF3B3B] sm:ml-2" 
+                    <ArrowUpRight
+                      size={16}
+                      className="ml-1 text-white/0 transition-all duration-300 group-hover:text-[#FF3B3B] sm:ml-2"
                     />
                   </div>
                   <p className="mt-2 text-sm leading-relaxed text-white/50 transition-colors duration-300 group-hover:text-white/70">
@@ -149,7 +150,7 @@ export default function Experience() {
                 </div>
 
                 {/* Right: Period */}
-                <div className="shrink-0 text-2xl font-semibold tracking-tight text-white/80 transition-all duration-500 group-hover:text-white group-hover:translate-x-1 sm:text-3xl lg:text-4xl">
+                <div className="shrink-0 text-2xl font-semibold tracking-tight text-white/80 transition-all duration-500 group-hover:text-white group-hover:translate-x-1 sm:text-3xl lg:text-4xl font-display ">
                   {exp.period}
                 </div>
               </div>

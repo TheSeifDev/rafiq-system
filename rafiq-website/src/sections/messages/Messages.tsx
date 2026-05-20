@@ -25,13 +25,15 @@ export default function Messages() {
               text-3xl font-black leading-[1.2]
               tracking-tight text-white
               sm:text-4xl
-              lg:text-6xl
+              lg:text-7xl
             "
           >
             <span className="text-[#FF3B3B]">“</span>
 
             {' '}
-            Knowledge is power when it is used.
+            <span className="font-display">
+              Knowledge is power when it is used.
+            </span>
             {' '}
 
             <span className="text-[#FF3B3B]">”</span>

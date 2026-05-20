@@ -30,53 +30,135 @@ export default function Footer() {
                 text-5xl font-black leading-[0.95]
                 tracking-tight text-white
                 sm:text-6xl
-                lg:text-7xl
+                lg:text-7xl font-display
               "
             >
               Let’s Connect <br />
               There
             </h2>
           </div>
-
           {/* BUTTON */}
           <Link
             href="/contact"
             className="
-              group inline-flex h-16 items-center gap-3
-              self-start
-              rounded-full
-              border border-white/10
-              bg-white/5
-              px-5 pr-7
-              backdrop-blur-xl
-              transition-all duration-300
-              hover:border-[#FF3B3B]/30
-              hover:bg-white/[0.07]
-            "
+    group relative inline-flex h-16 items-center gap-4
+    self-start overflow-hidden
+
+    rounded-full
+    border border-white/10
+
+    bg-white/3
+    px-5 pr-8
+
+    backdrop-blur-2xl
+
+    shadow-[0_8px_40px_rgba(0,0,0,0.35)]
+
+    transition-all duration-500 ease-out
+
+    hover:-translate-y-1
+    hover:border-[#FF3B3B]/40
+    hover:bg-white/6
+    hover:shadow-[0_0_45px_rgba(255,59,59,0.18)]
+  "
           >
+            {/* glow */}
             <div
               className="
-                flex h-12 w-12 items-center justify-center
-                rounded-full
-                bg-black
-                text-white
-                transition-all duration-300
-                group-hover:bg-[#FF3B3B]
-              "
+      absolute inset-0
+      opacity-0
+      transition-opacity duration-500
+      group-hover:opacity-100
+    "
             >
-              <ArrowUpRight
-                size={18}
+              <div
                 className="
-                  transition-transform duration-300
-                  group-hover:-translate-y-0.5
-                  group-hover:translate-x-0.5
-                "
+        absolute -left-10 top-1/2 h-32 w-32
+        -translate-y-1/2
+        rounded-full
+        bg-[#FF3B3B]/20
+        blur-3xl
+      "
               />
             </div>
 
-            <span className="text-sm font-medium text-white">
-              Hire Me Now!
-            </span>
+            {/* ICON */}
+            <div
+              className="
+      relative z-10
+
+      flex h-12 w-12 items-center justify-center
+
+      rounded-full
+
+      border border-white/10
+      bg-black/80
+
+      shadow-inner shadow-white/5
+
+      transition-all duration-500
+
+      group-hover:scale-110
+      group-hover:border-[#FF3B3B]/30
+      group-hover:bg-[#FF3B3B]
+      group-hover:shadow-[0_0_25px_rgba(255,59,59,0.45)]
+    "
+            >
+              <ArrowUpRight
+                size={18}
+                strokeWidth={2.5}
+                className="
+        translate-x-[0.5px] translate-y-[-0.5px]
+
+        transition-all duration-500
+
+        group-hover:translate-x-1
+        group-hover:-translate-y-1
+      "
+              />
+            </div>
+
+            {/* TEXT */}
+            <div className="relative z-10 flex flex-col">
+              <span
+                className="
+        text-[15px]
+        font-semibold
+        tracking-wide
+        text-white
+
+        transition-all duration-300
+        group-hover:text-[#FF3B3B]
+      "
+              >
+                Hire Me Now
+              </span>
+
+              <span
+                className="
+        text-xs
+        text-white/40
+        transition-all duration-300
+        group-hover:text-white/60
+      "
+              >
+                Let’s build something powerful
+              </span>
+            </div>
+
+            {/* shine */}
+            <div
+              className="
+      absolute inset-0 -translate-x-full
+      bg-linear-to-r
+      from-transparent
+      via-white/10
+      to-transparent
+
+      transition-transform duration-1000
+      group-hover:translate-x-full
+    "
+            />
           </Link>
         </div>
 
@@ -151,22 +233,24 @@ export default function Footer() {
                     key={index}
                     href={item.href}
                     className="
-        flex h-10 w-10 items-center justify-center
-        rounded-xl
-        border border-white/10
-        bg-white/5
-        text-white/60
-        transition-all duration-300
-        hover:border-[#FF3B3B]/30
-        hover:bg-[#FF3B3B]
-        hover:text-white
-      "
+    mt-4
+    flex h-10 w-10 items-center justify-center
+    rounded-xl
+    border border-white/10
+    bg-white/5
+    text-white
+    backdrop-blur-md
+    transition-all duration-300
+    hover:border-[#FF3B3B]/50
+    hover:bg-[#FF3B3B]/10
+    hover:text-[#FF3B3B]
+  "
                   >
                     <Icon
                       size={18}
                       className={
                         item.icon === TwitterNew
-                          ? 'translate-x-[3.5px] translate-y-[3.5px] size-6'
+                          ? 'translate-x-[4.5px] translate-y-[4.5px] size-6'
                           : ''
                       }
                     />
@@ -292,7 +376,106 @@ export default function Footer() {
             ))}
           </div>
         </div>
+        {/* LINE */}
+        <div className="mt-10 h-px w-full bg-linear-to-r from-transparent via-white/10 to-transparent" />
+
+        {/* DEVELOPER */}
+        <div className="flex items-center justify-center py-8">
+          <Link
+            href="https://seifdev.vercel.app/"
+            target="_blank"
+            className="
+      group relative inline-flex items-center gap-4
+
+      text-white/45
+
+      transition-all duration-300
+
+      hover:text-white
+    "
+          >
+            {/* subtle glow */}
+            <div
+              className="
+        absolute inset-0 -z-10
+        rounded-full
+        bg-[#FF3B3B]/10
+        opacity-0 blur-2xl
+        transition-opacity duration-500
+        group-hover:opacity-100
+      "
+            />
+
+            {/* logo */}
+            <div
+              className="
+        relative
+
+        h-14 w-14
+        shrink-0
+
+        overflow-hidden
+        rounded-2xl
+
+        border border-white/10
+        bg-white/3
+
+        backdrop-blur-xl
+
+        transition-all duration-300
+
+        group-hover:border-[#FF3B3B]/40
+        group-hover:bg-[#FF3B3B]/10
+        group-hover:shadow-[0_0_25px_rgba(255,59,59,0.2)]
+      "
+            >
+              <Image
+                src="/S.png"
+                alt="TheSeifDev Logo"
+                fill
+                sizes="56px"
+                className="object-contain p-1.5"
+              />
+            </div>
+
+            {/* text */}
+            <div className="flex items-center gap-2">
+              <span
+                className="
+          text-sm tracking-wide text-white/35
+          transition-colors duration-300
+          group-hover:text-white/50
+        "
+              >
+                Developed by
+              </span>
+
+              <span
+                className="
+          text-base font-semibold tracking-tight text-white
+
+          transition-colors duration-300
+          group-hover:text-[#FF3B3B]
+        "
+              >
+                TheSeifDev
+              </span>
+
+              <ArrowUpRight
+                size={16}
+                className="
+          transition-all duration-300
+
+          group-hover:-translate-y-0.5
+          group-hover:translate-x-0.5
+          group-hover:text-[#FF3B3B]
+        "
+              />
+            </div>
+          </Link>
+        </div>
       </div>
+
     </footer>
   );
 }
