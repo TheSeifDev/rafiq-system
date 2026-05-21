@@ -76,7 +76,7 @@ const itemVariants = {
 
 export default function Experience() {
   return (
-    <section className="bg-[#000109] py-20 sm:py-28">
+    <section className="py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
 
         {/* Top Label */}

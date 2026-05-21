@@ -10,7 +10,7 @@ import React from 'react'
 
 const HomePage = () => {
   return (
-    <main className="min-h-screen bg-[#000109] text-white">
+    <>
       <HeroSection />
       <Bottom />
       <About />
@@ -19,7 +19,7 @@ const HomePage = () => {
       <Contact />
       <Messages />
       <ToolButton />
-    </main>
+    </>
   )
 }
 

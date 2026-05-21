@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Navbar from "@/src/components/navigation/Navbar";
+import GlobalBackground from "@/src/components/layout/GlobalBackground";
 
 import {
   Montserrat,
@@ -14,7 +15,6 @@ const montserrat = Montserrat({
   variable: "--font-en",
   display: "swap",
 });
-
 
 const playwrite = Playwrite_NZ({
   weight: "400",
@@ -73,9 +73,9 @@ export default function RootLayout({
       className={`${montserrat.variable} ${playwrite.variable}`}
     >
       <body className="bg-[#000109] text-white overflow-x-hidden">
+        <GlobalBackground />
         <Navbar />
-
-        <main className="relative min-h-screen">
+        <main className="min-h-screen">
           {children}
         </main>
         <Footer />

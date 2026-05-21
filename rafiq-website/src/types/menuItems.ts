@@ -5,5 +5,4 @@ export const menuItems = [
   { label: 'Services', ariaLabel: 'View our services', link: '/services' },
   { label: 'Contact', ariaLabel: 'Get in touch', link: '/contact' },
   { label: 'Blog', ariaLabel: 'Read our blog', link: '/blog' },
-  { label: 'Rafiq', ariaLabel: 'View Rafiq\'s profile', link: '/rafiq' }
 ];

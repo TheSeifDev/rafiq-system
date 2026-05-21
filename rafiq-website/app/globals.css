@@ -39,7 +39,6 @@ html[lang="en"] body {
    SCROLLBAR
 ========================= */
 
-/* Chrome / Edge / Brave */
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -55,22 +54,27 @@ html[lang="en"] body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #811d1d;
+  background: #be3030;
 }
 
-/* ============================================================
-   BACK/FORWARD NAVIGATION GLITCH FIX
-   Prevents stale compositing layers from persisting after
-   browser bfcache restore. Forces GPU layer invalidation.
-============================================================ */
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: auto;
 }
 
 body {
-  transform: translateZ(0);
+  overflow-x: hidden;
+}
+
+[data-navbar] {
+  will-change: transform;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+html.bfcache-restored * {
+  animation-play-state: running !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -80,5 +84,6 @@ body {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

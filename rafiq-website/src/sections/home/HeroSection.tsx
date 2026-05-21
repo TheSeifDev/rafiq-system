@@ -1,12 +1,30 @@
 'use client';
 
-import { motion } from 'framer-motion';
+/**
+ * HeroSection
+ *
+ * FIX: Removed `overflow-hidden` from the outer <section>.
+ *
+ * WHY: `overflow: hidden` on a section clips its children based on
+ * the section's bounding rectangle. When the browser composites
+ * `position: fixed` elements, they SHOULD escape overflow clipping —
+ * but when combined with a transformed parent ancestor (like body),
+ * the fixed element's containing block changes, making it vulnerable
+ * to being clipped by overflow:hidden ancestors in certain browser
+ * implementations (especially Safari/WebKit).
+ *
+ * The background image doesn't need overflow:hidden on the section —
+ * it's already contained by bg-cover/bg-center on the section itself.
+ * Any decorative elements that need clipping should use a dedicated
+ * inner wrapper with overflow:hidden instead.
+ */
 
+import { motion } from 'framer-motion';
 
 export default function HeroSection() {
   return (
     <section
-      className="relative min-h-screen overflow-hidden bg-cover bg-center bg-no-repeat"
+      className="relative min-h-screen bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: "url('/phantom-mask.png')" }}
     >
       {/* CONTENT */}
@@ -75,7 +93,7 @@ export default function HeroSection() {
                   cursor-pointer
                 "
               >
-                <span className="relative z-10">Let’s Work Together</span>
+                <span className="relative z-10">Let's Work Together</span>
                 <span className="absolute inset-0 -translate-x-full bg-white/20 transition-transform duration-500 group-hover:translate-x-0" />
               </button>
             </div>

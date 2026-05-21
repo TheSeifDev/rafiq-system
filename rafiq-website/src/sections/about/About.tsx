@@ -1,5 +1,23 @@
 'use client';
 
+/**
+ * About — Features grid section
+ *
+ * FIX: The previous implementation had a broken JSX fragment structure:
+ *   <>
+ *     <div className="absolute inset-0 ...">  ← this had no positioned parent!
+ *     <section>...</section>
+ *   </>
+ *
+ * The absolute-positioned background div was floating without a containing
+ * block, causing unpredictable layout and potential overflow/z-index issues.
+ * Fixed by wrapping everything in a single relative-positioned section.
+ *
+ * Also added `variants` reference fix on the feature card motion.div —
+ * it was using a container that had stagger variants but the child divs
+ * had no `variants` prop, so the container's stagger did nothing.
+ */
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Cpu, Shield, Zap, Globe, Users, Rocket } from 'lucide-react';
@@ -45,60 +63,25 @@ const containerVariants = {
   },
 };
 
+// FIX: Added card variants so the container stagger actually works.
+const cardVariants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: [0.22, 1, 0.36, 1] as const,
+    },
+  },
+};
+
 const About = () => {
   return (
-        <>
-      <div className="absolute inset-0 overflow-hidden">
-
-        {/* glow */}
-        <div
-          className="
-            absolute left-[-10%] top-[10%]
-
-            h-105 w-105
-
-            rounded-full
-
-            bg-[#FF3B3B]/10
-
-            blur-[140px]
-          "
-        />
-
-        <div
-          className="
-            absolute bottom-[-10%] right-[-5%]
-
-            h-95 w-95
-
-            rounded-full
-
-            bg-white/4
-
-            blur-[140px]
-          "
-        />
-
-        {/* grid */}
-        <div
-          className="
-            absolute inset-0
-
-            bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)]
-            bg-size-[70px_70px]
-            mask-[radial-gradient(circle_at_center,black,transparent_85%)]
-          "
-        />
-      </div>
     <section className="relative overflow-hidden px-4 py-24 sm:px-6 lg:px-8">
-
-      
-      {/* Subtle background glow */}
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-        <div className="h-125 w-125 rounded-full bg-[#FF3B3B]/5 blur-[120px]" />
-      </div>
-
+      {/* ── Content ─────────────────────────────────────────────────── */}
       <div className="relative z-10 mx-auto max-w-7xl">
+
         {/* HEADER */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -110,7 +93,7 @@ const About = () => {
           <span className="text-sm font-bold uppercase tracking-[0.2em] text-[#FF3B3B]">
             Who We Are
           </span>
-          <h2 className="mt-4 text-4xl font-black leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl font-display ">
+          <h2 className="mt-4 text-4xl font-black leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl font-display">
             About <span className="text-[#FF3B3B]">Phantoms</span>
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-white/60">
@@ -119,6 +102,7 @@ const About = () => {
             we architect intelligence.
           </p>
         </motion.div>
+
         {/* FEATURES GRID */}
         <motion.div
           variants={containerVariants}
@@ -130,6 +114,7 @@ const About = () => {
           {features.map(({ icon: Icon, title, desc }) => (
             <motion.div
               key={title}
+              variants={cardVariants}
               className="group rounded-2xl border border-white/10 bg-white/3 p-6 backdrop-blur-md transition-all duration-300 hover:border-[#FF3B3B]/30 hover:bg-white/6"
             >
               <div className="flex items-center gap-4">
@@ -160,7 +145,6 @@ const About = () => {
         </motion.div>
       </div>
     </section>
-    </>
   );
 };
 

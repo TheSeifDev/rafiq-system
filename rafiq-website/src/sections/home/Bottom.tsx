@@ -1,17 +1,27 @@
 'use client';
 
+/**
+ * Bottom — Mission & Vision cards
+ *
+ * FIX: Was using `animate` which fires immediately on mount
+ * regardless of visibility. Changed to `whileInView` so cards
+ * animate only when they enter the viewport — prevents
+ * animation conflicts with navbar mount animations at page load.
+ */
+
 import { motion } from 'framer-motion';
 import { Target, Eye } from 'lucide-react';
 
 const Bottom = () => {
   return (
     <div className="mx-auto -mt-10 grid w-full max-w-6xl grid-cols-1 gap-4 pb-4 sm:grid-cols-2 sm:gap-6 sm:-mt-14 lg:gap-8">
-      
+
       {/* MISSION */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.6 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-60px' }}
+        transition={{ duration: 0.6, delay: 0.1 }}
         className="group rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-md transition-colors hover:bg-white/10 sm:p-6"
       >
         <div className="flex items-start gap-4">
@@ -32,8 +42,9 @@ const Bottom = () => {
       {/* VISION */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.75 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-60px' }}
+        transition={{ duration: 0.6, delay: 0.2 }}
         className="group rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-md transition-colors hover:bg-white/10 sm:p-6"
       >
         <div className="flex items-start gap-4">
