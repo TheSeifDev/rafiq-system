@@ -52,7 +52,6 @@ export default function Blog() {
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
-        {/* HEADER */}
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
 
           <motion.div
@@ -100,7 +99,6 @@ export default function Blog() {
           </motion.p>
         </div>
 
-        {/* BLOG GRID */}
         <div className="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {posts.map((post, index) => (
             <Link
@@ -129,7 +127,6 @@ export default function Blog() {
                 hover:bg-white/5
               "
               >
-                {/* IMAGE */}
                 <div className="relative aspect-16/10 overflow-hidden">
                   <Image
                     src={post.image}
@@ -143,10 +140,8 @@ export default function Blog() {
   "
                   />
 
-                  {/* OVERLAY */}
                   <div className="absolute inset-0 bg-linear-to-t from-black via-black/20 to-transparent" />
 
-                  {/* CATEGORY */}
                   <div className="absolute left-4 top-4">
                     <span
                       className="
@@ -164,10 +159,8 @@ export default function Blog() {
                   </div>
                 </div>
 
-                {/* CONTENT */}
                 <div className="p-6 sm:p-7">
 
-                  {/* META */}
                   <div className="flex flex-wrap items-center gap-4 text-xs text-white/40">
                     <div className="flex items-center gap-1.5">
                       <Calendar size={14} />
@@ -180,7 +173,6 @@ export default function Blog() {
                     </div>
                   </div>
 
-                  {/* TITLE */}
                   <h3
                     className="
                     mt-5
@@ -193,7 +185,6 @@ export default function Blog() {
                     {post.title}
                   </h3>
 
-                  {/* DESCRIPTION */}
                   <p
                     className="
                     mt-4
@@ -204,7 +195,6 @@ export default function Blog() {
                     {post.description}
                   </p>
 
-                  {/* FOOTER */}
                   <div
                     className="
                     mt-8 flex items-center justify-between
@@ -240,7 +230,6 @@ export default function Blog() {
                   </div>
                 </div>
 
-                {/* INNER LIGHT */}
                 <div className="pointer-events-none absolute inset-0 rounded-[28px] border border-white/5" />
               </motion.article>
             </Link>

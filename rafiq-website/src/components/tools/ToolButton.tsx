@@ -58,7 +58,6 @@ export default function ToolButton() {
         }
       `}
     >
-      {/* glow */}
       <div
         className="
           absolute inset-0 rounded-2xl
@@ -69,7 +68,6 @@ export default function ToolButton() {
         "
       />
 
-      {/* icon */}
       <ChevronUp
         size={22}
         strokeWidth={2.8}

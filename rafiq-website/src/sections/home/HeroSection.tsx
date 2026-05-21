@@ -1,24 +1,5 @@
 'use client';
 
-/**
- * HeroSection
- *
- * FIX: Removed `overflow-hidden` from the outer <section>.
- *
- * WHY: `overflow: hidden` on a section clips its children based on
- * the section's bounding rectangle. When the browser composites
- * `position: fixed` elements, they SHOULD escape overflow clipping —
- * but when combined with a transformed parent ancestor (like body),
- * the fixed element's containing block changes, making it vulnerable
- * to being clipped by overflow:hidden ancestors in certain browser
- * implementations (especially Safari/WebKit).
- *
- * The background image doesn't need overflow:hidden on the section —
- * it's already contained by bg-cover/bg-center on the section itself.
- * Any decorative elements that need clipping should use a dedicated
- * inner wrapper with overflow:hidden instead.
- */
-
 import { motion } from 'framer-motion';
 
 export default function HeroSection() {
@@ -27,10 +8,8 @@ export default function HeroSection() {
       className="relative min-h-screen bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: "url('/phantom-mask.png')" }}
     >
-      {/* CONTENT */}
       <div className="relative z-10 flex min-h-screen max-w-7xl flex-col px-4 sm:px-6 lg:px-8">
 
-        {/* LEFT — smaller & shifted more to the left */}
         <div className="flex flex-1 items-center">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -38,19 +17,16 @@ export default function HeroSection() {
             transition={{ duration: 0.8, ease: 'easeOut' }}
             className="w-full max-w-md py-16 sm:max-w-lg sm:py-20 lg:max-w-xl"
           >
-            {/* TITLE */}
             <h1 className="text-3xl font-black leading-[1.1] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl font-display">
               We Are <br />
               <span className="text-[#FF3B3B]">Phantoms</span>
             </h1>
 
-            {/* DESCRIPTION */}
             <p className="mt-5 max-w-md text-sm leading-relaxed text-white/80 sm:text-base md:text-lg">
               A futuristic AI engineering team building intelligent healthcare,
               smart automation, cybersecurity systems, and edge AI ecosystems.
             </p>
 
-            {/* STATS */}
             <div className="mt-8 grid grid-cols-3 gap-3 sm:gap-4">
               {[
                 ['12+', 'Projects'],
@@ -74,7 +50,6 @@ export default function HeroSection() {
               ))}
             </div>
 
-            {/* CTA */}
             <div className="mt-8 sm:mt-10">
               <button
                 className="
@@ -101,7 +76,6 @@ export default function HeroSection() {
         </div>
 
       </div>
-      {/* BOTTOM CARDS — Mission & Vision (SIDE BY SIDE) */}
     </section>
   );
 }

@@ -2,7 +2,6 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
-/* EN */
 html[lang="en"] body {
   font-family: var(--font-en), sans-serif;
 }
@@ -26,18 +25,10 @@ html[lang="en"] body {
   }
 }
 
-/* =========================
-   TEXT SELECTION
-========================= */
-
 ::selection {
   background: #ff3b3b;
   color: #ffffff;
 }
-
-/* =========================
-   SCROLLBAR
-========================= */
 
 ::-webkit-scrollbar {
   width: 10px;

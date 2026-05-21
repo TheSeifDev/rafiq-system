@@ -20,10 +20,8 @@ export default function Footer() {
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
-        {/* TOP */}
         <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
 
-          {/* LEFT */}
           <div className="max-w-2xl">
             <h2
               className="
@@ -33,11 +31,10 @@ export default function Footer() {
                 lg:text-7xl font-display
               "
             >
-              Let’s Connect <br />
+              Let's Connect <br />
               There
             </h2>
           </div>
-          {/* BUTTON */}
           <Link
             href="/contact"
             className="
@@ -62,7 +59,6 @@ export default function Footer() {
     hover:shadow-[0_0_45px_rgba(255,59,59,0.18)]
   "
           >
-            {/* glow */}
             <div
               className="
       absolute inset-0
@@ -82,7 +78,6 @@ export default function Footer() {
               />
             </div>
 
-            {/* ICON */}
             <div
               className="
       relative z-10
@@ -118,7 +113,6 @@ export default function Footer() {
               />
             </div>
 
-            {/* TEXT */}
             <div className="relative z-10 flex flex-col">
               <span
                 className="
@@ -142,11 +136,10 @@ export default function Footer() {
         group-hover:text-white/60
       "
               >
-                Let’s build something powerful
+                Let's build something powerful
               </span>
             </div>
 
-            {/* shine */}
             <div
               className="
       absolute inset-0 -translate-x-full
@@ -162,18 +155,14 @@ export default function Footer() {
           </Link>
         </div>
 
-        {/* LINE */}
         <div className="mt-16 h-px w-full bg-white/10" />
 
-        {/* CENTER */}
         <div className="grid gap-12 py-12 sm:grid-cols-2 lg:grid-cols-5">
 
-          {/* BRAND */}
           <div className="lg:col-span-2">
 
             <div className="flex items-center gap-3">
 
-              {/* LOGO */}
               <div
                 className="
     relative flex h-22 w-22 items-center justify-center
@@ -205,7 +194,6 @@ export default function Footer() {
               and futuristic digital experiences.
             </p>
 
-            {/* SOCIALS */}
             <div className="mt-6 flex items-center gap-3">
 
               {[
@@ -260,7 +248,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* ADDRESS */}
           <div>
             <h4
               className="
@@ -282,7 +269,6 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* EMAIL */}
           <div>
             <h4
               className="
@@ -309,7 +295,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* PHONE */}
           <div>
             <h4
               className="
@@ -337,10 +322,8 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* LINE */}
         <div className="h-px w-full bg-white/10" />
 
-        {/* BOTTOM */}
         <div
           className="
             flex flex-col gap-5 pt-8
@@ -376,10 +359,8 @@ export default function Footer() {
             ))}
           </div>
         </div>
-        {/* LINE */}
         <div className="mt-10 h-px w-full bg-linear-to-r from-transparent via-white/10 to-transparent" />
 
-        {/* DEVELOPER */}
         <div className="flex items-center justify-center py-8">
           <Link
             href="https://seifdev.vercel.app/"
@@ -394,7 +375,6 @@ export default function Footer() {
       hover:text-white
     "
           >
-            {/* subtle glow */}
             <div
               className="
         absolute inset-0 -z-10
@@ -406,7 +386,6 @@ export default function Footer() {
       "
             />
 
-            {/* logo */}
             <div
               className="
         relative
@@ -438,7 +417,6 @@ export default function Footer() {
               />
             </div>
 
-            {/* text */}
             <div className="flex items-center gap-2">
               <span
                 className="

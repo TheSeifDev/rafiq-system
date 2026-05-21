@@ -105,7 +105,6 @@ export default function Contact() {
     <section className="relative overflow-hidden py-16 sm:py-20">
       <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 
-        {/* HEADER */}
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -137,7 +136,7 @@ export default function Contact() {
               lg:text-5xl font-display
             "
           >
-            Let’s Create Something <br />
+            Let's Create Something <br />
             Exceptional Together
           </h2>
 
@@ -154,10 +153,8 @@ export default function Contact() {
           </p>
         </motion.div>
 
-        {/* CONTENT */}
         <div className="mt-14 grid gap-6 lg:grid-cols-[1fr_320px]">
 
-          {/* FORM */}
           <motion.form
             onSubmit={handleSubmit}
             initial={{ opacity: 0, y: 35 }}
@@ -175,7 +172,6 @@ export default function Contact() {
           >
             <div className="grid gap-4 sm:grid-cols-2">
 
-              {/* NAME */}
               <div>
                 <label className="mb-2 block text-xs font-medium uppercase tracking-wide text-white/50">
                   Full Name
@@ -207,7 +203,6 @@ export default function Contact() {
                 />
               </div>
 
-              {/* EMAIL */}
               <div>
                 <label className="mb-2 block text-xs font-medium uppercase tracking-wide text-white/50">
                   Email
@@ -240,7 +235,6 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* SUBJECT */}
             <div className="mt-4">
               <label className="mb-2 block text-xs font-medium uppercase tracking-wide text-white/50">
                 Subject
@@ -272,7 +266,6 @@ export default function Contact() {
               />
             </div>
 
-            {/* MESSAGE */}
             <div className="mt-4">
               <label className="mb-2 block text-xs font-medium uppercase tracking-wide text-white/50">
                 Message
@@ -304,7 +297,6 @@ export default function Contact() {
               />
             </div>
 
-            {/* BUTTON + STATUS */}
             <div className="mt-5 flex flex-wrap items-center gap-4">
 
               <button
@@ -371,7 +363,6 @@ export default function Contact() {
             </div>
           </motion.form>
 
-          {/* INFO */}
           <motion.div
             initial={{ opacity: 0, y: 35 }}
             whileInView={{ opacity: 1, y: 0 }}

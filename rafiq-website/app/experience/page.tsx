@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React from 'react';
 import Link from 'next/link';
@@ -102,10 +102,10 @@ export default function Page() {
   return (
     <main className="relative overflow-hidden bg-[#000109] text-white mb-8  ">
 
-      {/* BACKGROUND */}
+      
       <div className="absolute inset-0 overflow-hidden">
 
-        {/* glow */}
+        
         <div
           className="
             absolute left-[-10%] top-[5%]
@@ -129,7 +129,7 @@ export default function Page() {
           "
         />
 
-        {/* grid */}
+        
         <div
           className="
             absolute inset-0
@@ -143,7 +143,7 @@ export default function Page() {
         />
       </div>
 
-      {/* HERO */}
+      
       <section
         className="
           relative z-10
@@ -158,10 +158,10 @@ export default function Page() {
 
           <div className="grid gap-16 lg:grid-cols-[1fr_420px] lg:items-center">
 
-            {/* LEFT */}
+            
             <div>
 
-              {/* badge */}
+              
               <motion.div
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -189,11 +189,10 @@ export default function Page() {
                 "
               >
 
-
                 Experience
               </motion.div>
 
-              {/* title */}
+              
               <motion.h1
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -214,7 +213,7 @@ export default function Page() {
                 Intelligent <span className="text-[#FF3B3B]">Systems.</span>
               </motion.h1>
 
-              {/* desc */}
+              
               <motion.p
                 initial={{ opacity: 0, y: 25 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -238,7 +237,7 @@ export default function Page() {
               </motion.p>
             </div>
 
-            {/* RIGHT STATS */}
+            
             <motion.div
               initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -314,7 +313,7 @@ export default function Page() {
             </motion.div>
           </div>
 
-          {/* EXPERIENCE LIST */}
+          
           <div className="mt-24">
 
             <div
@@ -371,10 +370,10 @@ export default function Page() {
               </p>
             </div>
 
-            {/* timeline */}
+            
             <div className="relative">
 
-              {/* line */}
+              
               <div
                 className="
 
@@ -399,15 +398,15 @@ export default function Page() {
                     variants={itemVariants}
                     className="group relative cursor-pointer border-b border-white/10 py-8 transition-all duration-500 last:border-b-0 sm:py-10"
                   >
-                    {/* Hover Background */}
+                    
                     <div className="absolute inset-0 -mx-4 -my-2 rounded-2xl bg-white/2 opacity-0 transition-all duration-500 group-hover:opacity-100 sm:-mx-6 sm:-my-4" />
 
-                    {/* Hover Glow Line */}
+                    
                     <div className="absolute bottom-0 left-0 h-px w-0 bg-[#FF3B3B] transition-all duration-700 group-hover:w-full" />
 
                     <div className="relative flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center sm:gap-8">
 
-                      {/* Left: Role + Company + Description */}
+                      
                       <div className="max-w-lg">
                         <div className="flex items-center gap-2">
                           <h3 className="text-base font-semibold text-white transition-colors duration-300 group-hover:text-[#FF3B3B] sm:text-lg">
@@ -425,7 +424,7 @@ export default function Page() {
                         </p>
                       </div>
 
-                      {/* Right: Period */}
+                      
                       <div className="shrink-0 text-2xl font-semibold tracking-tight text-white/80 transition-all duration-500 group-hover:text-white group-hover:translate-x-1 sm:text-3xl lg:text-4xl font-display ">
                         {exp.period}
                       </div>
@@ -436,7 +435,7 @@ export default function Page() {
             </div>
           </div>
 
-          {/* CTA */}
+          
           <motion.div
             initial={{ opacity: 0, y: 35 }}
             whileInView={{ opacity: 1, y: 0 }}

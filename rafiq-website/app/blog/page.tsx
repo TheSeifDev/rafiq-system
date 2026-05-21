@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, {
   useMemo,
@@ -126,10 +126,10 @@ export default function Page() {
   return (
     <main className="relative overflow-hidden text-white mb-8">
 
-      {/* BACKGROUND */}
+      
       <div className="absolute inset-0 overflow-hidden">
 
-        {/* glow */}
+        
         <div
           className="
             absolute left-[-10%] top-[0%]
@@ -158,7 +158,7 @@ export default function Page() {
           "
         />
 
-        {/* grid */}
+        
         <div
           className="
             absolute inset-0
@@ -172,12 +172,12 @@ export default function Page() {
         />
       </div>
 
-      {/* HERO */}
+      
       <section className="relative z-10 px-4 pt-32 sm:px-6 lg:px-8">
 
         <div className="mx-auto max-w-7xl">
 
-          {/* HERO */}
+          
           <div className="flex flex-col gap-12 lg:flex-row lg:items-end lg:justify-between">
 
             <motion.div
@@ -186,7 +186,7 @@ export default function Page() {
               transition={{ duration: 0.7 }}
               className="max-w-4xl"
             >
-              {/* badge */}
+              
               <div
                 className="
                   inline-flex items-center gap-2
@@ -213,7 +213,7 @@ export default function Page() {
                 Phantoms Blog
               </div>
 
-              {/* title */}
+              
               <h1
                 className="
                   mt-8
@@ -241,7 +241,7 @@ export default function Page() {
                 </span>
               </h1>
 
-              {/* desc */}
+              
               <p
                 className="
                   mt-8
@@ -263,7 +263,7 @@ export default function Page() {
             </motion.div>
           </div>
 
-          {/* CATEGORY BUTTONS */}
+          
           <div className="mt-14 flex flex-wrap gap-3">
 
             {categories.map((item) => {
@@ -309,7 +309,7 @@ export default function Page() {
             })}
           </div>
 
-          {/* FEATURED */}
+          
           <motion.div
             initial={{ opacity: 0, y: 35 }}
             animate={{ opacity: 1, y: 0 }}
@@ -328,7 +328,7 @@ export default function Page() {
           >
             <div className="grid lg:grid-cols-[1.1fr_0.9fr]">
 
-              {/* IMAGE */}
+              
               <div className="relative min-h-80 overflow-hidden lg:min-h-145">
 
                 <Image
@@ -356,7 +356,7 @@ export default function Page() {
                 />
               </div>
 
-              {/* CONTENT */}
+              
               <div className="flex flex-col justify-center p-8 sm:p-10 lg:p-14">
 
                 <div
@@ -462,7 +462,7 @@ export default function Page() {
             </div>
           </motion.div>
 
-          {/* SEARCH + FILTERS */}
+          
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -478,7 +478,7 @@ export default function Page() {
               lg:justify-between
             "
           >
-            {/* SEARCH */}
+            
             <div
               className="
                 group relative
@@ -556,7 +556,7 @@ export default function Page() {
               </div>
             </div>
 
-            {/* FILTERS */}
+            
             <div className="flex flex-wrap gap-3">
 
               {filters.map((item) => (
@@ -604,7 +604,7 @@ export default function Page() {
             </div>
           </motion.div>
 
-          {/* POSTS */}
+          
           <div className="mt-28">
 
             <div className="mb-12 flex items-end justify-between gap-6">
@@ -636,7 +636,7 @@ export default function Page() {
               </div>
             </div>
 
-            {/* GRID */}
+            
             <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
 
               {filteredPosts.map((post, index) => (
@@ -668,7 +668,7 @@ export default function Page() {
                     hover:shadow-[0_20px_80px_rgba(0,0,0,0.45)]
                   "
                 >
-                  {/* glow */}
+                  
                   <div
                     className="
                       absolute inset-0
@@ -695,7 +695,7 @@ export default function Page() {
                     />
                   </div>
 
-                  {/* image */}
+                  
                   <div className="relative h-64 overflow-hidden">
 
                     <Image
@@ -711,7 +711,7 @@ export default function Page() {
                       "
                     />
 
-                    {/* overlays */}
+                    
                     <div
                       className="
                         absolute inset-0
@@ -723,7 +723,7 @@ export default function Page() {
                       "
                     />
 
-                    {/* category */}
+                    
                     <div
                       className="
                         absolute left-5 top-5
@@ -753,10 +753,10 @@ export default function Page() {
                     </div>
                   </div>
 
-                  {/* content */}
+                  
                   <div className="relative z-10 p-7">
 
-                    {/* meta */}
+                    
                     <div className="flex items-center justify-between">
 
                       <div className="flex items-center gap-2 text-xs text-white/35">
@@ -795,7 +795,7 @@ export default function Page() {
                       </div>
                     </div>
 
-                    {/* title */}
+                    
                     <h3
                       className="
                         mt-6
@@ -817,7 +817,7 @@ export default function Page() {
                       {post.title}
                     </h3>
 
-                    {/* desc */}
+                    
                     <p
                       className="
                         mt-4
@@ -831,7 +831,7 @@ export default function Page() {
                       {post.description}
                     </p>
 
-                    {/* bottom */}
+                    
                     <div
                       className="
                         mt-7
@@ -871,7 +871,7 @@ export default function Page() {
               ))}
             </div>
 
-            {/* EMPTY */}
+            
             {filteredPosts.length === 0 && (
               <div
                 className="

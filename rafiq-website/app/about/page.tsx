@@ -51,10 +51,8 @@ export default function Page() {
   return (
     <main className="relative overflow-hidden bg-[#000109] text-white">
 
-      {/* BACKGROUND */}
       <div className="absolute inset-0 overflow-hidden">
 
-        {/* glow */}
         <div
           className="
             absolute left-[-10%] top-[10%]
@@ -83,7 +81,6 @@ export default function Page() {
           "
         />
 
-        {/* grid */}
         <div
           className="
             absolute inset-0
@@ -96,7 +93,6 @@ export default function Page() {
         />
       </div>
 
-      {/* HERO */}
       <section
         className="
           relative z-10
@@ -109,13 +105,10 @@ export default function Page() {
       >
         <div className="mx-auto max-w-7xl">
 
-          {/* top */}
           <div className="grid gap-16 lg:grid-cols-[1fr_500px] lg:items-center">
 
-            {/* LEFT */}
             <div>
 
-              {/* badge */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -144,7 +137,6 @@ export default function Page() {
                 About Phantoms
               </motion.div>
 
-              {/* title */}
               <motion.h1
                 initial={{ opacity: 0, y: 35 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -170,7 +162,6 @@ export default function Page() {
                 The Future <span className="text-[#FF3B3B]">Beyond Limits.</span>
               </motion.h1>
 
-              {/* desc */}
               <motion.p
                 initial={{ opacity: 0, y: 25 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -191,10 +182,9 @@ export default function Page() {
                 Phantoms is a next-generation engineering collective
                 focused on AI ecosystems, cybersecurity, intelligent automation,
                 embedded systems, and futuristic digital infrastructure.
-                We don’t simply build products — we architect intelligent experiences.
+                We don't simply build products — we architect intelligent experiences.
               </motion.p>
 
-              {/* stats */}
               <div className="mt-10 flex flex-wrap gap-4">
 
                 {[
@@ -237,7 +227,6 @@ export default function Page() {
               </div>
             </div>
 
-            {/* RIGHT VISUAL */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -262,7 +251,6 @@ export default function Page() {
                 "
               />
 
-              {/* center glow */}
               <div
                 className="
                   absolute left-1/2 top-1/2
@@ -279,7 +267,6 @@ export default function Page() {
                 "
               />
 
-              {/* circles */}
               <div
                 className="
                   absolute left-1/2 top-1/2
@@ -308,7 +295,6 @@ export default function Page() {
                 "
               />
 
-              {/* logo text */}
               <div
                 className="
                   absolute left-1/2 top-1/2
@@ -340,7 +326,6 @@ export default function Page() {
             </motion.div>
           </div>
 
-          {/* FEATURES */}
           <div
             className="
               mt-24
@@ -382,7 +367,6 @@ export default function Page() {
                   hover:shadow-[0_0_40px_rgba(255,59,59,0.12)]
                 "
               >
-                {/* glow */}
                 <div
                   className="
                     absolute right-[-20%] top-[-20%]
@@ -438,7 +422,6 @@ export default function Page() {
             ))}
           </div>
 
-          {/* CTA */}
           <motion.div
             initial={{ opacity: 0, y: 35 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -490,7 +473,7 @@ export default function Page() {
                 sm:text-base
               "
             >
-              Let’s transform ambitious ideas into powerful intelligent systems
+              Let's transform ambitious ideas into powerful intelligent systems
               engineered for the future.
             </p>
 

@@ -79,7 +79,6 @@ export default function Experience() {
     <section className="py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
 
-        {/* Top Label */}
         <motion.span
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -90,7 +89,6 @@ export default function Experience() {
           Experience
         </motion.span>
 
-        {/* Header Grid */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -109,7 +107,6 @@ export default function Experience() {
           </p>
         </motion.div>
 
-        {/* Experience List */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -123,15 +120,12 @@ export default function Experience() {
               variants={itemVariants}
               className="group relative cursor-pointer border-b border-white/10 py-8 transition-all duration-500 last:border-b-0 sm:py-10"
             >
-              {/* Hover Background */}
               <div className="absolute inset-0 -mx-4 -my-2 rounded-2xl bg-white/2 opacity-0 transition-all duration-500 group-hover:opacity-100 sm:-mx-6 sm:-my-4" />
 
-              {/* Hover Glow Line */}
               <div className="absolute bottom-0 left-0 h-px w-0 bg-[#FF3B3B] transition-all duration-700 group-hover:w-full" />
 
               <div className="relative flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center sm:gap-8">
 
-                {/* Left: Role + Company + Description */}
                 <div className="max-w-lg">
                   <div className="flex items-center gap-2">
                     <h3 className="text-base font-semibold text-white transition-colors duration-300 group-hover:text-[#FF3B3B] sm:text-lg">
@@ -149,7 +143,6 @@ export default function Experience() {
                   </p>
                 </div>
 
-                {/* Right: Period */}
                 <div className="shrink-0 text-2xl font-semibold tracking-tight text-white/80 transition-all duration-500 group-hover:text-white group-hover:translate-x-1 sm:text-3xl lg:text-4xl font-display ">
                   {exp.period}
                 </div>

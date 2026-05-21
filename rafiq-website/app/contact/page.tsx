@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
@@ -105,10 +105,10 @@ export default function ContactPage() {
   return (
     <main className="relative overflow-hidden bg-[#000109] text-white">
 
-      {/* BACKGROUND */}
+      
       <div className="absolute inset-0 overflow-hidden">
 
-        {/* glow */}
+        
         <div
           className="
             absolute left-[-10%] top-[10%]
@@ -137,7 +137,7 @@ export default function ContactPage() {
           "
         />
 
-        {/* grid */}
+        
         <div
           className="
             absolute inset-0
@@ -149,7 +149,7 @@ export default function ContactPage() {
         />
       </div>
 
-      {/* HERO */}
+      
       <section
         className="
           relative z-10
@@ -162,10 +162,10 @@ export default function ContactPage() {
       >
         <div className="mx-auto max-w-7xl">
 
-          {/* top */}
+          
           <div className="grid gap-16 lg:grid-cols-[1fr_560px] lg:items-center">
 
-            {/* LEFT */}
+            
             <div>
 
               <motion.div
@@ -242,7 +242,7 @@ export default function ContactPage() {
                 embedded technologies, and futuristic digital experiences.
               </motion.p>
 
-              {/* info cards */}
+              
               <div
                 className="
     mt-10
@@ -304,7 +304,7 @@ export default function ContactPage() {
           hover:shadow-[0_0_40px_rgba(255,59,59,0.12)]
         "
                     >
-                      {/* glow */}
+                      
                       <div
                         className="
             absolute right-[-30%] top-[-30%]
@@ -325,7 +325,7 @@ export default function ContactPage() {
           "
                       />
 
-                      {/* top */}
+                      
                       <div className="relative z-10 flex items-start justify-between">
 
                         <div
@@ -364,7 +364,7 @@ export default function ContactPage() {
                         />
                       </div>
 
-                      {/* content */}
+                      
                       <div className="relative z-10 mt-7">
 
                         <h3
@@ -404,7 +404,7 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* RIGHT / FORM */}
+            
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
@@ -427,7 +427,7 @@ export default function ContactPage() {
                 sm:p-8
               "
             >
-              {/* glow */}
+              
               <div
                 className="
                   absolute right-[-20%] top-[-20%]
@@ -456,7 +456,7 @@ export default function ContactPage() {
 
                 <form onSubmit={handleSubmit} className="space-y-5">
 
-                  {/* name */}
+                  
                   <div>
                     <label className="mb-2 block text-xs font-medium uppercase tracking-[0.2em] text-white/40">
                       Full Name
@@ -498,7 +498,7 @@ export default function ContactPage() {
                     />
                   </div>
 
-                  {/* email */}
+                  
                   <div>
                     <label className="mb-2 block text-xs font-medium uppercase tracking-[0.2em] text-white/40">
                       Email Address
@@ -540,7 +540,7 @@ export default function ContactPage() {
                     />
                   </div>
 
-                  {/* subject */}
+                  
                   <div>
                     <label className="mb-2 block text-xs font-medium uppercase tracking-[0.2em] text-white/40">
                       Subject
@@ -582,7 +582,7 @@ export default function ContactPage() {
                     />
                   </div>
 
-                  {/* message */}
+                  
                   <div>
                     <label className="mb-2 block text-xs font-medium uppercase tracking-[0.2em] text-white/40">
                       Message
@@ -624,7 +624,7 @@ export default function ContactPage() {
                     />
                   </div>
 
-                  {/* bottom */}
+                  
                   <div className="flex flex-wrap items-center gap-4 pt-2">
 
                     <button

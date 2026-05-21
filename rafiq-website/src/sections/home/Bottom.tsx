@@ -1,14 +1,5 @@
 'use client';
 
-/**
- * Bottom — Mission & Vision cards
- *
- * FIX: Was using `animate` which fires immediately on mount
- * regardless of visibility. Changed to `whileInView` so cards
- * animate only when they enter the viewport — prevents
- * animation conflicts with navbar mount animations at page load.
- */
-
 import { motion } from 'framer-motion';
 import { Target, Eye } from 'lucide-react';
 
@@ -16,7 +7,6 @@ const Bottom = () => {
   return (
     <div className="mx-auto -mt-10 grid w-full max-w-6xl grid-cols-1 gap-4 pb-4 sm:grid-cols-2 sm:gap-6 sm:-mt-14 lg:gap-8">
 
-      {/* MISSION */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -39,7 +29,6 @@ const Bottom = () => {
         </div>
       </motion.div>
 
-      {/* VISION */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}

@@ -2,10 +2,6 @@
 
 import { motion, useReducedMotion } from 'framer-motion';
 
-/* ─────────────────────────────────────────────────────────────
-   SOFT CINEMATIC MOTION
-───────────────────────────────────────────────────────────── */
-
 const glowTopLeft = {
   animate: {
     x: [0, 40, 10, 0],
@@ -61,15 +57,7 @@ const glowBottom = {
   },
 };
 
-/* ─────────────────────────────────────────────────────────────
-   NOISE TEXTURE
-───────────────────────────────────────────────────────────── */
-
 const NOISE_SVG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E")`;
-
-/* ─────────────────────────────────────────────────────────────
-   COMPONENT
-───────────────────────────────────────────────────────────── */
 
 export default function GlobalBackground() {
   const prefersReducedMotion = useReducedMotion();
@@ -83,8 +71,6 @@ export default function GlobalBackground() {
         background: '#000109',
       }}
     >
-      {/* ───────────────── GRID ───────────────── */}
-
       <div
         className="absolute inset-0"
         style={{
@@ -96,8 +82,6 @@ export default function GlobalBackground() {
           opacity: 0.35,
         }}
       />
-
-      {/* ───────────────── DARK DEPTH ───────────────── */}
 
       <div
         className="absolute inset-0"
@@ -111,8 +95,6 @@ export default function GlobalBackground() {
           `,
         }}
       />
-
-      {/* ───────────────── RED GLOW — TOP LEFT ───────────────── */}
 
       <motion.div
         className="absolute rounded-full"
@@ -139,8 +121,6 @@ export default function GlobalBackground() {
         transition={prefersReducedMotion ? undefined : glowTopLeft.transition}
       />
 
-      {/* ───────────────── RED GLOW — TOP RIGHT ───────────────── */}
-
       <motion.div
         className="absolute rounded-full"
         style={{
@@ -164,8 +144,6 @@ export default function GlobalBackground() {
         animate={prefersReducedMotion ? undefined : glowTopRight.animate}
         transition={prefersReducedMotion ? undefined : glowTopRight.transition}
       />
-
-      {/* ───────────────── CENTER ATMOSPHERE ───────────────── */}
 
       <motion.div
         className="absolute rounded-full"
@@ -195,8 +173,6 @@ export default function GlobalBackground() {
         transition={prefersReducedMotion ? undefined : glowCenter.transition}
       />
 
-      {/* ───────────────── BOTTOM RED ───────────────── */}
-
       <motion.div
         className="absolute rounded-full"
         style={{
@@ -222,8 +198,6 @@ export default function GlobalBackground() {
         transition={prefersReducedMotion ? undefined : glowBottom.transition}
       />
 
-      {/* ───────────────── NOISE ───────────────── */}
-
       <div
         className="absolute inset-0"
         style={{
@@ -235,8 +209,6 @@ export default function GlobalBackground() {
         }}
       />
 
-      {/* ───────────────── TOP VIGNETTE ───────────────── */}
-
       <div
         className="absolute inset-x-0 top-0"
         style={{
@@ -245,8 +217,6 @@ export default function GlobalBackground() {
             'linear-gradient(to bottom, rgba(0,1,9,0.88) 0%, transparent 100%)',
         }}
       />
-
-      {/* ───────────────── BOTTOM VIGNETTE ───────────────── */}
 
       <div
         className="absolute inset-x-0 bottom-0"

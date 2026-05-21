@@ -1,23 +1,5 @@
 'use client';
 
-/**
- * About — Features grid section
- *
- * FIX: The previous implementation had a broken JSX fragment structure:
- *   <>
- *     <div className="absolute inset-0 ...">  ← this had no positioned parent!
- *     <section>...</section>
- *   </>
- *
- * The absolute-positioned background div was floating without a containing
- * block, causing unpredictable layout and potential overflow/z-index issues.
- * Fixed by wrapping everything in a single relative-positioned section.
- *
- * Also added `variants` reference fix on the feature card motion.div —
- * it was using a container that had stagger variants but the child divs
- * had no `variants` prop, so the container's stagger did nothing.
- */
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Cpu, Shield, Zap, Globe, Users, Rocket } from 'lucide-react';
@@ -63,7 +45,6 @@ const containerVariants = {
   },
 };
 
-// FIX: Added card variants so the container stagger actually works.
 const cardVariants = {
   hidden: { opacity: 0, y: 24 },
   visible: {
@@ -79,10 +60,8 @@ const cardVariants = {
 const About = () => {
   return (
     <section className="relative overflow-hidden px-4 py-24 sm:px-6 lg:px-8">
-      {/* ── Content ─────────────────────────────────────────────────── */}
       <div className="relative z-10 mx-auto max-w-7xl">
 
-        {/* HEADER */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -103,7 +82,6 @@ const About = () => {
           </p>
         </motion.div>
 
-        {/* FEATURES GRID */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -128,7 +106,6 @@ const About = () => {
           ))}
         </motion.div>
 
-        {/* BOTTOM CTA */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

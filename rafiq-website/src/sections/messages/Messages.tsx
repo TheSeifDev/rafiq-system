@@ -18,7 +18,6 @@ export default function Messages() {
           className="text-center"
         >
 
-          {/* MESSAGE */}
           <h2
             className="
               mx-auto max-w-4xl
@@ -28,7 +27,7 @@ export default function Messages() {
               lg:text-7xl
             "
           >
-            <span className="text-[#FF3B3B]">“</span>
+            <span className="text-[#FF3B3B]">"</span>
 
             {' '}
             <span className="font-display">
@@ -36,16 +35,13 @@ export default function Messages() {
             </span>
             {' '}
 
-            <span className="text-[#FF3B3B]">”</span>
+            <span className="text-[#FF3B3B]">"</span>
           </h2>
 
-          {/* BORDER */}
           <div className="mx-auto mt-10 h-px w-full max-w-2xl bg-white/10" />
 
-          {/* PROFILE */}
           <div className="mt-8 flex items-center justify-center gap-4">
 
-            {/* IMAGE */}
             <div
               className="
       relative h-20 w-20 overflow-hidden
@@ -62,7 +58,6 @@ export default function Messages() {
               />
             </div>
 
-            {/* INFO */}
             <div className="text-left">
               <h3 className="text-xl font-semibold text-white">
                 Seif Ayman

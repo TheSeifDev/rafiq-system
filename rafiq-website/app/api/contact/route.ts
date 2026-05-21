@@ -84,7 +84,6 @@ export async function POST(req: Request) {
                 "
               >
 
-                <!-- TOP -->
                 <tr>
                   <td
                     style="
@@ -136,7 +135,6 @@ export async function POST(req: Request) {
                   </td>
                 </tr>
 
-                <!-- INFO -->
                 <tr>
                   <td style="padding:40px">
                     
@@ -259,7 +257,6 @@ export async function POST(req: Request) {
                   </td>
                 </tr>
 
-                <!-- FOOTER -->
                 <tr>
                   <td
                     style="
