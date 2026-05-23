@@ -73,7 +73,7 @@ export default function Page() {
         <div
           className="
             absolute left-[-10%] top-[10%]
-            h-105 w-105
+            h-[420px] w-[420px]
             rounded-full
             bg-[#FF3B3B]/10
             blur-[140px]
@@ -82,7 +82,7 @@ export default function Page() {
         <div
           className="
             absolute bottom-[-10%] right-[-5%]
-            h-95 w-95
+            h-[380px] w-[380px]
             rounded-full
             bg-white/4
             blur-[140px]
@@ -92,8 +92,8 @@ export default function Page() {
           className="
             absolute inset-0
             bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)]
-            bg-size-[70px_70px]
-            mask-[radial-gradient(circle_at_center,black,transparent_85%)]
+            bg-[size:70px_70px]
+            [mask-image:radial-gradient(circle_at_center,black,transparent_85%)]
           "
         />
       </div>
@@ -109,7 +109,6 @@ export default function Page() {
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-16 lg:grid-cols-[1fr_500px] lg:items-center">
             
-            {/* Left Column (Hero Content) */}
             <div>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -140,7 +139,7 @@ export default function Page() {
                   mt-8
                   text-5xl
                   font-black
-                  leading-[0.88]
+                  leading-[1.1]
                   tracking-tight
                   text-white
                   sm:text-6xl
@@ -236,7 +235,7 @@ export default function Page() {
                   style={{ translateZ: 20 }}
                   className="
                     absolute left-1/2 top-1/2
-                    h-85 w-85
+                    h-[340px] w-[340px]
                     -translate-x-1/2 -translate-y-1/2
                     rounded-full
                     border border-dashed border-white/10
@@ -249,7 +248,7 @@ export default function Page() {
                   style={{ translateZ: 40 }}
                   className="
                     absolute left-1/2 top-1/2
-                    h-62.5 w-62.5
+                    h-[250px] w-[250px]
                     -translate-x-1/2 -translate-y-1/2
                     rounded-full
                     border border-[#FF3B3B]/20
@@ -284,7 +283,6 @@ export default function Page() {
             
           </div>
 
-          {/* Features Grid */}
           <div
             className="
               mt-24
@@ -358,7 +356,6 @@ export default function Page() {
             ))}
           </div>
 
-          {/* CTA Box */}
           <motion.div
             initial={{ opacity: 0, y: 35 }}
             whileInView={{ opacity: 1, y: 0 }}

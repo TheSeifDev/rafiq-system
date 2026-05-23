@@ -3,28 +3,13 @@
 import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-
-import {
-  ArrowUpRight,
-} from 'lucide-react';
+import { ArrowUpRight, Calendar, Briefcase, Sparkles, Activity } from 'lucide-react';
 
 const stats = [
-  {
-    title: 'Projects',
-    value: '12+',
-  },
-  {
-    title: 'Systems Built',
-    value: '2+',
-  },
-  {
-    title: 'Years Experience',
-    value: '1+',
-  },
-  {
-    title: 'Innovation',
-    value: '24/7',
-  },
+  { title: 'Projects Completed', value: '12+' },
+  { title: 'Systems Built', value: '2+' },
+  { title: 'Years Experience', value: '1+' },
+  { title: 'Innovation', value: '24/7' },
 ];
 
 const experiences = [
@@ -87,464 +72,201 @@ const containerVariants = {
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 40 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.5,
-      ease: [0.25, 0.1, 0.25, 1] as const,
+      duration: 0.8,
+      ease: [0.16, 1, 0.3, 1] as const,
     },
   },
 };
 
 export default function Page() {
   return (
-    <main className="relative overflow-hidden bg-[#000109] text-white mb-8  ">
-
-      
-      <div className="absolute inset-0 overflow-hidden">
-
-        
-        <div
-          className="
-            absolute left-[-10%] top-[5%]
-
-            h-112.5 w-112.5
-
-            rounded-full
-
-            bg-[#FF3B3B]/10
-
-            blur-[140px]
-          "
-        />
-
-        <div
-          className="
-            absolute bottom-[-10%] right-[-5%]
-            h-100 w-100
-            rounded-full
-            blur-[140px]
-          "
-        />
-
-        
-        <div
-          className="
-            absolute inset-0
-
-            bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)]
-
-            bg-size-[70px_70px]
-
-            mask-[radial-gradient(circle_at_center,black,transparent_85%)]
-          "
+    <main className="relative overflow-hidden bg-[#02020d] text-white min-h-screen selection:bg-[#FF3B3B]/30 selection:text-white">
+      {/*تم تصحيح كلاسات الـ blur هنا لتصبح صالحة في تيلويند مثل blur-[160px] */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <div className="absolute left-[-15%] top-[-5%] h-[600px] w-[600px] rounded-full bg-[#FF3B3B]/8 blur-[160px]" />
+        <div className="absolute right-[-10%] top-[40%] h-[500px] w-[500px] rounded-full bg-[#FF3B3B]/4 blur-[160px]" />
+        <div className="absolute left-[20%] bottom-[-10%] h-[550px] w-[550px] rounded-full bg-[#FF3B3B]/6 blur-[180px]" />
+        <div 
+          className="absolute inset-0 opacity-25 mix-blend-overlay"
+          style={{
+            backgroundImage: `linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px)`,
+            backgroundSize: '50px 50px',
+            maskImage: 'radial-gradient(circle at center, black, transparent 90%)',
+            WebkitMaskImage: 'radial-gradient(circle at center, black, transparent 90%)'
+          }}
         />
       </div>
 
-      
-      <section
-        className="
-          relative z-10
-
-          px-4 pt-32
-
-          sm:px-6
-          lg:px-8
-        "
-      >
-        <div className="mx-auto max-w-7xl">
-
-          <div className="grid gap-16 lg:grid-cols-[1fr_420px] lg:items-center">
-
-            
-            <div>
-
-              
-              <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="
-                  inline-flex items-center gap-2
-
-                  rounded-full
-
-                  border border-white/10
-
-                  bg-white/3
-
-                  px-4 py-2
-
-                  text-[11px]
-                  font-semibold
-                  uppercase
-
-                  tracking-[0.25em]
-
-                  text-[#FF3B3B]
-
-                  backdrop-blur-xl
-                "
-              >
-
-                Experience
-              </motion.div>
-
-              
-              <motion.h1
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7 }}
-                className="
-                  mt-8
-                  text-5xl
-                  font-black
-                  leading-[0.9]
-                  tracking-tight
-                  text-white
-                  sm:text-6xl
-                  lg:text-8xl
-                  font-display
-                "
-              >
-                Building <br />
-                Intelligent <span className="text-[#FF3B3B]">Systems.</span>
-              </motion.h1>
-
-              
-              <motion.p
-                initial={{ opacity: 0, y: 25 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                className="
-                  mt-12
-
-                  max-w-2xl
-
-                  text-sm
-                  leading-relaxed
-
-                  text-white/50
-
-                  sm:text-base
-                "
-              >
-                A journey through AI engineering, cybersecurity,
-                healthcare systems, automation, embedded technologies,
-                and next-generation digital experiences crafted by Phantoms.
-              </motion.p>
-            </div>
-
-            
+      <section className="relative z-10 px-4 pt-36 pb-24 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div className="grid gap-16 lg:grid-cols-[1fr_460px] lg:items-center">
+          <div>
             <motion.div
-              initial={{ opacity: 0, scale: 0.96 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8 }}
-              className="
-                grid grid-cols-2 gap-4
-              "
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] as const }}
+              className="inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-[11px] font-bold uppercase tracking-[0.25em] text-[#FF3B3B] backdrop-blur-xl shadow-inner shadow-white/5"
             >
-              {stats.map((item) => (
-                <div
-                  key={item.title}
-                  className="
-                    relative overflow-hidden
-
-                    rounded-[30px]
-
-                    border border-white/10
-
-                    bg-white/3
-
-                    p-6
-
-                    backdrop-blur-2xl
-                  "
-                >
-                  <div
-                    className="
-                      absolute -right-5 -top-5
-
-                      h-24 w-24
-
-                      rounded-full
-
-                      bg-[#FF3B3B]/10
-
-                      blur-2xl
-                    "
-                  />
-
-                  <div className="relative z-10">
-                    <h3
-                      className="
-                        text-4xl
-                        font-black
-
-                        tracking-tight
-
-                        text-white
-
-                        font-display
-                      "
-                    >
-                      {item.value}
-                    </h3>
-
-                    <p
-                      className="
-                        mt-2
-
-                        text-xs
-                        uppercase
-
-                        tracking-[0.25em]
-
-                        text-white/40
-                      "
-                    >
-                      {item.title}
-                    </p>
-                  </div>
-                </div>
-              ))}
+              <Activity size={12} className="animate-pulse text-[#FF3B3B]" />
+              Engineering Portfolio
             </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] as const }}
+              className="mt-6 text-5xl font-black leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-7xl xl:text-8xl font-display"
+            >
+              Building <br />
+              Intelligent <span className="relative text-transparent bg-clip-text bg-gradient-to-r from-[#FF3B3B] via-[#ff6b6b] to-white drop-shadow-[0_0_35px_rgba(255,59,59,0.25)]">Systems.</span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 25 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] as const }}
+              className="mt-8 max-w-xl text-base leading-relaxed text-white/50 sm:text-lg font-light"
+            >
+              A journey through AI engineering, cybersecurity, healthcare systems, automation, embedded technologies, and next-generation digital experiences crafted by Phantoms.
+            </motion.p>
           </div>
 
-          
-          <div className="mt-24">
-
-            <div
-              className="
-                mb-10
-                flex flex-col gap-6
-                pb-10
-                sm:flex-row
-                sm:items-end
-                sm:justify-between
-              "
-            >
-              <div>
-                <span className="text-xs uppercase tracking-[0.25em] text-white/35">
-                  Timeline
-                </span>
-
-                <h2
-                  className="
-                    mt-4
-
-                    text-3xl
-                    font-black
-
-                    tracking-tight
-
-                    text-white
-
-                    sm:text-5xl
-
-                    font-display
-                  "
-                >
-                  Creative & Technical <br />
-                  Evolution
-                </h2>
-              </div>
-
-              <p
-                className="
-                  max-w-lg
-
-                  text-sm
-                  leading-relaxed
-
-                  text-white/45
-
-                  sm:text-base
-                "
-              >
-                Combining engineering precision with futuristic design
-                to create scalable systems, immersive interfaces,
-                and intelligent real-world technologies.
-              </p>
-            </div>
-
-            
-            <div className="relative">
-
-              
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] as const }}
+            className="grid grid-cols-2 gap-4 sm:gap-5"
+          >
+            {stats.map((item) => (
               <div
-                className="
-
-                  hidden h-full w-px
-
-                  bg-white/10
-
-                  md:block
-                "
-              />
-
-              <motion.div
-                variants={containerVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: '-50px' }}
-                className="mt-2"
+                key={item.title}
+                className="group relative overflow-hidden rounded-[24px] border border-white/5 bg-gradient-to-b from-white/[0.03] to-transparent p-6 backdrop-blur-2xl transition-all duration-500 hover:border-[#FF3B3B]/20 hover:from-white/[0.05] hover:to-[#FF3B3B]/[0.01] hover:shadow-[0_12px_40px_rgba(255,59,59,0.03)]"
               >
-                {experiences.map((exp) => (
+                <div className="absolute -right-6 -top-6 h-28 w-28 rounded-full bg-[#FF3B3B]/10 blur-2xl transition-all duration-500 group-hover:bg-[#FF3B3B]/15" />
+                <div className="relative z-10 flex flex-col justify-between h-full">
+                  <h3 className="text-4xl font-black tracking-tight text-white font-display group-hover:text-[#FF3B3B] transition-colors duration-300 sm:text-5xl">
+                    {item.value}
+                  </h3>
+                  <p className="mt-4 text-[10px] font-medium uppercase tracking-[0.2em] text-white/40 group-hover:text-white/60 transition-colors duration-300">
+                    {item.title}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+
+        <div className="mt-36">
+          <div className="mb-16 flex flex-col gap-6 border-b border-white/5 pb-10 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-xl">
+              <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-[#FF3B3B] font-bold">
+                <Sparkles size={12} />
+                Timeline
+              </span>
+              <h2 className="mt-4 text-3xl font-black tracking-tight text-white sm:text-5xl font-display leading-tight">
+                Creative & Technical <br />
+                Evolution
+              </h2>
+            </div>
+            <p className="max-w-lg text-sm leading-relaxed text-white/40 sm:text-base font-light lg:mb-1">
+              Combining engineering precision with futuristic design to create scalable systems, immersive interfaces, and intelligent real-world technologies.
+            </p>
+          </div>
+
+          <div className="relative">
+            <div className="absolute left-[15px] top-2 bottom-2 w-px bg-gradient-to-b from-[#FF3B3B]/40 via-white/5 to-transparent md:left-1/2 md:-ml-px pointer-events-none" />
+
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-100px' }}
+              className="space-y-6 md:space-y-12"
+            >
+              {experiences.map((exp, index) => {
+                const isEven = index % 2 === 0;
+                return (
                   <motion.div
                     key={exp.id}
                     variants={itemVariants}
-                    className="group relative cursor-pointer border-b border-white/10 py-8 transition-all duration-500 last:border-b-0 sm:py-10"
+                    className={`relative flex flex-col md:flex-row ${isEven ? 'md:flex-row-reverse' : ''} gap-8 items-stretch`}
                   >
-                    
-                    <div className="absolute inset-0 -mx-4 -my-2 rounded-2xl bg-white/2 opacity-0 transition-all duration-500 group-hover:opacity-100 sm:-mx-6 sm:-my-4" />
+                    <div className="absolute left-[15px] top-7 h-2 w-2 rounded-full bg-[#FF3B3B] -translate-x-1/2 ring-4 ring-[#FF3B3B]/20 z-20 md:left-1/2 md:translate-x-[-50%]" />
 
-                    
-                    <div className="absolute bottom-0 left-0 h-px w-0 bg-[#FF3B3B] transition-all duration-700 group-hover:w-full" />
+                    <div className="w-full md:w-1/2 flex" />
 
-                    <div className="relative flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center sm:gap-8">
-
-                      
-                      <div className="max-w-lg">
-                        <div className="flex items-center gap-2">
-                          <h3 className="text-base font-semibold text-white transition-colors duration-300 group-hover:text-[#FF3B3B] sm:text-lg">
-                            {exp.role}
-                          </h3>
-                          <span className="font-normal text-white/40">at</span>
-                          <span className="font-semibold text-white transition-colors duration-300 group-hover:text-white/90">{exp.company}</span>
-                          <ArrowUpRight
-                            size={16}
-                            className="ml-1 text-white/0 transition-all duration-300 group-hover:text-[#FF3B3B] sm:ml-2"
-                          />
-                        </div>
-                        <p className="mt-2 text-sm leading-relaxed text-white/50 transition-colors duration-300 group-hover:text-white/70">
-                          {exp.description}
-                        </p>
-                      </div>
-
-                      
-                      <div className="shrink-0 text-2xl font-semibold tracking-tight text-white/80 transition-all duration-500 group-hover:text-white group-hover:translate-x-1 sm:text-3xl lg:text-4xl font-display ">
+                    <motion.div 
+                      whileHover={{ y: -4, border: '1px solid rgba(255, 59, 59, 0.2)' }}
+                      className="group w-full md:w-1/2 relative rounded-[28px] border border-white/5 bg-gradient-to-b from-white/[0.02] to-transparent p-6 sm:p-8 backdrop-blur-xl transition-all duration-500 hover:bg-white/[0.03] hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] pl-10 md:pl-8"
+                    >
+                      <div className="absolute top-6 right-6 flex items-center gap-1.5 rounded-full border border-white/5 bg-white/[0.02] px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white/40 transition-all duration-300 group-hover:border-[#FF3B3B]/20 group-hover:text-[#FF3B3B] group-hover:bg-[#FF3B3B]/5">
+                        <Calendar size={10} />
                         {exp.period}
                       </div>
-                    </div>
+
+                      <div className="flex items-center gap-2 text-[#FF3B3B]/80 text-xs font-semibold uppercase tracking-wider">
+                        <Briefcase size={12} />
+                        <span>{exp.company}</span>
+                      </div>
+
+                      <div className="mt-4 flex items-start gap-2 max-w-[85%]">
+                        <h3 className="text-lg font-black tracking-tight text-white transition-colors duration-300 group-hover:text-[#FF3B3B] sm:text-xl font-display">
+                          {exp.role}
+                        </h3>
+                        <ArrowUpRight
+                          size={18}
+                          className="text-[#FF3B3B] opacity-0 -translate-x-1 translate-y-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 shrink-0 mt-1"
+                        />
+                      </div>
+
+                      <p className="mt-4 text-sm leading-relaxed text-white/50 transition-colors duration-300 group-hover:text-white/70 font-light">
+                        {exp.description}
+                      </p>
+                    </motion.div>
                   </motion.div>
-                ))}
-              </motion.div>
-            </div>
+                );
+              })}
+            </motion.div>
           </div>
+        </div>
 
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
+          className="relative overflow-hidden mt-36 rounded-[32px] border border-white/5 bg-gradient-to-b from-white/[0.02] to-transparent p-8 text-center backdrop-blur-3xl sm:p-20 shadow-[0_30px_100px_rgba(0,0,0,0.4)]"
+        >
+          <div className="absolute -left-20 -top-20 h-48 w-48 rounded-full bg-[#FF3B3B]/8 blur-3xl pointer-events-none" />
+          <div className="absolute -right-20 -bottom-20 h-48 w-48 rounded-full bg-[#FF3B3B]/8 blur-3xl pointer-events-none" />
           
-          <motion.div
-            initial={{ opacity: 0, y: 35 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="
-              mt-24
-
-              rounded-[34px]
-
-              border border-white/10
-
-              bg-white/3
-
-              p-8
-
-              text-center
-
-              backdrop-blur-2xl
-
-              sm:p-12
-            "
-          >
-            <h2
-              className="
-                mt-7
-
-                text-3xl
-                font-black
-
-                tracking-tight
-
-                text-white
-
-                sm:text-5xl
-
-                font-display
-              "
-            >
-              Ready To Work <span className="text-[#FF3B3B]">Together?</span>
+          <div className="relative z-10">
+            <h2 className="text-3xl font-black tracking-tight text-white sm:text-5xl lg:text-6xl font-display leading-tight">
+              Ready To Work <span className="relative text-transparent bg-clip-text bg-gradient-to-r from-[#FF3B3B] via-[#ff7676] to-white drop-shadow-[0_0_30px_rgba(255,59,59,0.25)]">Together?</span>
             </h2>
 
-            <p
-              className="
-                mx-auto mt-5 max-w-2xl
-
-                text-sm leading-relaxed
-
-                text-white/50
-
-                sm:text-base
-              "
-            >
-              Let’s build scalable systems, intelligent platforms,
-              and futuristic experiences engineered for impact.
+            <p className="mx-auto mt-6 max-w-xl text-sm leading-relaxed text-white/40 sm:text-base font-light">
+              Let’s build scalable systems, intelligent platforms, and futuristic experiences engineered for impact.
             </p>
 
-            <Link
-              href="/contact"
-              className="
-                group relative mt-8 inline-flex items-center gap-3 overflow-hidden
-
-                rounded-2xl
-
-                bg-[#FF3B3B]
-
-                px-7 py-4
-
-                text-sm font-semibold text-white
-
-                shadow-[0_0_45px_rgba(255,59,59,0.25)]
-
-                transition-all duration-300
-
-                hover:scale-[1.02]
-                hover:shadow-[0_0_70px_rgba(255,59,59,0.4)]
-              "
-            >
-              <div
-                className="
-                  absolute inset-0
-
-                  -translate-x-full
-
-                  bg-linear-to-r
-                  from-transparent
-                  via-white/20
-                  to-transparent
-
-                  transition-transform duration-1000
-
-                  group-hover:translate-x-full
-                "
-              />
-
-              Start a Project
-
-              <ArrowUpRight
-                size={18}
-                className="
-                  transition-transform duration-300
-
-                  group-hover:-translate-y-0.5
-                  group-hover:translate-x-0.5
-                "
-              />
-            </Link>
-          </motion.div>
-        </div>
+            <div className="mt-12">
+              <Link
+                href="/contact"
+                className="group relative inline-flex items-center gap-3 overflow-hidden rounded-2xl bg-[#FF3B3B] px-10 py-5 text-sm font-bold text-white shadow-[0_10px_35px_rgba(255,59,59,0.25)] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_15px_50px_rgba(255,59,59,0.45)] active:scale-98"
+              >
+                <span className="relative z-10 flex items-center gap-2">
+                  Start a Project
+                  <ArrowUpRight size={16} className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                </span>
+                <span className="absolute inset-0 -translate-x-full bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent)] transition-transform duration-700 ease-out group-hover:translate-x-full" />
+              </Link>
+            </div>
+          </div>
+        </motion.div>
       </section>
     </main>
   );
