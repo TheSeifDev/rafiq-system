@@ -1,10 +1,10 @@
 ﻿'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  Terminal, Play, Pause, RotateCcw, Zap, AlertTriangle,
-  WifiOff, Brain, Activity, RefreshCw, Heart, Wind,
+  Play, Pause, AlertTriangle,
+  WifiOff, Brain, Activity, Heart, Wind,
 } from 'lucide-react';
 import SectionHeader from '@/src/features/rafiq/shared/components/SectionHeader';
 import InfraPanel from '@/src/features/rafiq/shared/components/InfraPanel';
@@ -17,6 +17,7 @@ import {
   useSyncQueue,
   useSystemMetrics,
 } from '@/src/features/rafiq/realtime/hooks';
+import SqlRelationshipExplorer from '@/src/features/rafiq/emulator/SqlRelationshipExplorer';
 import type { SystemStatus } from '@/src/features/rafiq/shared/types';
 
 type Scenario = 'normal' | 'emergency' | 'cloud-disconnect' | 'ai-failover';
@@ -144,6 +145,8 @@ export default function EmulatorPage() {
           <MetricCard label="Sensors"        value={sysMetrics.activeSensors}              status={scenario === 'emergency' ? 'active' : 'online'} />
           <MetricCard label="Sync Queue"     value={sysMetrics.syncQueueDepth} unit="items" status={scenario === 'cloud-disconnect' ? 'warning' : 'online'} />
         </div>
+
+        <SqlRelationshipExplorer syncQueue={syncQueue} />
 
         
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
