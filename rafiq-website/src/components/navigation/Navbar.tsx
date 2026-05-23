@@ -1,26 +1,21 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import Link from 'next/link';
-import {
-  motion,
-  useMotionValue,
-  useSpring,
-} from 'framer-motion';
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 
-import { ArrowUpRight, Menu, X } from 'lucide-react';
+import { ArrowUpRight, Menu, X } from "lucide-react";
 
-import {
-  useRef,
-  useEffect,
-  useState,
-} from 'react';
+import { useRef, useEffect, useState } from "react";
 
-import { menuItems } from '@/src/types/menuItems';
+import { menuItems } from "@/src/types/menuItems";
 
 export default function Navbar() {
-  const [mobileOpen, setMobileOpen] =
-    useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isRafiqRoute = pathname === "/rafiq" || pathname.startsWith("/rafiq/");
 
   const navY = useMotionValue(0);
 
@@ -37,36 +32,24 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const current = Math.max(
-        0,
-        window.scrollY,
-      );
+      const current = Math.max(0, window.scrollY);
 
-      const previous =
-        lastScrollY.current;
+      const previous = lastScrollY.current;
 
       lastScrollY.current = current;
 
-      const scrollingDown =
-        current > previous;
+      const scrollingDown = current > previous;
 
-      const pastThreshold =
-        current > 80;
+      const pastThreshold = current > 80;
 
-      if (
-        scrollingDown &&
-        pastThreshold
-      ) {
+      if (scrollingDown && pastThreshold) {
         if (!isHidden.current) {
           isHidden.current = true;
 
           navY.set(-100);
         }
       } else {
-        if (
-          isHidden.current ||
-          current <= 80
-        ) {
+        if (isHidden.current || current <= 80) {
           isHidden.current = false;
 
           navY.set(0);
@@ -74,25 +57,15 @@ export default function Navbar() {
       }
     };
 
-    window.addEventListener(
-      'scroll',
-      handleScroll,
-      {
-        passive: true,
-      },
-    );
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
 
-    return () =>
-      window.removeEventListener(
-        'scroll',
-        handleScroll,
-      );
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [navY]);
 
   useEffect(() => {
-    const handlePageShow = (
-      e: PageTransitionEvent,
-    ) => {
+    const handlePageShow = (e: PageTransitionEvent) => {
       if (e.persisted) {
         navY.set(0);
 
@@ -100,46 +73,27 @@ export default function Navbar() {
 
         isHidden.current = false;
 
-        document.documentElement.classList.add(
-          'bfcache-restored',
-        );
+        document.documentElement.classList.add("bfcache-restored");
 
         setTimeout(() => {
-          document.documentElement.classList.remove(
-            'bfcache-restored',
-          );
+          document.documentElement.classList.remove("bfcache-restored");
         }, 500);
       }
     };
 
-    window.addEventListener(
-      'pageshow',
-      handlePageShow,
-    );
+    window.addEventListener("pageshow", handlePageShow);
 
-    return () =>
-      window.removeEventListener(
-        'pageshow',
-        handlePageShow,
-      );
+    return () => window.removeEventListener("pageshow", handlePageShow);
   }, [navY]);
 
   useEffect(() => {
     if (!mobileOpen) return;
 
-    const close = () =>
-      setMobileOpen(false);
+    const close = () => setMobileOpen(false);
 
-    window.addEventListener(
-      'resize',
-      close,
-    );
+    window.addEventListener("resize", close);
 
-    return () =>
-      window.removeEventListener(
-        'resize',
-        close,
-      );
+    return () => window.removeEventListener("resize", close);
   }, [mobileOpen]);
 
   return (
@@ -148,15 +102,10 @@ export default function Navbar() {
         data-navbar
         style={{
           y: springY,
-          willChange: 'transform',
-          backfaceVisibility: 'hidden',
+          willChange: "transform",
+          backfaceVisibility: "hidden",
         }}
-        transformTemplate={(
-          _,
-          generated,
-        ) =>
-          `${generated} translateZ(0px)`
-        }
+        transformTemplate={(_, generated) => `${generated} translateZ(0px)`}
         className="
           fixed
           left-0
@@ -259,13 +208,13 @@ export default function Navbar() {
               opacity: 0,
               y: -70,
               scaleX: 0.05,
-              borderRadius: '999px',
+              borderRadius: "999px",
             }}
             animate={{
               opacity: 1,
               y: 0,
               scaleX: 1,
-              borderRadius: '20px',
+              borderRadius: "20px",
             }}
             transition={{
               duration: 1.2,
@@ -297,32 +246,27 @@ export default function Navbar() {
               lg:flex
             "
           >
-            {menuItems.map(
-              (item, index) => (
-                <motion.div
-                  key={item.label}
-                  initial={{
-                    opacity: 0,
-                    y: -12,
-                  }}
-                  animate={{
-                    opacity: 1,
-                    y: 0,
-                  }}
-                  transition={{
-                    delay:
-                      0.15 +
-                      index * 0.05,
+            {menuItems.map((item, index) => (
+              <motion.div
+                key={item.label}
+                initial={{
+                  opacity: 0,
+                  y: -12,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  delay: 0.15 + index * 0.05,
 
-                    duration: 0.45,
-                  }}
-                >
-                  <Link
-                    href={item.link}
-                    aria-label={
-                      item.ariaLabel
-                    }
-                    className="
+                  duration: 0.45,
+                }}
+              >
+                <Link
+                  href={item.link}
+                  aria-label={item.ariaLabel}
+                  className="
                       group
                       relative
 
@@ -347,9 +291,9 @@ export default function Navbar() {
 
                       hover:text-white
                     "
-                  >
-                    <span
-                      className="
+                >
+                  <span
+                    className="
                         absolute
                         inset-0
 
@@ -367,10 +311,10 @@ export default function Navbar() {
                         group-hover:scale-100
                         group-hover:opacity-100
                       "
-                    />
+                  />
 
-                    <span
-                      className="
+                  <span
+                    className="
                         absolute
                         inset-0
 
@@ -385,15 +329,12 @@ export default function Navbar() {
 
                         group-hover:opacity-100
                       "
-                    />
+                  />
 
-                    <span className="relative z-10">
-                      {item.label}
-                    </span>
-                  </Link>
-                </motion.div>
-              ),
-            )}
+                  <span className="relative z-10">{item.label}</span>
+                </Link>
+              </motion.div>
+            ))}
           </motion.nav>
 
           {/* RIGHT */}
@@ -417,7 +358,7 @@ export default function Navbar() {
               className="hidden sm:block"
             >
               <Link
-                href="/rafiq"
+                href={isRafiqRoute ? "/" : "/rafiq"}
                 className="
                   group
                   relative
@@ -485,26 +426,25 @@ export default function Navbar() {
                 <div className="relative z-10 flex flex-col items-start leading-none">
                   <span
                     className="
-                      text-[10px]
-                      uppercase
-                      tracking-[0.18em]
-                      text-white/30
-                    "
+    text-[10px]
+    uppercase
+    tracking-[0.18em]
+    text-white/30
+  "
                   >
-                    Open System
+                    {isRafiqRoute ? "Back To" : "Open System"}
                   </span>
 
                   <span
                     className="
-                      mt-0.5
-
-                      text-[13px]
-                      font-semibold
-                      tracking-wide
-                      text-white
-                    "
+    mt-0.5
+    text-[13px]
+    font-semibold
+    tracking-wide
+    text-white
+  "
                   >
-                    RAFIQ
+                    {isRafiqRoute ? "HOME" : "RAFIQ"}
                   </span>
                 </div>
 
@@ -544,11 +484,7 @@ export default function Navbar() {
               transition={{
                 duration: 0.6,
               }}
-              onClick={() =>
-                setMobileOpen(
-                  !mobileOpen,
-                )
-              }
+              onClick={() => setMobileOpen(!mobileOpen)}
               className="
                 relative
                 flex
@@ -577,11 +513,7 @@ export default function Navbar() {
                 lg:hidden
               "
             >
-              {mobileOpen ? (
-                <X size={18} />
-              ) : (
-                <Menu size={18} />
-              )}
+              {mobileOpen ? <X size={18} /> : <Menu size={18} />}
             </motion.button>
           </div>
         </nav>
@@ -596,9 +528,7 @@ export default function Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() =>
-                setMobileOpen(false)
-              }
+              onClick={() => setMobileOpen(false)}
               className="
                 fixed
                 inset-0
@@ -658,34 +588,26 @@ export default function Navbar() {
               "
             >
               <div className="space-y-2">
-                {menuItems.map(
-                  (item, index) => (
-                    <motion.div
-                      key={item.label}
-                      initial={{
-                        opacity: 0,
-                        y: -10,
-                      }}
-                      animate={{
-                        opacity: 1,
-                        y: 0,
-                      }}
-                      transition={{
-                        delay:
-                          index * 0.04,
-                      }}
-                    >
-                      <Link
-                        href={item.link}
-                        aria-label={
-                          item.ariaLabel
-                        }
-                        onClick={() =>
-                          setMobileOpen(
-                            false,
-                          )
-                        }
-                        className="
+                {menuItems.map((item, index) => (
+                  <motion.div
+                    key={item.label}
+                    initial={{
+                      opacity: 0,
+                      y: -10,
+                    }}
+                    animate={{
+                      opacity: 1,
+                      y: 0,
+                    }}
+                    transition={{
+                      delay: index * 0.04,
+                    }}
+                  >
+                    <Link
+                      href={item.link}
+                      aria-label={item.ariaLabel}
+                      onClick={() => setMobileOpen(false)}
+                      className="
                           group
                           relative
 
@@ -711,9 +633,9 @@ export default function Navbar() {
                           hover:border-[#FF3B3B]/30
                           hover:bg-white/5
                         "
-                      >
-                        <div
-                          className="
+                    >
+                      <div
+                        className="
                             absolute
                             inset-0
 
@@ -726,10 +648,10 @@ export default function Navbar() {
 
                             bg-[radial-gradient(circle_at_left,rgba(255,59,59,0.14),transparent_70%)]
                           "
-                        />
+                      />
 
-                        <span
-                          className="
+                      <span
+                        className="
                             relative
                             z-10
 
@@ -738,12 +660,12 @@ export default function Navbar() {
                             tracking-wide
                             text-white/80
                           "
-                        >
-                          {item.label}
-                        </span>
+                      >
+                        {item.label}
+                      </span>
 
-                        <ArrowUpRight
-                          className="
+                      <ArrowUpRight
+                        className="
                             relative
                             z-10
 
@@ -759,19 +681,16 @@ export default function Navbar() {
                             group-hover:translate-x-0.5
                             group-hover:text-white
                           "
-                        />
-                      </Link>
-                    </motion.div>
-                  ),
-                )}
+                      />
+                    </Link>
+                  </motion.div>
+                ))}
               </div>
 
               {/* MOBILE CTA */}
               <Link
                 href="/rafiq"
-                onClick={() =>
-                  setMobileOpen(false)
-                }
+                onClick={() => setMobileOpen(false)}
                 className="
                   group
                   relative

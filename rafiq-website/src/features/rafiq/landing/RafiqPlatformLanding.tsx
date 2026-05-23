@@ -38,7 +38,6 @@ import {
   Terminal,
   Volume2,
   Watch,
-  Wifi,
   Zap,
 } from 'lucide-react';
 import type { ComponentType, ReactNode } from 'react';
@@ -1098,16 +1097,17 @@ function EcosystemMap() {
   }, []);
 
   // Sync activeNode when filters change to ensure selected node stays highlighted
-  useEffect(() => {
-    if (activeFilter === 'full') {
-      setActiveNode('core');
-    } else {
-      const activeFilterNodes = ECOSYSTEM_FILTERS[activeFilter].nodes;
-      if (activeFilterNodes.length > 0 && !activeFilterNodes.includes(activeNode)) {
-        setActiveNode(activeFilterNodes[0]);
-      }
-    }
-  }, [activeFilter, activeNode]);
+const allowedNodes =
+  activeFilter === 'full'
+    ? null
+    : ECOSYSTEM_FILTERS[activeFilter].nodes;
+
+const effectiveActiveNode =
+  activeFilter === 'full'
+    ? activeNode || 'core'
+    : allowedNodes?.includes(activeNode)
+      ? activeNode
+      : allowedNodes?.[0] || 'core';
 
   const topologyScale = useMemo(() => {
     const fitScale = Math.min(viewportSize.width / 1220, viewportSize.height / 900);
@@ -1321,7 +1321,7 @@ function EcosystemMap() {
               const Icon = node.icon;
               const accent = accentStyles[node.accent];
               const isNodeFiltered = isNodeActive(node.id, activeFilter);
-              const isActive = activeNode === node.id && isNodeFiltered;
+              const isActive = effectiveActiveNode === node.id && isNodeFiltered;
 
               return (
                 <motion.button

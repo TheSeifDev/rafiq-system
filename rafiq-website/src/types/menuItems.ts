@@ -4,5 +4,4 @@ export const menuItems = [
   { label: 'Experience', ariaLabel: 'View our experience',       link: '/experience' },
   { label: 'Services',   ariaLabel: 'View our services',         link: '/services' },
   { label: 'Contact',    ariaLabel: 'Get in touch',              link: '/contact' },
-  { label: 'RAFIQ',      ariaLabel: 'Open the RAFIQ platform',   link: '/rafiq'   },
 ];

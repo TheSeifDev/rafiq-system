@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { motion } from 'framer-motion';
 import { Database, RefreshCw, Cloud, HardDrive, AlertTriangle, CheckCircle, Clock } from 'lucide-react';
@@ -8,6 +8,7 @@ import InfraPanel from '@/src/features/rafiq/shared/components/InfraPanel';
 import DataTable from '@/src/features/rafiq/shared/components/DataTable';
 import CodeBlock from '@/src/features/rafiq/shared/components/CodeBlock';
 import StatusPulse from '@/src/features/rafiq/shared/components/StatusPulse';
+import DatabaseMissionControl from '@/src/features/rafiq/database/components/DatabaseMissionControl';
 
 const TABLES = [
   { table: 'patients',          columns: 'id, name, dob, conditions[], medications[]',  sync: '↑↓ Bidirectional',  priority: 'Critical' },
@@ -178,6 +179,10 @@ export default function DatabasePage() {
             compact
           />
         </div>
+
+        
+        {/* ── Database Mission Control ── */}
+        <DatabaseMissionControl />
 
         
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
