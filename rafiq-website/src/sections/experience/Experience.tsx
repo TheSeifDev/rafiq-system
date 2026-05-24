@@ -2,8 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Calendar, Briefcase } from 'lucide-react';
-
+import { ArrowUpRight } from 'lucide-react';
 const experiences = [
   {
     id: 1,
@@ -64,35 +63,29 @@ const containerVariants = {
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.6,
-      ease: [0.16, 1, 0.3, 1] as const,
+      duration: 0.5,
+      ease: [0.25, 0.1, 0.25, 1] as const,
     },
   },
 };
 
 export default function Experience() {
   return (
-    <section className="relative overflow-hidden bg-[#02020d] text-white py-20 sm:py-28 selection:bg-[#FF3B3B]/30 selection:text-white">
-      {/* الخلفية المضيئة الموحدة لجمالية الـ Premium Design */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="absolute right-[-10%] top-[-10%] h-[500px] w-[500px] rounded-full bg-[#FF3B3B]/5 blur-[140px]" />
-        <div className="absolute left-[-10%] bottom-[-10%] h-[500px] w-[500px] rounded-full bg-[#FF3B3B]/3 blur-[140px]" />
-      </div>
+    <section className="py-20 sm:py-28">
+      <div className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
 
-      <div className="relative z-10 mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
         <motion.span
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.25em] text-[#FF3B3B]"
+          className="text-xs font-semibold uppercase tracking-[0.15em] text-white/40"
         >
-          <Briefcase size={12} />
           Experience
         </motion.span>
 
@@ -101,12 +94,12 @@ export default function Experience() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="mt-6 grid grid-cols-1 gap-6 border-b border-white/5 pb-10 sm:grid-cols-2 sm:gap-12 sm:pb-14"
+          className="mt-8 grid grid-cols-1 gap-6 border-b border-white/10 pb-10 sm:grid-cols-2 sm:gap-12 sm:pb-14"
         >
-          <h2 className="text-3xl font-black leading-[1.15] tracking-tight text-white sm:text-4xl lg:text-[2.75rem] font-display">
+          <h2 className="text-3xl font-semibold leading-[1.15] tracking-tight text-white sm:text-4xl lg:text-[2.75rem] font-display ">
             A yearly snapshot of<br />our creative growth
           </h2>
-          <p className="self-end text-sm leading-relaxed text-white/50 sm:text-base font-light">
+          <p className="self-end text-sm leading-relaxed text-white/50 sm:text-base">
             We craft intelligent digital systems focused on AI, healthcare,
             smart automation, and immersive user experiences combining
             modern engineering with futuristic design to build impactful
@@ -119,43 +112,39 @@ export default function Experience() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-50px' }}
-          className="mt-4 space-y-4"
+          className="mt-2"
         >
           {experiences.map((exp) => (
             <motion.div
               key={exp.id}
               variants={itemVariants}
-              whileHover={{ y: -4, border: '1px solid rgba(255, 59, 59, 0.15)' }}
-              className="group relative rounded-[24px] border border-white/5 bg-gradient-to-b from-white/[0.02] to-transparent p-6 sm:p-8 backdrop-blur-xl transition-all duration-500 hover:bg-white/[0.04] hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)]"
+              className="group relative cursor-pointer border-b border-white/10 py-8 transition-all duration-500 last:border-b-0 sm:py-10"
             >
-              <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center sm:gap-8">
-                <div className="max-w-xl">
-                  <div className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#FF3B3B]/80">
-                    <span>{exp.company}</span>
-                    <span className="font-normal text-white/30 lowercase">at</span>
-                    <div className="inline-flex items-center gap-1 rounded-full border border-white/5 bg-white/[0.02] px-2.5 py-0.5 text-[10px] text-white/40 group-hover:text-[#FF3B3B] group-hover:bg-[#FF3B3B]/5 transition-colors duration-300">
-                      <Calendar size={10} />
-                      {exp.period}
-                    </div>
-                  </div>
+              <div className="absolute inset-0 -mx-4 -my-2 rounded-2xl bg-white/2 opacity-0 transition-all duration-500 group-hover:opacity-100 sm:-mx-6 sm:-my-4" />
 
-                  <div className="mt-3 flex items-center gap-1">
-                    <h3 className="text-lg font-black tracking-tight text-white transition-colors duration-300 group-hover:text-[#FF3B3B] sm:text-xl font-display">
+              <div className="absolute bottom-0 left-0 h-px w-0 bg-[#FF3B3B] transition-all duration-700 group-hover:w-full" />
+
+              <div className="relative flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center sm:gap-8">
+
+                <div className="max-w-lg">
+                  <div className="flex items-center gap-2">
+                    <h3 className="text-base font-semibold text-white transition-colors duration-300 group-hover:text-[#FF3B3B] sm:text-lg">
                       {exp.role}
                     </h3>
+                    <span className="font-normal text-white/40">at</span>
+                    <span className="font-semibold text-white transition-colors duration-300 group-hover:text-white/90">{exp.company}</span>
                     <ArrowUpRight
-                      size={18}
-                      className="text-[#FF3B3B] opacity-0 -translate-x-1 translate-y-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 shrink-0"
+                      size={16}
+                      className="ml-1 text-white/0 transition-all duration-300 group-hover:text-[#FF3B3B] sm:ml-2"
                     />
                   </div>
-                  
-                  <p className="mt-3 text-sm leading-relaxed text-white/50 transition-colors duration-300 group-hover:text-white/70 font-light">
+                  <p className="mt-2 text-sm leading-relaxed text-white/50 transition-colors duration-300 group-hover:text-white/70">
                     {exp.description}
                   </p>
                 </div>
 
-                <div className="shrink-0 text-xl font-black tracking-tight text-white/30 transition-all duration-500 group-hover:text-white/80 sm:text-2xl lg:text-3xl font-display">
-                  #{exp.id.toString().padStart(2, '0')}
+                <div className="shrink-0 text-2xl font-semibold tracking-tight text-white/80 transition-all duration-500 group-hover:text-white group-hover:translate-x-1 sm:text-3xl lg:text-4xl font-display ">
+                  {exp.period}
                 </div>
               </div>
             </motion.div>

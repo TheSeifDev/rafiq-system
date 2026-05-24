@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Shield, Cpu, Terminal, Atom } from "lucide-react";
+import { Shield, Terminal, Atom } from "lucide-react";
 
 const stackDetails = {
   frontend: {

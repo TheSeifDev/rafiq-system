@@ -136,7 +136,7 @@ export default function Contact() {
               lg:text-5xl font-display
             "
           >
-            Let's Create Something <br />
+            Let&apos;s Create Something <br />
             Exceptional Together
           </h2>
 
