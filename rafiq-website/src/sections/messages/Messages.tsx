@@ -27,7 +27,7 @@ export default function Messages() {
               lg:text-7xl
             "
           >
-            <span className="text-[#FF3B3B]">"</span>
+            <span className="text-[#FF3B3B]">&ldquo;</span>
 
             {' '}
             <span className="font-display">
@@ -35,7 +35,7 @@ export default function Messages() {
             </span>
             {' '}
 
-            <span className="text-[#FF3B3B]">"</span>
+            <span className="text-[#FF3B3B]">&ldquo;</span>
           </h2>
 
           <div className="mx-auto mt-10 h-px w-full max-w-2xl bg-white/10" />
@@ -45,7 +45,7 @@ export default function Messages() {
             <div
               className="
       relative h-20 w-20 overflow-hidden
-      rounded-3xl
+      rounded-full
       border border-white/10
       shrink-0
     "

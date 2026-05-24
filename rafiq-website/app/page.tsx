@@ -6,7 +6,7 @@ import Experience from '@/src/sections/experience/Experience'
 import Bottom from '@/src/sections/home/Bottom'
 import HeroSection from '@/src/sections/home/HeroSection'
 import Messages from '@/src/sections/messages/Messages'
-import InteractiveCore from "@/src/components/InteractiveCore";
+import InteractiveCore from "@/src/sections/Interactive/InteractiveCore";
 import React from 'react'
 
 const HomePage = () => {
