@@ -19,12 +19,7 @@ export default function HeroSection() {
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           className="w-full max-w-md sm:max-w-xl md:max-w-2xl"
         >
-          <div className="mb-4 flex items-center gap-2">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#FF3B3B] animate-pulse" />
-            <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#FF3B3B]/80 font-bold">
-              SYSTEM_INIT // CORE_DECK
-            </span>
-          </div>
+
 
           <h1 className="text-4xl font-black leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl font-display">
             We Are <br />

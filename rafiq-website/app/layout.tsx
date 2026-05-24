@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import Navbar from "@/src/components/navigation/Navbar";
-import GlobalBackground from "@/src/components/layout/GlobalBackground";
+import ClientLayout from "@/src/components/layout/ClientLayout";
 
 import {
   Montserrat,
@@ -8,7 +7,6 @@ import {
 } from "next/font/google";
 
 import "./globals.css";
-import Footer from "@/src/sections/footer/Footer";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -73,12 +71,7 @@ export default function RootLayout({
       className={`${montserrat.variable} ${playwrite.variable}`}
     >
       <body className="bg-[#000109] text-white overflow-x-hidden">
-        <GlobalBackground />
-        <Navbar />
-        <main className="min-h-screen">
-          {children}
-        </main>
-        <Footer />
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );

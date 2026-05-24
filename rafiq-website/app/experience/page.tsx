@@ -78,19 +78,18 @@ const itemVariants = {
     y: 0,
     transition: {
       duration: 0.8,
-      ease: [0.16, 1, 0.3, 1] as const,
+      ease: [0.16, 1, 0.3, 1] as const, // تم إضافة as const هنا لحل المشكلة
     },
   },
 };
 
 export default function Page() {
   return (
-    <main className="relative overflow-hidden bg-[#02020d] text-white min-h-screen selection:bg-[#FF3B3B]/30 selection:text-white">
-      {/*تم تصحيح كلاسات الـ blur هنا لتصبح صالحة في تيلويند مثل blur-[160px] */}
+    <main className="relative overflow-hidden bg-[#02020ddc] text-white min-h-screen selection:bg-[#FF3B3B]/30 selection:text-white">
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="absolute left-[-15%] top-[-5%] h-[600px] w-[600px] rounded-full bg-[#FF3B3B]/8 blur-[160px]" />
-        <div className="absolute right-[-10%] top-[40%] h-[500px] w-[500px] rounded-full bg-[#FF3B3B]/4 blur-[160px]" />
-        <div className="absolute left-[20%] bottom-[-10%] h-[550px] w-[550px] rounded-full bg-[#FF3B3B]/6 blur-[180px]" />
+        <div className="absolute left-[-15%] top-[-5%] h-[600px] w-[600px] rounded-full bg-[#FF3B3B]/8 blur-160px]" />
+        <div className="absolute right-[-10%] top-[40%] h-[500px] w-[500px] rounded-full bg-[#FF3B3B]/4 blur-160px]" />
+        <div className="absolute left-[20%] bottom-[-10%] h-[550px] w-[550px] rounded-full bg-[#FF3B3B]/6 blur-180px]" />
         <div 
           className="absolute inset-0 opacity-25 mix-blend-overlay"
           style={{
