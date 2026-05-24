@@ -23,16 +23,6 @@ import InfraPanel from '@/src/features/rafiq/shared/components/InfraPanel';
 import CodeBlock from '@/src/features/rafiq/shared/components/CodeBlock';
 import DataTable from '@/src/features/rafiq/shared/components/DataTable';
 import StatusPulse from '@/src/features/rafiq/shared/components/StatusPulse';
-import { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "RAFIQ AI Engine",
-  description:
-    "Explore RAFIQ AI architecture, intelligence layers, and healthcare automation systems.",
-  alternates: {
-    canonical: "/rafiq/ai",
-  },
-};
 
 const MODEL_TABLE_DATA = [
   {
