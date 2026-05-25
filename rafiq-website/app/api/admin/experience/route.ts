@@ -1,13 +1,18 @@
+// app/api/admin/experience/route.ts
 import { NextRequest, NextResponse } from 'next/server';
-import { createServerSupabaseClient } from '@/lib/server';
+import { createClient } from "@supabase/supabase-js";
 import { revalidatePath } from 'next/cache';
+
+
+const supabaseAdmin = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.SUPABASE_SERVICE_ROLE_KEY! 
+);
 
 // GET /api/admin/experience
 export async function GET() {
   try {
-    const supabase = await createServerSupabaseClient();
-    
-    const { data, error } = await supabase
+    const { data, error } = await supabaseAdmin
       .from('experiences')
       .select('*')
       .order('order_index', { ascending: true });
@@ -26,10 +31,9 @@ export async function GET() {
 // POST /api/admin/experience
 export async function POST(request: NextRequest) {
   try {
-    const supabase = await createServerSupabaseClient();
     const body = await request.json();
 
-    const { data, error } = await supabase
+    const { data, error } = await supabaseAdmin
       .from('experiences')
       .insert([body])
       .select()
@@ -52,7 +56,6 @@ export async function POST(request: NextRequest) {
 // PATCH /api/admin/experience
 export async function PATCH(request: NextRequest) {
   try {
-    const supabase = await createServerSupabaseClient();
     const body = await request.json();
     const { id, ...updateData } = body;
 
@@ -63,7 +66,7 @@ export async function PATCH(request: NextRequest) {
       );
     }
 
-    const { data, error } = await supabase
+    const { data, error } = await supabaseAdmin
       .from('experiences')
       .update({
         ...updateData,
@@ -90,7 +93,6 @@ export async function PATCH(request: NextRequest) {
 // DELETE /api/admin/experience
 export async function DELETE(request: NextRequest) {
   try {
-    const supabase = await createServerSupabaseClient();
     const { searchParams } = new URL(request.url);
     const id = searchParams.get('id');
 
@@ -101,7 +103,7 @@ export async function DELETE(request: NextRequest) {
       );
     }
 
-    const { error } = await supabase.from('experiences').delete().eq('id', id);
+    const { error } = await supabaseAdmin.from('experiences').delete().eq('id', id);
     if (error) throw error;
 
     revalidatePath('/experience');

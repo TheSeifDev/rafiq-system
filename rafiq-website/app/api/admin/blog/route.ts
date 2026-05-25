@@ -1,30 +1,49 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { createServerSupabaseClient } from '@/lib/server';
-import { revalidatePath } from 'next/cache';
+// app/api/admin/blog/route.ts
+import { NextRequest, NextResponse } from "next/server";
+import { createClient } from "@supabase/supabase-js";
 
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.SUPABASE_SERVICE_ROLE_KEY!
+);
 
+// ←←← جديد: GET method ←←←
 export async function GET(request: NextRequest) {
   try {
-    const supabase = await createServerSupabaseClient();
     const { searchParams } = new URL(request.url);
-    const status = searchParams.get('status');
+    const id = searchParams.get("id");
+    const status = searchParams.get("status");
 
     let query = supabase
-      .from('blog_posts')
-      .select('*')
-      .order('created_at', { ascending: false });
+      .from("blog_posts")
+      .select("*")
+      .order("created_at", { ascending: false });
 
-    if (status === 'published') {
-      query = query.eq('is_published', true);
-    } else if (status === 'draft') {
-      query = query.eq('is_published', false);
+    // لو فيه id، جيب post واحد
+    if (id) {
+      query = query.eq("id", id);
+    }
+
+    // لو فيه status filter
+    if (status === "published") {
+      query = query.eq("is_published", true);
+    } else if (status === "draft") {
+      query = query.eq("is_published", false);
     }
 
     const { data, error } = await query;
-    if (error) throw error;
 
-    return NextResponse.json({ success: true, data });
+    if (error) {
+      console.error("Supabase error:", error);
+      return NextResponse.json(
+        { success: false, error: error.message },
+        { status: 500 }
+      );
+    }
+
+    return NextResponse.json({ success: true, data: data || [] });
   } catch (error: any) {
+    console.error("API error:", error);
     return NextResponse.json(
       { success: false, error: error.message },
       { status: 500 }
@@ -32,25 +51,22 @@ export async function GET(request: NextRequest) {
   }
 }
 
-// POST /api/admin/blog
 export async function POST(request: NextRequest) {
   try {
-    const supabase = await createServerSupabaseClient();
     const body = await request.json();
-
+    
     const { data, error } = await supabase
-      .from('blog_posts')
-      .insert([{
-        ...body,
-        published_at: body.is_published ? new Date().toISOString() : null,
-      }])
+      .from("blog_posts")
+      .insert([body])
       .select()
       .single();
 
-    if (error) throw error;
-
-    revalidatePath('/blog');
-    revalidatePath('/admin/blog');
+    if (error) {
+      return NextResponse.json(
+        { success: false, error: error.message },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json({ success: true, data });
   } catch (error: any) {
@@ -61,35 +77,24 @@ export async function POST(request: NextRequest) {
   }
 }
 
-// PATCH /api/admin/blog
 export async function PATCH(request: NextRequest) {
   try {
-    const supabase = await createServerSupabaseClient();
     const body = await request.json();
-    const { id, ...updateData } = body;
-
-    if (!id) {
-      return NextResponse.json(
-        { success: false, error: 'Blog post ID is required' },
-        { status: 400 }
-      );
-    }
-
+    const { id, ...updates } = body;
+    
     const { data, error } = await supabase
-      .from('blog_posts')
-      .update({
-        ...updateData,
-        updated_at: new Date().toISOString(),
-        published_at: updateData.is_published ? new Date().toISOString() : null,
-      })
-      .eq('id', id)
+      .from("blog_posts")
+      .update(updates)
+      .eq("id", id)
       .select()
       .single();
 
-    if (error) throw error;
-
-    revalidatePath('/blog');
-    revalidatePath('/admin/blog');
+    if (error) {
+      return NextResponse.json(
+        { success: false, error: error.message },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json({ success: true, data });
   } catch (error: any) {
@@ -100,25 +105,30 @@ export async function PATCH(request: NextRequest) {
   }
 }
 
-// DELETE /api/admin/blog
+// ←←← جديد: DELETE method ←←←
 export async function DELETE(request: NextRequest) {
   try {
-    const supabase = await createServerSupabaseClient();
     const { searchParams } = new URL(request.url);
-    const id = searchParams.get('id');
+    const id = searchParams.get("id");
 
     if (!id) {
       return NextResponse.json(
-        { success: false, error: 'Blog post ID is required' },
+        { success: false, error: "ID is required" },
         { status: 400 }
       );
     }
 
-    const { error } = await supabase.from('blog_posts').delete().eq('id', id);
-    if (error) throw error;
+    const { error } = await supabase
+      .from("blog_posts")
+      .delete()
+      .eq("id", id);
 
-    revalidatePath('/blog');
-    revalidatePath('/admin/blog');
+    if (error) {
+      return NextResponse.json(
+        { success: false, error: error.message },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json({ success: true });
   } catch (error: any) {

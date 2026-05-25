@@ -65,7 +65,7 @@ const experienceFields: FormField[] = [
 export default function NewExperiencePage() {
   const router = useRouter();
 
-  const handleSubmit = async (data: Partial<Experience>) => {
+  const handleSubmit = async (data: any) => {
     try {
       const response = await fetch('/api/admin/experience', {
         method: 'POST',
@@ -90,7 +90,7 @@ export default function NewExperiencePage() {
 
   return (
     <div className="mx-auto max-w-4xl">
-      <GenericForm<Experience>
+      <GenericForm
         title="Add New Experience"
         fields={experienceFields}
         onSubmit={handleSubmit}
@@ -98,7 +98,7 @@ export default function NewExperiencePage() {
           toast.success('Experience added successfully!');
           router.push('/admin/experience');
         }}
-        tableName="experiences"
+        submitLabel="Add Experience"
       />
     </div>
   );

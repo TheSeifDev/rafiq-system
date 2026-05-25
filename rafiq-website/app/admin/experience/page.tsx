@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { Experience } from "@/src/types/database";
 import { ColumnDef } from "@tanstack/react-table";
 import { DataTable } from "@/components/ui/data-table";
 import { Button } from "@/components/ui/button";
@@ -27,10 +26,29 @@ import { toast } from "sonner";
 import Link from "next/link";
 import Image from "next/image";
 
+const getValidImageUrl = (url: string | null | undefined): string | null => {
+  if (!url || typeof url !== 'string') return null;
+  const trimmed = url.trim();
+  if (trimmed === '') return null;
+  
+  if (trimmed.startsWith('http://') || trimmed.startsWith('https://')) {
+    try {
+      new URL(trimmed);
+      return trimmed;
+    } catch {
+      return null;
+    }
+  }
+  
+  if (trimmed.startsWith('/')) return trimmed;
+  
+  return null;
+};
+
 export default function ExperiencePage() {
-  const [experiences, setExperiences] = useState<Experience[]>([]);
+  const [experiences, setExperiences] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-  const [viewMode, setViewMode] = useState<"table" | "timeline">("table");
+  const [viewMode, setViewMode] = useState<any>("table");
   const [searchQuery, setSearchQuery] = useState("");
 
   const fetchExperiences = useCallback(async () => {
@@ -76,7 +94,7 @@ export default function ExperiencePage() {
   };
 
   const moveOrder = async (id: string, direction: "up" | "down") => {
-    const currentIndex = experiences.findIndex((e: Experience) => e.id === id);
+    const currentIndex = experiences.findIndex((e: any) => e.id === id);
     if (currentIndex === -1) return;
 
     const newIndex = direction === "up" ? currentIndex - 1 : currentIndex + 1;
@@ -106,10 +124,9 @@ export default function ExperiencePage() {
     }
   };
 
-  // Stats
-  const currentJobs = experiences.filter((e: Experience) => e.is_current).length;
-  const pastJobs = experiences.filter((e: Experience) => !e.is_current).length;
-  const totalYears = experiences.reduce((acc: number, e: Experience) => {
+  const currentJobs = experiences.filter((e: any) => e.is_current).length;
+  const pastJobs = experiences.filter((e: any) => !e.is_current).length;
+  const totalYears = experiences.reduce((acc: number, e: any) => {
     const start = new Date(e.start_date).getFullYear();
     const end = e.end_date ? new Date(e.end_date).getFullYear() : new Date().getFullYear();
     return acc + (end - start);
@@ -146,11 +163,11 @@ export default function ExperiencePage() {
     },
   ];
 
-  const columns: ColumnDef<Experience>[] = [
+  const columns: any[] = [
     {
       accessorKey: "order_index",
       header: "Order",
-      cell: ({ row }: { row: { original: Experience; index: number } }) => (
+      cell: ({ row }: any) => (
         <div className="flex flex-col items-center gap-1">
           <Button
             variant="ghost"
@@ -179,31 +196,40 @@ export default function ExperiencePage() {
     {
       accessorKey: "company",
       header: "Company & Role",
-      cell: ({ row }: { row: { original: Experience } }) => (
-        <div className="flex items-center gap-3">
-          <div className="relative h-10 w-10 overflow-hidden rounded-lg border border-slate-700 bg-slate-800">
-            {row.original.logo_url ? (
-              <Image
-                src={row.original.logo_url}
-                alt={row.original.company}
-                fill
-                className="object-cover"
-              />
-            ) : (
-              <Building2 className="h-5 w-5 m-auto text-slate-500" />
-            )}
+      cell: ({ row }: any) => {
+        const imageUrl = getValidImageUrl(row.original.logo_url);
+        
+        return (
+          <div className="flex items-center gap-3">
+            <div className="relative h-10 w-10 overflow-hidden rounded-lg border border-slate-700 bg-slate-800 flex-shrink-0">
+              {imageUrl ? (
+                <Image
+                  src={imageUrl}
+                  alt={row.original.company || 'Company'}
+                  fill
+                  className="object-cover"
+                  sizes="40px"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                  }}
+                />
+              ) : (
+                <Building2 className="h-5 w-5 m-auto text-slate-500" />
+              )}
+            </div>
+            <div className="flex flex-col min-w-0">
+              <span className="font-medium text-white">{row.original.company}</span>
+              <span className="text-xs text-rose-400">{row.original.role}</span>
+            </div>
           </div>
-          <div className="flex flex-col">
-            <span className="font-medium text-white">{row.original.company}</span>
-            <span className="text-xs text-rose-400">{row.original.role}</span>
-          </div>
-        </div>
-      ),
+        );
+      },
     },
     {
       accessorKey: "location",
       header: "Location",
-      cell: ({ row }: { row: { original: Experience } }) => (
+      cell: ({ row }: any) => (
         <div className="flex items-center gap-2 text-slate-400">
           <MapPin className="h-3.5 w-3.5" />
           {row.original.location || "Remote"}
@@ -213,7 +239,7 @@ export default function ExperiencePage() {
     {
       accessorKey: "duration",
       header: "Duration",
-      cell: ({ row }: { row: { original: Experience } }) => (
+      cell: ({ row }: any) => (
         <div className="flex items-center gap-2 text-slate-400">
           <Calendar className="h-3.5 w-3.5" />
           <span className="text-sm">
@@ -237,7 +263,7 @@ export default function ExperiencePage() {
     {
       accessorKey: "is_current",
       header: "Status",
-      cell: ({ row }: { row: { original: Experience } }) => (
+      cell: ({ row }: any) => (
         <Badge
           variant={row.original.is_current ? "default" : "secondary"}
           className={
@@ -253,7 +279,7 @@ export default function ExperiencePage() {
     {
       id: "actions",
       header: "Actions",
-      cell: ({ row }: { row: { original: Experience } }) => (
+      cell: ({ row }: any) => (
         <div className="flex items-center gap-2">
           <Link href={`/admin/experience/edit/${row.original.id}`}>
             <Button
@@ -300,7 +326,6 @@ export default function ExperiencePage() {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h1 className="text-3xl font-bold text-white">Experience</h1>
@@ -342,7 +367,6 @@ export default function ExperiencePage() {
         </div>
       </div>
 
-      {/* Stats */}
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {stats.map((stat) => {
           const Icon = stat.icon;
@@ -365,7 +389,6 @@ export default function ExperiencePage() {
         })}
       </div>
 
-      {/* Search */}
       <div className="relative">
         <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
         <input
@@ -377,90 +400,103 @@ export default function ExperiencePage() {
         />
       </div>
 
-      {/* Content */}
       {viewMode === "table" ? (
         <DataTable columns={columns} data={experiences} searchKey="company" />
       ) : (
         <div className="space-y-4">
-          {experiences.map((exp: Experience, index: number) => (
-            <div
-              key={exp.id}
-              className="flex items-start gap-4 rounded-xl border border-slate-800 bg-slate-900/50 p-4"
-            >
-              <div className="flex flex-col items-center">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-800 text-sm font-medium text-slate-400">
-                  {index + 1}
+          {experiences.map((exp: any, index: number) => {
+            const timelineImageUrl = getValidImageUrl(exp.logo_url);
+            
+            return (
+              <div
+                key={exp.id}
+                className="flex items-start gap-4 rounded-xl border border-slate-800 bg-slate-900/50 p-4"
+              >
+                <div className="flex flex-col items-center">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-800 text-sm font-medium text-slate-400">
+                    {index + 1}
+                  </div>
+                  {index < experiences.length - 1 && (
+                    <div className="mt-2 h-12 w-px bg-slate-800" />
+                  )}
                 </div>
-                {index < experiences.length - 1 && (
-                  <div className="mt-2 h-12 w-px bg-slate-800" />
-                )}
-              </div>
-              <div className="flex-1">
-                <div className="flex items-center gap-3">
-                  <div className="relative h-10 w-10 overflow-hidden rounded-lg border border-slate-700 bg-slate-800">
-                    {exp.logo_url ? (
-                      <Image src={exp.logo_url} alt={exp.company} fill className="object-cover" />
-                    ) : (
-                      <Building2 className="h-5 w-5 m-auto text-slate-500" />
-                    )}
+                <div className="flex-1">
+                  <div className="flex items-center gap-3">
+                    <div className="relative h-10 w-10 overflow-hidden rounded-lg border border-slate-700 bg-slate-800 flex-shrink-0">
+                      {timelineImageUrl ? (
+                        <Image 
+                          src={timelineImageUrl} 
+                          alt={exp.company || 'Company'} 
+                          fill 
+                          className="object-cover" 
+                          sizes="40px"
+                          onError={(e) => {
+                            const target = e.target as HTMLImageElement;
+                            target.style.display = 'none';
+                          }}
+                        />
+                      ) : (
+                        <Building2 className="h-5 w-5 m-auto text-slate-500" />
+                      )}
+                    </div>
+                    <div>
+                      <h3 className="font-medium text-white">{exp.company}</h3>
+                      <p className="text-sm text-rose-400">{exp.role}</p>
+                    </div>
+                    <Badge
+                      className={
+                        exp.is_current
+                          ? "bg-emerald-500/20 text-emerald-400"
+                          : "bg-slate-700 text-slate-400"
+                      }
+                    >
+                      {exp.is_current ? "Current" : "Past"}
+                    </Badge>
                   </div>
-                  <div>
-                    <h3 className="font-medium text-white">{exp.company}</h3>
-                    <p className="text-sm text-rose-400">{exp.role}</p>
+                  <div className="mt-2 flex items-center gap-4 text-sm text-slate-500">
+                    <span className="flex items-center gap-1">
+                      <MapPin className="h-3 w-3" />
+                      {exp.location || "Remote"}
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <Calendar className="h-3 w-3" />
+                      {new Date(exp.start_date).toLocaleDateString("en-US", {
+                        month: "short",
+                        year: "numeric",
+                      })}
+                      {" - "}
+                      {exp.is_current
+                        ? "Present"
+                        : exp.end_date
+                        ? new Date(exp.end_date).toLocaleDateString("en-US", {
+                            month: "short",
+                            year: "numeric",
+                          })
+                        : "Present"}
+                    </span>
                   </div>
-                  <Badge
-                    className={
-                      exp.is_current
-                        ? "bg-emerald-500/20 text-emerald-400"
-                        : "bg-slate-700 text-slate-400"
-                    }
+                  {exp.description && (
+                    <p className="mt-2 text-sm text-slate-400">{exp.description}</p>
+                  )}
+                </div>
+                <div className="flex gap-2">
+                  <Link href={`/admin/experience/edit/${exp.id}`}>
+                    <Button variant="ghost" size="sm" className="text-blue-400 hover:text-blue-300">
+                      <Pencil className="h-4 w-4" />
+                    </Button>
+                  </Link>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => deleteExperience(exp.id)}
+                    className="text-red-400 hover:text-red-300"
                   >
-                    {exp.is_current ? "Current" : "Past"}
-                  </Badge>
-                </div>
-                <div className="mt-2 flex items-center gap-4 text-sm text-slate-500">
-                  <span className="flex items-center gap-1">
-                    <MapPin className="h-3 w-3" />
-                    {exp.location || "Remote"}
-                  </span>
-                  <span className="flex items-center gap-1">
-                    <Calendar className="h-3 w-3" />
-                    {new Date(exp.start_date).toLocaleDateString("en-US", {
-                      month: "short",
-                      year: "numeric",
-                    })}
-                    {" - "}
-                    {exp.is_current
-                      ? "Present"
-                      : exp.end_date
-                      ? new Date(exp.end_date).toLocaleDateString("en-US", {
-                          month: "short",
-                          year: "numeric",
-                        })
-                      : "Present"}
-                  </span>
-                </div>
-                {exp.description && (
-                  <p className="mt-2 text-sm text-slate-400">{exp.description}</p>
-                )}
-              </div>
-              <div className="flex gap-2">
-                <Link href={`/admin/experience/edit/${exp.id}`}>
-                  <Button variant="ghost" size="sm" className="text-blue-400 hover:text-blue-300">
-                    <Pencil className="h-4 w-4" />
+                    <Trash2 className="h-4 w-4" />
                   </Button>
-                </Link>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => deleteExperience(exp.id)}
-                  className="text-red-400 hover:text-red-300"
-                >
-                  <Trash2 className="h-4 w-4" />
-                </Button>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       )}
     </div>

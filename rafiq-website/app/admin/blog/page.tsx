@@ -14,6 +14,7 @@ import {
   Loader2,
   Calendar,
   User,
+  ImageIcon,
 } from 'lucide-react';
 import { toast } from 'sonner';
 import Link from 'next/link';
@@ -94,34 +95,67 @@ export default function BlogPage() {
     }
   };
 
+  // ←←← جديد: helper function للتحقق من صلاحية الصورة ←←←
+  const getValidImageUrl = (url: string | null | undefined): string | null => {
+    if (!url || typeof url !== 'string') return null;
+    const trimmed = url.trim();
+    if (trimmed === '') return null;
+    
+    // لو رابط كامل (http/https)
+    if (trimmed.startsWith('http://') || trimmed.startsWith('https://')) {
+      try {
+        new URL(trimmed);
+        return trimmed;
+      } catch {
+        return null;
+      }
+    }
+    
+    // لو path نسبي
+    if (trimmed.startsWith('/')) return trimmed;
+    
+    return null;
+  };
+
   const columns: ColumnDef<BlogPost>[] = [
     {
       accessorKey: 'title',
       header: 'Post',
-      cell: ({ row }) => (
-        <div className="flex items-center gap-3">
-          <div className="relative h-12 w-12 overflow-hidden rounded-lg border border-slate-700 bg-slate-800">
-            {row.original.cover_image ? (
-              <Image
-                src={row.original.cover_image}
-                alt={row.original.title}
-                fill
-                className="object-cover"
-              />
-            ) : (
-              <div className="flex h-full w-full items-center justify-center text-slate-500">
-                <Eye className="h-4 w-4" />
-              </div>
-            )}
+      cell: ({ row }) => {
+        // ←←← جديد: التحقق من صلاحية الصورة قبل الاستخدام ←←←
+        const imageUrl = getValidImageUrl(row.original.cover_image);
+        
+        return (
+          <div className="flex items-center gap-3">
+            <div className="relative h-12 w-12 overflow-hidden rounded-lg border border-slate-700 bg-slate-800 flex-shrink-0">
+              {imageUrl ? (
+                <Image
+                  src={imageUrl}
+                  alt={row.original.title || 'Blog post'}
+                  fill
+                  className="object-cover"
+                  sizes="48px"
+                  onError={(e) => {
+                    // لو الصورة فشلت في التحميل، نخفيها ونظهر fallback
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                  }}
+                />
+              ) : (
+                <div className="flex h-full w-full items-center justify-center text-slate-500">
+                  <ImageIcon className="h-4 w-4" />
+                </div>
+              )}
+            </div>
+            <div className="flex flex-col min-w-0">
+              <span className="font-medium text-white max-w-[200px] truncate">
+                {row.original.title}
+              </span>
+              <span className="text-xs text-slate-500">/{row.original.slug}</span>
+            </div>
           </div>
-          <div className="flex flex-col">
-            <span className="font-medium text-white max-w-[200px] truncate">
-              {row.original.title}
-            </span>
-            <span className="text-xs text-slate-500">/{row.original.slug}</span>
-          </div>
-        </div>
-      ),
+        );
+      },
     },
     {
       accessorKey: 'author_name',
