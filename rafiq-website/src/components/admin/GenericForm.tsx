@@ -51,7 +51,6 @@ export function GenericForm({
   const [imagePreviews, setImagePreviews] = useState<any>({});
   const initialized = useRef(false);
 
-  // ←←← جديد: initialize values مرة واحدة بس ←←←
   useEffect(() => {
     if (!initialized.current) {
       initialized.current = true;
@@ -64,16 +63,13 @@ export function GenericForm({
       });
       setImagePreviews(previews);
     }
-  }, []); // ←←← empty array - يشتغل مرة واحدة بس ←←←
-
-  // ←←← جديد: لو defaultValues تغيروا من بره (edit mode) ←←←
+  }, []); 
   useEffect(() => {
     if (initialized.current && Object.keys(defaultValues).length > 0) {
       setValues((prev: any) => {
-        // ←←← نتأكد إن القيم فعلاً مختلفة ←←←
         const newValues = { ...defaultValues };
         if (JSON.stringify(prev) === JSON.stringify(newValues)) {
-          return prev; // ←←← مانعملش update لو نفس القيم ←←←
+          return prev; 
         }
         return newValues;
       });

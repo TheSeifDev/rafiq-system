@@ -26,12 +26,11 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [mounted, setMounted] = useState(false);
 
-  // Prevent hydration mismatch
+
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  // Check if already logged in
   useEffect(() => {
     if (typeof window !== "undefined") {
       const token = localStorage.getItem("admin_token");
@@ -109,7 +108,6 @@ export default function LoginPage() {
 
   return (
     <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#000109] px-4">
-      {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -left-1/4 -top-1/4 h-[600px] w-[600px] rounded-full bg-rose-500/5 blur-[120px]" />
         <div className="absolute -right-1/4 -bottom-1/4 h-[600px] w-[600px] rounded-full bg-blue-500/5 blur-[120px]" />

@@ -115,10 +115,10 @@ export function AdminSidebar({ user }: AdminSidebarProps) {
         transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
         className="fixed left-0 top-0 z-40 flex h-screen flex-col border-r border-white/5 bg-[#0a0a0f]/95 backdrop-blur-2xl"
       >
-        {/* Top gradient line */}
+
         <div className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-rose-500/30 to-transparent" />
 
-        {/* Header */}
+
         <div className="flex h-16 shrink-0 items-center justify-between border-b border-white/5 px-5">
           <AnimatePresence mode="wait">
             {!collapsed ? (
@@ -248,7 +248,6 @@ export function AdminSidebar({ user }: AdminSidebarProps) {
                     )}
                   </AnimatePresence>
 
-                  {/* Active dot */}
                   {active && !collapsed && (
                     <motion.div
                       initial={{ opacity: 0, x: -10 }}

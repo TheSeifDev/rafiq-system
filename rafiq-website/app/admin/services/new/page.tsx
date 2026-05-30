@@ -40,7 +40,7 @@ const serviceFields: FormField[] = [
   {
     name: "features",
     label: "Features (JSON Array)",
-    type: "json",
+    type: "textarea",
     placeholder: '["Feature 1", "Feature 2"]',
   },
   {
@@ -93,18 +93,17 @@ export default function NewServicePage() {
     }
   };
 
-  return (
-    <div className="mx-auto max-w-4xl">
-      <GenericForm<Service>
-        title="Add New Service"
-        fields={serviceFields}
-        onSubmit={handleSubmit}
-        onSuccess={() => {
-          toast.success("Service added successfully!");
-          router.push("/admin/services");
-        }}
-        tableName="services"
-      />
-    </div>
-  );
+ return (
+  <div className="mx-auto max-w-4xl">
+    <GenericForm
+      title="Add New Service"
+      fields={serviceFields}
+      onSubmit={handleSubmit}
+      onSuccess={() => {
+        toast.success("Service added successfully!");
+        router.push("/admin/services");
+      }}
+    />
+  </div>
+);
 }

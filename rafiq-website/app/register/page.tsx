@@ -29,7 +29,6 @@ export default function RegisterPage() {
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // Check if already logged in
   useEffect(() => {
     const token = localStorage.getItem("admin_token");
     if (token) {
@@ -110,7 +109,6 @@ export default function RegisterPage() {
 
   return (
     <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#000109] px-4 py-8">
-      {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -left-1/4 -top-1/4 h-[600px] w-[600px] rounded-full bg-rose-500/5 blur-[120px]" />
         <div className="absolute -right-1/4 -bottom-1/4 h-[600px] w-[600px] rounded-full bg-blue-500/5 blur-[120px]" />
@@ -129,7 +127,6 @@ export default function RegisterPage() {
           <div className="absolute -top-px left-0 right-0 h-px bg-gradient-to-r from-transparent via-rose-500/50 to-transparent" />
 
           <div className="p-8 sm:p-10">
-            {/* Header */}
             <div className="mb-8 flex flex-col items-center">
               <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-rose-500/20 to-rose-600/10 border border-rose-500/20">
                 <Shield className="h-8 w-8 text-rose-400" />
@@ -141,8 +138,6 @@ export default function RegisterPage() {
                 Register to access the admin dashboard
               </p>
             </div>
-
-            {/* Error Message */}
             {error && (
               <div className="mb-6 flex items-center gap-2 rounded-xl border border-red-500/20 bg-red-500/10 px-4 py-3">
                 <AlertCircle className="h-4 w-4 shrink-0 text-red-400" />
@@ -150,17 +145,13 @@ export default function RegisterPage() {
               </div>
             )}
 
-            {/* Success Message */}
             {success && (
               <div className="mb-6 flex items-center gap-2 rounded-xl border border-emerald-500/20 bg-emerald-500/10 px-4 py-3">
                 <CheckCircle className="h-4 w-4 shrink-0 text-emerald-400" />
                 <p className="text-sm text-emerald-400">{success}</p>
               </div>
             )}
-
-            {/* Form */}
             <form onSubmit={handleRegister} className="space-y-5">
-              {/* Name Field */}
               <div>
                 <label className="mb-1.5 block text-sm font-medium text-slate-300">
                   Full Name
@@ -183,8 +174,6 @@ export default function RegisterPage() {
                   />
                 </div>
               </div>
-
-              {/* Email Field */}
               <div>
                 <label className="mb-1.5 block text-sm font-medium text-slate-300">
                   Email Address
@@ -207,7 +196,6 @@ export default function RegisterPage() {
                 </div>
               </div>
 
-              {/* Password Field */}
               <div>
                 <label className="mb-1.5 block text-sm font-medium text-slate-300">
                   Password
@@ -242,7 +230,6 @@ export default function RegisterPage() {
                 </div>
               </div>
 
-              {/* Confirm Password Field */}
               <div>
                 <label className="mb-1.5 block text-sm font-medium text-slate-300">
                   Confirm Password
@@ -277,7 +264,6 @@ export default function RegisterPage() {
                 </div>
               </div>
 
-              {/* Submit Button */}
               <div className="pt-2">
                 <button
                   type="submit"
@@ -302,7 +288,6 @@ export default function RegisterPage() {
               </div>
             </form>
 
-            {/* Login Link */}
             <div className="mt-6 text-center">
               <p className="text-sm text-slate-400">
                 Already have an account?{" "}
@@ -315,7 +300,6 @@ export default function RegisterPage() {
               </p>
             </div>
 
-            {/* Footer */}
             <div className="mt-8 flex items-center justify-center gap-2 text-xs text-slate-500">
               <Sparkles className="h-3 w-3" />
               <span>Secured by Rafiq Admin</span>

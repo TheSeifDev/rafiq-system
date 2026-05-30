@@ -7,7 +7,6 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY!
 );
 
-// ←←← جديد: GET method ←←←
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
@@ -19,12 +18,11 @@ export async function GET(request: NextRequest) {
       .select("*")
       .order("created_at", { ascending: false });
 
-    // لو فيه id، جيب post واحد
+
     if (id) {
       query = query.eq("id", id);
     }
 
-    // لو فيه status filter
     if (status === "published") {
       query = query.eq("is_published", true);
     } else if (status === "draft") {
@@ -105,7 +103,7 @@ export async function PATCH(request: NextRequest) {
   }
 }
 
-// ←←← جديد: DELETE method ←←←
+
 export async function DELETE(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);

@@ -1,11 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { GenericForm, FormField } from "@/src/components/admin/GenericForm";
 import { Experience } from "@/src/types/database";
 import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
+
+type ExperienceInput = Partial<Experience>;
 
 const experienceFields: FormField[] = [
   {
@@ -60,60 +62,89 @@ const experienceFields: FormField[] = [
     label: "Display Order",
     type: "number",
     placeholder: "0",
-    validation: { min: 0 },
+    validation: {
+      min: 0,
+    },
   },
 ];
 
 export default function EditExperiencePage() {
   const params = useParams();
   const router = useRouter();
-  const [experience, setExperience] = useState<any>(null);
+
+  const [experience, setExperience] = useState<Experience | null>(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    fetchExperience();
-  }, [params.id]);
+  const id = params?.id as string;
 
-  const fetchExperience = async () => {
+  const fetchExperience = useCallback(async () => {
     try {
       const response = await fetch("/api/admin/experience");
-      const result = await response.json();
+      const result: { success: boolean; data: Experience[] } =
+        await response.json();
 
-      if (result.success) {
-        const found = result.data.find((e: Experience) => e.id === params.id);
-        if (found) {
-          setExperience(found);
-        } else {
-          toast.error("Experience not found");
-          router.push("/admin/experience");
-        }
+      if (!result.success) {
+        toast.error("Failed to load experience");
+        router.push("/admin/experience");
+        return;
       }
+
+      const found = result.data.find((e) => e.id === id);
+
+      if (!found) {
+        toast.error("Experience not found");
+        router.push("/admin/experience");
+        return;
+      }
+
+      setExperience(found);
     } catch (error) {
       toast.error("Error loading experience");
     } finally {
       setLoading(false);
     }
-  };
+  }, [id, router]);
 
-  const handleSubmit = async (data: any) => {
-    try {
-      const response = await fetch("/api/admin/experience", {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id: params.id, ...data }),
-      });
+  useEffect(() => {
+    if (id) fetchExperience();
+  }, [id, fetchExperience]);
 
-      const result = await response.json();
+  const handleSubmit = useCallback(
+    async (data: ExperienceInput) => {
+      try {
+        const response = await fetch("/api/admin/experience", {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ id, ...data }),
+        });
 
-      if (result.success) {
+        const result: { success: boolean; error?: string } =
+          await response.json();
+
+        if (!response.ok || !result.success) {
+          return {
+            success: false,
+            error: result.error || "Failed to update experience",
+          };
+        }
+
         return { success: true };
-      } else {
-        return { success: false, error: result.error };
+      } catch (error: unknown) {
+        const message =
+          error instanceof Error
+            ? error.message
+            : "Unexpected error occurred";
+
+        return {
+          success: false,
+          error: message,
+        };
       }
-    } catch (error: any) {
-      return { success: false, error: error.message };
-    }
-  };
+    },
+    [id]
+  );
 
   if (loading) {
     return (
@@ -136,6 +167,7 @@ export default function EditExperiencePage() {
           toast.success("Experience updated successfully!");
           router.push("/admin/experience");
         }}
+        onCancel={() => router.push("/admin/experience")}
         submitLabel="Update Experience"
       />
     </div>

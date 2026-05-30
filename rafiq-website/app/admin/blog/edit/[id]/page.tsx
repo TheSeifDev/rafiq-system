@@ -116,19 +116,19 @@ export default function EditBlogPostPage() {
 
   if (!post) return null;
 
-  return (
-    <div className="mx-auto max-w-4xl">
-      <GenericForm<BlogPost>
-        title="Edit Blog Post"
-        fields={blogFields}
-        defaultValues={post}  
-        onSubmit={handleSubmit}
-        onSuccess={() => {
-          toast.success("Blog post updated successfully!");
-          router.push("/admin/blog");
-        }}
-        submitLabel="Update Post"
-      />
-    </div>
-  );
+return (
+  <div className="mx-auto max-w-4xl">
+    <GenericForm
+      title="Edit Blog Post"
+      fields={blogFields}
+      defaultValues={post}
+      onSubmit={handleSubmit}
+      onSuccess={() => {
+        toast.success("Blog post updated successfully!");
+        router.push("/admin/blog");
+      }}
+      submitLabel="Update Post"
+    />
+  </div>
+);
 }

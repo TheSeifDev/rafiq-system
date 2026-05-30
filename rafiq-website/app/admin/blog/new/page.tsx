@@ -1,4 +1,3 @@
-// app/admin/blog/new/page.tsx
 "use client";
 
 import { GenericForm, FormField } from "@/src/components/admin/GenericForm";
@@ -6,6 +5,8 @@ import { BlogPost } from "@/src/types/database";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { useCallback } from "react";
+
+type BlogPostInput = Omit<BlogPost, "id" | "created_at" | "updated_at">;
 
 const blogFields: FormField[] = [
   {
@@ -81,23 +82,35 @@ const blogFields: FormField[] = [
 export default function NewBlogPostPage() {
   const router = useRouter();
 
-  const handleSubmit = useCallback(async (data: any) => {
+  const handleSubmit = useCallback(async (data: BlogPostInput) => {
     try {
       const response = await fetch("/api/admin/blog", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify(data),
       });
 
-      const result = await response.json();
+      const result: { success: boolean; error?: string } =
+        await response.json();
 
-      if (result.success) {
-        return { success: true };
-      } else {
-        return { success: false, error: result.error || "Failed to create blog post" };
+      if (!response.ok || !result.success) {
+        return {
+          success: false,
+          error: result.error || "Failed to create blog post",
+        };
       }
-    } catch (error: any) {
-      return { success: false, error: error.message || "An unexpected error occurred" };
+
+      return { success: true };
+    } catch (error: unknown) {
+      const message =
+        error instanceof Error ? error.message : "Unexpected error occurred";
+
+      return {
+        success: false,
+        error: message,
+      };
     }
   }, []);
 
@@ -106,25 +119,31 @@ export default function NewBlogPostPage() {
     router.push("/admin/blog");
   }, [router]);
 
+  const handleCancel = useCallback(() => {
+    router.push("/admin/blog");
+  }, [router]);
+
   return (
     <div className="mx-auto max-w-4xl space-y-6">
       <div className="flex flex-col gap-2">
-        <h1 className="text-3xl font-bold text-white">Create New Blog Post</h1>
+        <h1 className="text-3xl font-bold text-white">
+          Create New Blog Post
+        </h1>
         <p className="text-slate-400">
-          Write and publish a new blog post. Fill in all required fields marked with *.
+          Write and publish a new blog post. Fill in all required fields marked
+          with *
         </p>
       </div>
 
       <div className="rounded-xl border border-slate-800 bg-slate-900/50 p-6">
-        {/* ←←← هنا التغيير: شيلت <BlogPost> من GenericForm ←←← */}
         <GenericForm
           title="Create New Blog Post"
           fields={blogFields}
           onSubmit={handleSubmit}
           onSuccess={handleSuccess}
+          onCancel={handleCancel}
           submitLabel="Create Post"
           cancelLabel="Cancel"
-          onCancel={() => router.push("/admin/blog")}
         />
       </div>
     </div>

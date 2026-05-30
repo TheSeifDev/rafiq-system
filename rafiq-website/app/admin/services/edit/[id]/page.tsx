@@ -42,7 +42,7 @@ const serviceFields: FormField[] = [
   {
     name: 'features',
     label: 'Features (JSON Array)',
-    type: 'json',
+    type: 'textarea',
     placeholder: '["Feature 1", "Feature 2", "Feature 3"]',
   },
   {
@@ -132,21 +132,15 @@ export default function EditServicePage() {
   }
 
   if (!service) return null;
-
-  return (
-    <div className="mx-auto max-w-4xl">
-      <GenericForm<Service>
-        title="Edit Service"
-        fields={serviceFields}
-        initialData={service}
-        onSubmit={handleSubmit}
-        onSuccess={() => {
-          toast.success('Service updated successfully!');
-          router.push('/admin/services');
-        }}
-        submitLabel="Update Service"
-        tableName="services"
-      />
-    </div>
-  );
+<GenericForm
+  title="Edit Service"
+  fields={serviceFields}
+  defaultValues={service}
+  onSubmit={handleSubmit}
+  onSuccess={() => {
+    toast.success("Service updated successfully!");
+    router.push("/admin/services");
+  }}
+  submitLabel="Update Service"
+/>
 }

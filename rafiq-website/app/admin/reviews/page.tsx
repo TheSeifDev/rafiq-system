@@ -17,11 +17,16 @@ import {
   MessageSquare,
   Filter,
   ThumbsUp,
-  Clock
+  Clock,
+  Plus,
+  Pencil,
+  Eye
 } from 'lucide-react';
 import { toast } from 'sonner';
+import { useRouter } from 'next/navigation';
 
 export default function ReviewsPage() {
+  const router = useRouter();
   const [reviews, setReviews] = useState<Review[]>([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState<'all' | 'pending' | 'approved'>('all');
@@ -93,7 +98,6 @@ export default function ReviewsPage() {
     }
   };
 
-  // Stats
   const approvedCount = reviews.filter((r: Review) => r.is_approved).length;
   const pendingCount = reviews.filter((r: Review) => !r.is_approved).length;
   const pinnedCount = reviews.filter((r: Review) => r.is_pinned).length;
@@ -213,6 +217,16 @@ export default function ReviewsPage() {
           <Button
             variant="ghost"
             size="sm"
+            onClick={() => router.push(`/admin/reviews/edit/${row.original.id}`)}
+            title="Edit"
+            className="text-blue-400 hover:text-blue-300 hover:bg-blue-500/10"
+          >
+            <Pencil className="h-4 w-4" />
+          </Button>
+
+          <Button
+            variant="ghost"
+            size="sm"
             onClick={() => updateReview(row.original.id, { 
               is_approved: !row.original.is_approved 
             })}
@@ -293,22 +307,32 @@ export default function ReviewsPage() {
           </p>
         </div>
 
-        <div className="flex items-center gap-2">
-          <Filter className="h-4 w-4 text-slate-500" />
-          {(['all', 'pending', 'approved'] as const).map((f) => (
-            <Button
-              key={f}
-              variant={filter === f ? 'default' : 'outline'}
-              size="sm"
-              onClick={() => setFilter(f)}
-              className={filter === f 
-                ? 'bg-rose-600 hover:bg-rose-700 text-white' 
-                : 'border-slate-700 text-slate-300 hover:bg-slate-800 hover:text-white'
-              }
-            >
-              {f.charAt(0).toUpperCase() + f.slice(1)}
-            </Button>
-          ))}
+        <div className="flex items-center gap-3">
+          <Button
+            onClick={() => router.push('/admin/reviews/new')}
+            className="bg-rose-600 hover:bg-rose-700 text-white"
+          >
+            <Plus className="h-4 w-4 mr-2" />
+            Add Review
+          </Button>
+
+          <div className="flex items-center gap-2">
+            <Filter className="h-4 w-4 text-slate-500" />
+            {(['all', 'pending', 'approved'] as const).map((f) => (
+              <Button
+                key={f}
+                variant={filter === f ? 'default' : 'outline'}
+                size="sm"
+                onClick={() => setFilter(f)}
+                className={filter === f 
+                  ? 'bg-rose-600 hover:bg-rose-700 text-white' 
+                  : 'border-slate-700 text-slate-300 hover:bg-slate-800 hover:text-white'
+                }
+              >
+                {f.charAt(0).toUpperCase() + f.slice(1)}
+              </Button>
+            ))}
+          </div>
         </div>
       </div>
 

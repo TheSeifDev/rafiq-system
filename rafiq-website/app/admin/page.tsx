@@ -23,7 +23,7 @@ import {
 } from "lucide-react";
 import { Suspense } from "react";
 
-// Loading Skeleton Component
+
 function StatsSkeleton() {
   return (
     <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -80,7 +80,6 @@ function RecentActivitySkeleton() {
   );
 }
 
-// Animated Counter Component
 function AnimatedCounter({ value, duration = 2000 }: { value: number; duration?: number }) {
   return (
     <span className="tabular-nums">
@@ -89,7 +88,6 @@ function AnimatedCounter({ value, duration = 2000 }: { value: number; duration?:
   );
 }
 
-// Stat Card Component with hover effects
 function StatCard({ stat }: { stat: any }) {
   const Icon = stat.icon;
   const trend = stat.trend || 0;
@@ -103,7 +101,6 @@ function StatCard({ stat }: { stat: any }) {
         boxShadow: `0 0 0 ${stat.borderColor.replace("border-", "").replace("/20", "/0")}`,
       }}
     >
-      {/* Background glow on hover */}
       <div 
         className={`absolute -bottom-8 -right-8 h-32 w-32 rounded-full ${stat.bgColor} blur-3xl transition-all duration-700 group-hover:scale-150 group-hover:opacity-60`}
       />
@@ -133,7 +130,6 @@ function StatCard({ stat }: { stat: any }) {
           </p>
         </div>
 
-        {/* Progress bar */}
         <div className="mt-4 h-1 w-full overflow-hidden rounded-full bg-white/5">
           <div 
             className={`h-full rounded-full ${stat.color.replace("text-", "bg-")} transition-all duration-1000`}
@@ -145,7 +141,6 @@ function StatCard({ stat }: { stat: any }) {
   );
 }
 
-// Quick Action Button
 function QuickActionButton({ action }: { action: any }) {
   const Icon = action.icon;
 
@@ -154,7 +149,6 @@ function QuickActionButton({ action }: { action: any }) {
       href={action.href}
       className={`group relative flex items-center gap-3 overflow-hidden rounded-xl ${action.color} px-5 py-4 text-sm font-semibold text-white transition-all duration-500 hover:scale-[1.03] hover:shadow-xl hover:shadow-${action.shadowColor}-500/20`}
     >
-      {/* Shine effect */}
       <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
 
       <div className="relative flex items-center gap-3">
@@ -168,7 +162,6 @@ function QuickActionButton({ action }: { action: any }) {
   );
 }
 
-// Activity Item Component
 function ActivityItem({ item, type }: { item: any; type: "review" | "post" }) {
   const isReview = type === "review";
 
@@ -211,8 +204,6 @@ function ActivityItem({ item, type }: { item: any; type: "review" | "post" }) {
 
 async function DashboardContent() {
   const supabase = await createServerSupabaseClient();
-
-  // Stats with error handling
   const [
     reviewsResult,
     blogResult,
@@ -230,13 +221,11 @@ async function DashboardContent() {
   const experienceCount = experienceResult.count || 0;
   const servicesCount = servicesResult.count || 0;
 
-  // Recent data
   const [{ data: recentReviews }, { data: recentPosts }] = await Promise.all([
     supabase.from("reviews").select("*").order("created_at", { ascending: false }).limit(5),
     supabase.from("blog_posts").select("*").order("created_at", { ascending: false }).limit(5),
   ]);
 
-  // Calculate trends (mock data - replace with real calculations)
   const stats = [
     {
       title: "Total Reviews",
@@ -338,14 +327,12 @@ async function DashboardContent() {
         </div>
       </div>
 
-      {/* Stats Cards */}
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {stats.map((stat) => (
           <StatCard key={stat.title} stat={stat} />
         ))}
       </div>
 
-      {/* Quick Actions */}
       <div className="rounded-xl border border-slate-800 bg-slate-900/30 backdrop-blur-sm p-6">
         <div className="flex items-center gap-2 mb-5">
           <div className="rounded-lg bg-rose-500/10 p-2">
@@ -360,7 +347,6 @@ async function DashboardContent() {
         </div>
       </div>
 
-      {/* Activity Overview */}
       <div className="rounded-xl border border-slate-800 bg-slate-900/30 backdrop-blur-sm p-6">
         <div className="flex items-center gap-2 mb-5">
           <div className="rounded-lg bg-blue-500/10 p-2">
@@ -374,7 +360,6 @@ async function DashboardContent() {
         </div>
 
         <div className="grid gap-6 lg:grid-cols-2">
-          {/* Recent Reviews */}
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
@@ -405,7 +390,6 @@ async function DashboardContent() {
             </div>
           </div>
 
-          {/* Recent Blog Posts */}
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">

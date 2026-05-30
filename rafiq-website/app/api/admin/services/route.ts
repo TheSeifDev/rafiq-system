@@ -2,13 +2,13 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from "@supabase/supabase-js";
 import { revalidatePath } from 'next/cache';
 
-// ←←← استخدم Service Role Key عشان تتجاوز RLS ←←←
+
 const supabaseAdmin = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
   process.env.SUPABASE_SERVICE_ROLE_KEY! 
 );
 
-// GET /api/admin/services
+
 export async function GET() {
   try {
     const { data, error } = await supabaseAdmin
@@ -27,7 +27,6 @@ export async function GET() {
   }
 }
 
-// POST /api/admin/services
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
@@ -56,7 +55,6 @@ export async function POST(request: NextRequest) {
   }
 }
 
-// PATCH /api/admin/services
 export async function PATCH(request: NextRequest) {
   try {
     const body = await request.json();
@@ -93,7 +91,7 @@ export async function PATCH(request: NextRequest) {
   }
 }
 
-// DELETE /api/admin/services
+
 export async function DELETE(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);

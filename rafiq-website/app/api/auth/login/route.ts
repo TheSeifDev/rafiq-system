@@ -12,7 +12,6 @@ export async function POST(request: NextRequest) {
   try {
     const { email, password } = await request.json();
 
-    // Find user in table
     const { data: user, error } = await supabase
       .from("users")
       .select("*")
@@ -26,7 +25,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Compare password with bcrypt
+   
     const isValid = await bcrypt.compare(password, user.password);
 
     if (!isValid) {
@@ -36,7 +35,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Generate JWT
+
     const token = jwt.sign(
       { userId: user.id, email: user.email, role: user.role },
       process.env.JWT_SECRET || "fallback-secret",

@@ -11,7 +11,6 @@ export async function POST(request: NextRequest) {
   try {
     const { name, email, password } = await request.json();
 
-    // Create user in Supabase Auth
     const { data: authData, error: authError } = await supabase.auth.signUp({
       email,
       password,
@@ -27,7 +26,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Insert into users table
+
     const { data: newUser, error: insertError } = await supabase
       .from("users")
       .insert([

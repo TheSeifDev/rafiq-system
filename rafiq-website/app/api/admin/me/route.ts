@@ -30,7 +30,6 @@ export async function GET() {
       return NextResponse.json({ success: false, error: "Not authenticated" }, { status: 401 });
     }
 
-    // Check admin
     const { data: adminUser } = await supabase
       .from("admin_users")
       .select("id")
