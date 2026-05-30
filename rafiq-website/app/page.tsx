@@ -8,6 +8,7 @@ import HeroSection from '@/src/sections/home/HeroSection'
 import Messages from '@/src/sections/messages/Messages'
 import InteractiveCore from "@/src/sections/Interactive/InteractiveCore";
 import React from 'react'
+import Reviews from '@/src/sections/reviews/Reviews'
 
 const HomePage = () => {
   return (
@@ -18,6 +19,7 @@ const HomePage = () => {
       <Experience />
       <InteractiveCore />
       <Blog />
+      <Reviews />
       <Contact />
       <Messages />
       <ToolButton />
