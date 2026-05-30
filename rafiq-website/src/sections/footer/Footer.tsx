@@ -31,7 +31,7 @@ export default function Footer() {
                 lg:text-7xl font-display
               "
             >
-              Let's Connect <br />
+              Let&apos;s Connect <br />
               There
             </h2>
           </div>
@@ -136,7 +136,7 @@ export default function Footer() {
         group-hover:text-white/60
       "
               >
-                Let's build something powerful
+                Let&apos;s build something powerful
               </span>
             </div>
 
