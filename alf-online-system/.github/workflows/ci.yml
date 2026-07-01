@@ -1,0 +1,170 @@
+# ──────────────────────────────────────────────────────────────
+# Rafiq CI — فحص مستمر | Continuous Integration
+# Runs on every push and pull request to main
+# ──────────────────────────────────────────────────────────────
+name: "Rafiq CI — فحص مستمر"
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+env:
+  GROQ_API_KEY: ""          # empty → AI tests skip gracefully
+  PYTHONDONTWRITEBYTECODE: 1
+  RAFIQ_OFFLINE: "1"        # force offline fallback mode for testing
+
+jobs:
+  # ── 1. Lint & Code Quality  ──────────────────────────────────
+  lint:
+    name: "فحص الجودة | Lint & Format"
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: "📥 سحب الكود | Checkout"
+        uses: actions/checkout@v4
+
+      - name: "🐍 تثبيت بايثون | Setup Python"
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: "📥 تثبيت Ruff | Install Ruff"
+        run: pip install ruff
+
+      - name: "🔎 فحص جودة الكود | Run Ruff check"
+        run: ruff check .
+
+      - name: "🎨 فحص التنسيق | Run Ruff format check"
+        run: ruff format --check .
+
+  # ── 2. Test  ────────────────────────────────────────────────
+  test:
+    name: "اختبار | Test (Python ${{ matrix.python-version }})"
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.12"]
+
+    steps:
+      - name: "📥 سحب الكود | Checkout"
+        uses: actions/checkout@v4
+
+      - name: "🐍 تثبيت بايثون | Setup Python ${{ matrix.python-version }}"
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: "💾 تخزين مؤقت pip | Cache pip"
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ matrix.python-version }}-${{ hashFiles('requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-${{ matrix.python-version }}-
+
+      - name: "📦 تثبيت التبعيات | Install dependencies"
+        run: |
+          python -m pip install --upgrade pip
+          # Install core requirements, skipping packages that need system libs
+          pip install \
+            chromadb>=1.0.0 \
+            edge-tts>=6.1.12 \
+            groq>=0.9.0 \
+            SpeechRecognition>=3.10.0 \
+            arabic-reshaper>=3.0.0 \
+            python-bidi>=0.6.0
+          # Skipped in CI (require system-level C libraries):
+          #   pyaudio, webrtcvad, pocketsphinx, pvporcupine
+          echo "✅ Core dependencies installed"
+
+      - name: "🔎 فحص بناء الملفات | py_compile check"
+        run: |
+          echo "Compiling all source files..."
+          python -c "
+          import py_compile, sys, pathlib
+          sources = [
+              'voice_brain.py',
+              'trusted_web.py',
+              'medical_router.py',
+              'who_rag.py',
+              'medical_guardrails.py',
+              'privacy.py',
+              'who_indexer.py',
+              'rafiq_full_test.py',
+          ]
+          errors = []
+          for src in sources:
+              try:
+                  py_compile.compile(src, doraise=True)
+                  print(f'  ✅ {src}')
+              except py_compile.PyCompileError as e:
+                  print(f'  ❌ {src}: {e}')
+                  errors.append(src)
+          if errors:
+              print(f'\n❌ Compilation failed for: {errors}')
+              sys.exit(1)
+          print('\n✅ All source files compiled successfully')
+          "
+
+      - name: "🌍 فحص مصادر WHO | WHO index validation"
+        run: python who_indexer.py --validate-only
+
+      - name: "🧪 تشغيل الاختبارات | Run tests"
+        run: |
+          python rafiq_full_test.py --chroma
+          python -m unittest rafiq_v4_test.py
+          python -m unittest scratch/test_rxnav.py
+
+  # ── 3. Secret Scanning  ─────────────────────────────────────
+  secret-scan:
+    name: "🔐 فحص الأسرار | Secret scanning"
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: "📥 سحب الكود | Checkout"
+        uses: actions/checkout@v4
+
+      - name: "🔍 فحص مفاتيح API | Scan for leaked secrets"
+        run: |
+          echo "Scanning .py files for hardcoded secrets..."
+          FOUND=0
+
+          # Pattern 1: Groq API keys (gsk_ prefix with alphanumeric chars)
+          if grep -rnP 'gsk_[A-Za-z0-9]{20,}' --include='*.py' .; then
+            echo "❌ Possible Groq API key found!"
+            FOUND=1
+          fi
+
+          # Pattern 2: OpenAI-style keys (sk- prefix)
+          if grep -rnP 'sk-[A-Za-z0-9]{20,}' --include='*.py' .; then
+            echo "❌ Possible OpenAI API key found!"
+            FOUND=1
+          fi
+
+          # Pattern 3: GROQ_API_KEY assigned with an actual value (not empty/placeholder)
+          if grep -rnP 'GROQ_API_KEY\s*=\s*["\x27](?![\s"\x27]*(#|$))[A-Za-z0-9_]{10,}' --include='*.py' .; then
+            echo "❌ Hardcoded GROQ_API_KEY assignment found!"
+            FOUND=1
+          fi
+
+          # Pattern 4: Generic secret/token/password assignments with values
+          if grep -rnP '(?i)(api_key|secret|token|password)\s*=\s*["\x27][A-Za-z0-9+/=_-]{20,}["\x27]' --include='*.py' .; then
+            echo "⚠️  Possible hardcoded secret/token found — review above matches"
+            FOUND=1
+          fi
+
+          if [ "$FOUND" -eq 0 ]; then
+            echo "✅ No leaked secrets detected"
+          else
+            echo ""
+            echo "❌ Secret scan failed — remove hardcoded credentials!"
+            exit 1
+          fi

@@ -1,0 +1,1292 @@
+{
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\.claude\\settings.local.json": {
+    "mtime": 1781647469.4087043,
+    "ast_hash": "eea0716ceef7fae65d8474c28aa6582b",
+    "semantic_hash": "eea0716ceef7fae65d8474c28aa6582b"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\data\\drug_interactions.json": {
+    "mtime": 1780570963.3892224,
+    "ast_hash": "008b9d1ebc0d976dcba1291c631c60fd",
+    "semantic_hash": "008b9d1ebc0d976dcba1291c631c60fd"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\.lovable\\project.json": {
+    "mtime": 1779641244.0,
+    "ast_hash": "b60a4e3c0d4cde0e87e00b1d1b82a55b",
+    "semantic_hash": "b60a4e3c0d4cde0e87e00b1d1b82a55b"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\.wrangler\\deploy\\config.json": {
+    "mtime": 1781375629.8429637,
+    "ast_hash": "344f34fabacac96f970063e5577d0816",
+    "semantic_hash": "344f34fabacac96f970063e5577d0816"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\components.json": {
+    "mtime": 1779641244.0,
+    "ast_hash": "30d3d035361ce807021f5c54620962e9",
+    "semantic_hash": "30d3d035361ce807021f5c54620962e9"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\electron\\kiosk.js": {
+    "mtime": 1779641432.0,
+    "ast_hash": "7c3956936fad78ca0b6dbe8b2b305583",
+    "semantic_hash": "7c3956936fad78ca0b6dbe8b2b305583"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\electron\\preload.js": {
+    "mtime": 1781385274.9993663,
+    "ast_hash": "9dc3515e332d775bef7c44e7f627fd83",
+    "semantic_hash": "9dc3515e332d775bef7c44e7f627fd83"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\eslint.config.js": {
+    "mtime": 1779641244.0,
+    "ast_hash": "345bdd57e188e0e4525edcd00e5003f5",
+    "semantic_hash": "345bdd57e188e0e4525edcd00e5003f5"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\package.json": {
+    "mtime": 1780583912.0,
+    "ast_hash": "ecd72c253820dcaff34a79f9105ec8cf",
+    "semantic_hash": "ecd72c253820dcaff34a79f9105ec8cf"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\scripts\\setup-autostart.sh": {
+    "mtime": 1779641404.0,
+    "ast_hash": "1eeaefee5680563891c48d66dedf74e9",
+    "semantic_hash": "1eeaefee5680563891c48d66dedf74e9"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\scripts\\startup.sh": {
+    "mtime": 1779641404.0,
+    "ast_hash": "8cff530d2a23cb160d93bb5218963c3f",
+    "semantic_hash": "8cff530d2a23cb160d93bb5218963c3f"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\features\\avatar\\AIAvatar.tsx": {
+    "mtime": 1780587312.0,
+    "ast_hash": "4614f8d8011ee41dc0b7ebf81b274fef",
+    "semantic_hash": "4614f8d8011ee41dc0b7ebf81b274fef"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\features\\chat\\AskInput.tsx": {
+    "mtime": 1781036078.0,
+    "ast_hash": "f0fc74818fd9ee16a4b9d7063f51fe6d",
+    "semantic_hash": "f0fc74818fd9ee16a4b9d7063f51fe6d"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\features\\chat\\SubtitleCard.tsx": {
+    "mtime": 1781043428.0,
+    "ast_hash": "db53e6857982831be1fb266180c0a700",
+    "semantic_hash": "db53e6857982831be1fb266180c0a700"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\features\\emergency\\EmergencyOverlay.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "18e57c5faeda0f7807a4c52f33131156",
+    "semantic_hash": "18e57c5faeda0f7807a4c52f33131156"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\features\\memory\\MemoryPanel.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "ef25ba469f80a11fc4b319c3b830c661",
+    "semantic_hash": "ef25ba469f80a11fc4b319c3b830c661"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\features\\onboarding\\OnboardingFlow.tsx": {
+    "mtime": 1781298007.2048485,
+    "ast_hash": "c3e0c984baebb6da6697d341880bc47a",
+    "semantic_hash": "c3e0c984baebb6da6697d341880bc47a"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\features\\settings\\SettingsButton.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "b2f422d476be00b0d09fb5acaff874b1",
+    "semantic_hash": "b2f422d476be00b0d09fb5acaff874b1"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\layout\\AuroraLayers.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "c53d8558e3d8a02b65569b192b8f2f38",
+    "semantic_hash": "c53d8558e3d8a02b65569b192b8f2f38"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\layout\\ConnectionBadge.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "5734cb89062dd54b9ad318af5f3964b0",
+    "semantic_hash": "5734cb89062dd54b9ad318af5f3964b0"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\layout\\TopBar.tsx": {
+    "mtime": 1781374785.6191187,
+    "ast_hash": "e42748cdd7a58949125a8ead2d700f10",
+    "semantic_hash": "e42748cdd7a58949125a8ead2d700f10"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\layout\\WaveBackground.tsx": {
+    "mtime": 1781036988.0,
+    "ast_hash": "e729a3ae9b6fed1de7b8a8522fdda1b8",
+    "semantic_hash": "e729a3ae9b6fed1de7b8a8522fdda1b8"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\ui\\accordion.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "55f9dda62b4e3913c9b23e5015a86aef",
+    "semantic_hash": "55f9dda62b4e3913c9b23e5015a86aef"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\ui\\alert-dialog.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "96350e949e9b7b674545430a410ab89c",
+    "semantic_hash": "96350e949e9b7b674545430a410ab89c"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\ui\\alert.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "f993d7e96b1e25ce50e68ed97e11d2a8",
+    "semantic_hash": "f993d7e96b1e25ce50e68ed97e11d2a8"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\ui\\aspect-ratio.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "c5c364545e1b25a94e9e752cd67ad048",
+    "semantic_hash": "c5c364545e1b25a94e9e752cd67ad048"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\ui\\avatar.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "72989cd32f72c4122802540ef32525a5",
+    "semantic_hash": "72989cd32f72c4122802540ef32525a5"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\ui\\badge.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "81cade001fc4260f9943e18dcd79449b",
+    "semantic_hash": "81cade001fc4260f9943e18dcd79449b"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\ui\\breadcrumb.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "bb9ac254f12662b20d5d50b84308bf3a",
+    "semantic_hash": "bb9ac254f12662b20d5d50b84308bf3a"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\ui\\button.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "7d07d520f486b12bd47373d694ecd2ee",
+    "semantic_hash": "7d07d520f486b12bd47373d694ecd2ee"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\ui\\calendar.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "415d91d7006d4cc654e27620fca340f6",
+    "semantic_hash": "415d91d7006d4cc654e27620fca340f6"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\ui\\card.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "d6c48ea36221b9cdc3576d305d12d5d5",
+    "semantic_hash": "d6c48ea36221b9cdc3576d305d12d5d5"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\ui\\carousel.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "e324c68ae00cd5aed49317638abd429a",
+    "semantic_hash": "e324c68ae00cd5aed49317638abd429a"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\ui\\chart.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "6a3baf94f2e89f1f97d4d7a28f3622d2",
+    "semantic_hash": "6a3baf94f2e89f1f97d4d7a28f3622d2"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\ui\\checkbox.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "f78aac270ca482c8c2cb907ef6260462",
+    "semantic_hash": "f78aac270ca482c8c2cb907ef6260462"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\ui\\collapsible.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "767631bbc344945c236f185f4078d71d",
+    "semantic_hash": "767631bbc344945c236f185f4078d71d"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\ui\\command.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "014782599cc838b021ec68b07ad4ea02",
+    "semantic_hash": "014782599cc838b021ec68b07ad4ea02"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\ui\\context-menu.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "e9d689beb53d9adb63165bfe64838bf6",
+    "semantic_hash": "e9d689beb53d9adb63165bfe64838bf6"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\ui\\dialog.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "ef4fe8e7de8675730afe3d633b260e09",
+    "semantic_hash": "ef4fe8e7de8675730afe3d633b260e09"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\ui\\drawer.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "8be333e8fd8e42576b1b5f72f07f4337",
+    "semantic_hash": "8be333e8fd8e42576b1b5f72f07f4337"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\ui\\dropdown-menu.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "32156e221f3473280114c80fdb818829",
+    "semantic_hash": "32156e221f3473280114c80fdb818829"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\ui\\form.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "1b0aa6302b9017ea2a1307c22a1d2983",
+    "semantic_hash": "1b0aa6302b9017ea2a1307c22a1d2983"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\ui\\hover-card.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "1442794c5ca2a78d69e4e613b315ed3d",
+    "semantic_hash": "1442794c5ca2a78d69e4e613b315ed3d"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\ui\\input-otp.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "58cff10c8942cac8483c0bcd65d39d3c",
+    "semantic_hash": "58cff10c8942cac8483c0bcd65d39d3c"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\ui\\input.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "1d4cc52a4cd8afb3e18e45bda942bb8a",
+    "semantic_hash": "1d4cc52a4cd8afb3e18e45bda942bb8a"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\ui\\label.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "7e35df4ca8edd0835efd97ca7937ef92",
+    "semantic_hash": "7e35df4ca8edd0835efd97ca7937ef92"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\ui\\menubar.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "5870465653e12c3d0e35a2fad6f9faa9",
+    "semantic_hash": "5870465653e12c3d0e35a2fad6f9faa9"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\ui\\navigation-menu.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "e85351147a02b29577ff83d188b63c24",
+    "semantic_hash": "e85351147a02b29577ff83d188b63c24"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\ui\\pagination.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "fac6cdbb4bbf78b273d85cd36d6cbb49",
+    "semantic_hash": "fac6cdbb4bbf78b273d85cd36d6cbb49"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\ui\\popover.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "f18aa1da2144f25ee60795c539c51bcd",
+    "semantic_hash": "f18aa1da2144f25ee60795c539c51bcd"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\ui\\progress.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "55c462e5c9dd678dcf2c0c510b014ac4",
+    "semantic_hash": "55c462e5c9dd678dcf2c0c510b014ac4"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\ui\\radio-group.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "0e1ace237a5da3197e3eb1e6683faba9",
+    "semantic_hash": "0e1ace237a5da3197e3eb1e6683faba9"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\ui\\resizable.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "d9fcb9203c749fcab4e125a99bb12a86",
+    "semantic_hash": "d9fcb9203c749fcab4e125a99bb12a86"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\ui\\scroll-area.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "87b65d3eb26f2b02ff35a7acea585ba5",
+    "semantic_hash": "87b65d3eb26f2b02ff35a7acea585ba5"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\ui\\select.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "31ea1bbd6671833b010b2e852c8a55d0",
+    "semantic_hash": "31ea1bbd6671833b010b2e852c8a55d0"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\ui\\separator.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "433d163c4ffa00b59398a0c293198b5e",
+    "semantic_hash": "433d163c4ffa00b59398a0c293198b5e"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\ui\\sheet.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "0221fbf97b69611b47fcbc10bb27669a",
+    "semantic_hash": "0221fbf97b69611b47fcbc10bb27669a"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\ui\\sidebar.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "83c1623eb50ebc370d7b1b84a542e369",
+    "semantic_hash": "83c1623eb50ebc370d7b1b84a542e369"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\ui\\skeleton.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "41b182e6e2fc3805960d41e767d4a972",
+    "semantic_hash": "41b182e6e2fc3805960d41e767d4a972"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\ui\\slider.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "4752f1bfa26426988d325599e01c335b",
+    "semantic_hash": "4752f1bfa26426988d325599e01c335b"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\ui\\sonner.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "97f59f60be3413196d095fcbf7383216",
+    "semantic_hash": "97f59f60be3413196d095fcbf7383216"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\ui\\switch.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "82f5d8b0c59bb7ff305caa9f502e79ff",
+    "semantic_hash": "82f5d8b0c59bb7ff305caa9f502e79ff"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\ui\\table.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "7cc889989d53894b659903c73aded96e",
+    "semantic_hash": "7cc889989d53894b659903c73aded96e"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\ui\\tabs.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "56e725558c2ce72c18243bf51717f385",
+    "semantic_hash": "56e725558c2ce72c18243bf51717f385"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\ui\\textarea.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "c7aad96fb9545210d53135a96c76ed6b",
+    "semantic_hash": "c7aad96fb9545210d53135a96c76ed6b"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\ui\\toggle-group.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "ac26383acf721d116ca8e3ab5c5355d5",
+    "semantic_hash": "ac26383acf721d116ca8e3ab5c5355d5"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\ui\\toggle.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "ee8c5adac74e7242b85b544db1a8fbad",
+    "semantic_hash": "ee8c5adac74e7242b85b544db1a8fbad"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\ui\\tooltip.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "67d71db5a1ab935695d1def497f5b8a6",
+    "semantic_hash": "67d71db5a1ab935695d1def497f5b8a6"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\config\\api.ts": {
+    "mtime": 1781036032.0,
+    "ast_hash": "93b9fbca9a9cd8289400f1fdca64be00",
+    "semantic_hash": "93b9fbca9a9cd8289400f1fdca64be00"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\hooks\\use-mobile.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "c0a0bdd4638c391a1dd06ac82074e60b",
+    "semantic_hash": "c0a0bdd4638c391a1dd06ac82074e60b"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\hooks\\useMedsQuery.ts": {
+    "mtime": 1781036996.0,
+    "ast_hash": "9128cc2e2165f5d7744702dd5a093d12",
+    "semantic_hash": "9128cc2e2165f5d7744702dd5a093d12"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\lib\\error-capture.ts": {
+    "mtime": 1779641244.0,
+    "ast_hash": "00e77bfacfb2d79c0816361e678f1b65",
+    "semantic_hash": "00e77bfacfb2d79c0816361e678f1b65"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\lib\\error-page.ts": {
+    "mtime": 1779641244.0,
+    "ast_hash": "8da0ddd7569bac2676b9a5c8edff8a36",
+    "semantic_hash": "8da0ddd7569bac2676b9a5c8edff8a36"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\lib\\utils.ts": {
+    "mtime": 1779641244.0,
+    "ast_hash": "d9837f38cc05303254571985e3164050",
+    "semantic_hash": "d9837f38cc05303254571985e3164050"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\routeTree.gen.ts": {
+    "mtime": 1779641392.0,
+    "ast_hash": "6c278a80c7c7d379a9edc475e4c8309f",
+    "semantic_hash": "6c278a80c7c7d379a9edc475e4c8309f"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\router.tsx": {
+    "mtime": 1779641244.0,
+    "ast_hash": "8f905e713b0eba7fa8148b7995a708c9",
+    "semantic_hash": "8f905e713b0eba7fa8148b7995a708c9"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\routes\\__root.tsx": {
+    "mtime": 1781036016.0,
+    "ast_hash": "17073444163aa4d32b60d042863e44b4",
+    "semantic_hash": "17073444163aa4d32b60d042863e44b4"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\routes\\index.tsx": {
+    "mtime": 1781366703.9627767,
+    "ast_hash": "34d106f04a96b8f53f0d7b3cc3b4eeb7",
+    "semantic_hash": "34d106f04a96b8f53f0d7b3cc3b4eeb7"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\server.ts": {
+    "mtime": 1779641244.0,
+    "ast_hash": "edf79441f61250912b741dca91b0adb0",
+    "semantic_hash": "edf79441f61250912b741dca91b0adb0"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\services\\api.ts": {
+    "mtime": 1781385308.6216042,
+    "ast_hash": "3273b204bea4d3aa85535024f40f44b3",
+    "semantic_hash": "3273b204bea4d3aa85535024f40f44b3"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\services\\electron.ts": {
+    "mtime": 1781036052.0,
+    "ast_hash": "767106f4015945d57579a9e819a90e91",
+    "semantic_hash": "767106f4015945d57579a9e819a90e91"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\services\\sse.ts": {
+    "mtime": 1781043422.0,
+    "ast_hash": "652d4ad53065e65e98d25a73dd19c981",
+    "semantic_hash": "652d4ad53065e65e98d25a73dd19c981"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\start.ts": {
+    "mtime": 1779641244.0,
+    "ast_hash": "dc15eda4f935f0db8392d02ab93cbce4",
+    "semantic_hash": "dc15eda4f935f0db8392d02ab93cbce4"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\store\\aiStore.ts": {
+    "mtime": 1781374765.4704573,
+    "ast_hash": "561883a1789a837f1e91002321d8a0de",
+    "semantic_hash": "561883a1789a837f1e91002321d8a0de"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\store\\settingsStore.ts": {
+    "mtime": 1779641244.0,
+    "ast_hash": "e37900434ba483925bc38d61937b8f66",
+    "semantic_hash": "e37900434ba483925bc38d61937b8f66"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\types\\electron.d.ts": {
+    "mtime": 1781036060.0,
+    "ast_hash": "bc93b64caad5e341841774c22bd42d23",
+    "semantic_hash": "bc93b64caad5e341841774c22bd42d23"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\tsconfig.json": {
+    "mtime": 1779641244.0,
+    "ast_hash": "994abf64c2b9f78b568879f80ed0170e",
+    "semantic_hash": "994abf64c2b9f78b568879f80ed0170e"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\vite.config.ts": {
+    "mtime": 1779641244.0,
+    "ast_hash": "b34d45c1ec804af27126cb2a0af9d295",
+    "semantic_hash": "b34d45c1ec804af27126cb2a0af9d295"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq_launcher.py": {
+    "mtime": 1781385251.9060392,
+    "ast_hash": "408ae297685693df9c94e07b424accbb",
+    "semantic_hash": "408ae297685693df9c94e07b424accbb"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\scripts\\migrate_to_enterprise.ps1": {
+    "mtime": 1781380896.4683602,
+    "ast_hash": "20e43a5faac18f4c58ddf56bb0e0a78c",
+    "semantic_hash": "20e43a5faac18f4c58ddf56bb0e0a78c"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\src\\__init__.py": {
+    "mtime": 1781256234.0726168,
+    "ast_hash": "d2fa250488598b5bdb7d009bfbaa843c",
+    "semantic_hash": "d2fa250488598b5bdb7d009bfbaa843c"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\src\\config\\__init__.py": {
+    "mtime": 1781256247.64141,
+    "ast_hash": "2ee80096a021d84108fb2321ffb8745b",
+    "semantic_hash": "2ee80096a021d84108fb2321ffb8745b"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\src\\config\\settings.py": {
+    "mtime": 1781876304.6501062,
+    "ast_hash": "de9825485c92aae4f03095b661acfc9f",
+    "semantic_hash": "de9825485c92aae4f03095b661acfc9f"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\src\\core\\__init__.py": {
+    "mtime": 1781256251.7985625,
+    "ast_hash": "fc931d8780736e7b882da4bd8a2719c2",
+    "semantic_hash": "fc931d8780736e7b882da4bd8a2719c2"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\src\\core\\emergency_handler.py": {
+    "mtime": 1781212780.7607958,
+    "ast_hash": "9a8377b11e19f3d75f17d3ec89c48d6c",
+    "semantic_hash": "9a8377b11e19f3d75f17d3ec89c48d6c"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\src\\core\\medical_agents.py": {
+    "mtime": 1781876388.1786385,
+    "ast_hash": "87f397f3e9ef3696657408ca7360c7a3",
+    "semantic_hash": "87f397f3e9ef3696657408ca7360c7a3"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\src\\core\\medical_guardrails.py": {
+    "mtime": 1781197872.4688241,
+    "ast_hash": "85b5cb9fd605dc83bdee0ad47d0a69fb",
+    "semantic_hash": "85b5cb9fd605dc83bdee0ad47d0a69fb"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\src\\core\\medical_ner.py": {
+    "mtime": 1780438402.5215158,
+    "ast_hash": "c2b009eb59a7e023bcb3b8e61ef18fcf",
+    "semantic_hash": "c2b009eb59a7e023bcb3b8e61ef18fcf"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\src\\core\\medical_nlp.py": {
+    "mtime": 1780435458.8249533,
+    "ast_hash": "7ad52f536465e0fb830711f6317171c5",
+    "semantic_hash": "7ad52f536465e0fb830711f6317171c5"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\src\\core\\medical_router.py": {
+    "mtime": 1781212871.03244,
+    "ast_hash": "c95dd04e92d40ff0fda27439e570fc8b",
+    "semantic_hash": "c95dd04e92d40ff0fda27439e570fc8b"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\src\\core\\privacy.py": {
+    "mtime": 1781877742.3038404,
+    "ast_hash": "5d356835a6dd326bf660fe617087a90b",
+    "semantic_hash": "5d356835a6dd326bf660fe617087a90b"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\src\\core\\schemas.py": {
+    "mtime": 1781362805.8192377,
+    "ast_hash": "7ff2e8933d143f49475f787e714e2871",
+    "semantic_hash": "7ff2e8933d143f49475f787e714e2871"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\src\\database\\__init__.py": {
+    "mtime": 1781256265.5431118,
+    "ast_hash": "3f764fc657b425d360404d88c9c8c4ac",
+    "semantic_hash": "3f764fc657b425d360404d88c9c8c4ac"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\src\\database\\clinical_memory.py": {
+    "mtime": 1781285243.3260539,
+    "ast_hash": "b7e5c7e1dd17082258fa75f6b385a104",
+    "semantic_hash": "b7e5c7e1dd17082258fa75f6b385a104"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\src\\database\\db_operational.py": {
+    "mtime": 1781386340.0813582,
+    "ast_hash": "24df9eea4bcb1610eae1ac4d3b655d8d",
+    "semantic_hash": "24df9eea4bcb1610eae1ac4d3b655d8d"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\src\\database\\medical_knowledge_graph.py": {
+    "mtime": 1781026629.810446,
+    "ast_hash": "424b1b40cd9ff9d3d0d147fbf302dd56",
+    "semantic_hash": "424b1b40cd9ff9d3d0d147fbf302dd56"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\src\\gui_bridge.py": {
+    "mtime": 1781387294.875713,
+    "ast_hash": "40b41922f157ab10c6b428679a6326c2",
+    "semantic_hash": "40b41922f157ab10c6b428679a6326c2"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\src\\services\\__init__.py": {
+    "mtime": 1781256257.3479092,
+    "ast_hash": "3057dd4a615e6e324005a5b2c233cc65",
+    "semantic_hash": "3057dd4a615e6e324005a5b2c233cc65"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\src\\services\\cache_service.py": {
+    "mtime": 1781380594.7242367,
+    "ast_hash": "59ddbc5dfae7d11c7ac80e7271c1b4c7",
+    "semantic_hash": "59ddbc5dfae7d11c7ac80e7271c1b4c7"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\src\\services\\conv_processor.py": {
+    "mtime": 1781876404.5945334,
+    "ast_hash": "388cff3f9d5b4944d03d61ba398e6ddb",
+    "semantic_hash": "388cff3f9d5b4944d03d61ba398e6ddb"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\src\\services\\embedding_service.py": {
+    "mtime": 1781207125.6851141,
+    "ast_hash": "27e726c362a803e629763d5220e3329d",
+    "semantic_hash": "27e726c362a803e629763d5220e3329d"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\src\\services\\llm_client.py": {
+    "mtime": 1781386423.6630645,
+    "ast_hash": "56a7dc99ef2060c38943773d125c7be4",
+    "semantic_hash": "56a7dc99ef2060c38943773d125c7be4"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\src\\services\\memory_manager.py": {
+    "mtime": 1781376763.1081717,
+    "ast_hash": "7d78531761eddacc5439f9ae92f9ca93",
+    "semantic_hash": "7d78531761eddacc5439f9ae92f9ca93"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\src\\services\\motivation_manager.py": {
+    "mtime": 1781023221.0180395,
+    "ast_hash": "1b4c419998372e24a77c10a4f962255b",
+    "semantic_hash": "1b4c419998372e24a77c10a4f962255b"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\src\\services\\rxnav_interactions.py": {
+    "mtime": 1781386355.8852654,
+    "ast_hash": "ff1153a56fd91f11c7ab8458f94adb6c",
+    "semantic_hash": "ff1153a56fd91f11c7ab8458f94adb6c"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\src\\services\\scheduler_service.py": {
+    "mtime": 1781387256.7348454,
+    "ast_hash": "a5bb79b9633bdd47a83dcddd431c4e06",
+    "semantic_hash": "a5bb79b9633bdd47a83dcddd431c4e06"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\src\\services\\stt_service.py": {
+    "mtime": 1781386471.9120162,
+    "ast_hash": "a0bbaa0568f28663bfa24d4d2c3e5d3b",
+    "semantic_hash": "a0bbaa0568f28663bfa24d4d2c3e5d3b"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\src\\services\\training_collector.py": {
+    "mtime": 1780434581.1853004,
+    "ast_hash": "77a7ed233a6f8df6e8262c66f12ba181",
+    "semantic_hash": "77a7ed233a6f8df6e8262c66f12ba181"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\src\\services\\trusted_web.py": {
+    "mtime": 1781206352.185432,
+    "ast_hash": "117ba15921c4909be4551016de2a1e95",
+    "semantic_hash": "117ba15921c4909be4551016de2a1e95"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\src\\services\\tts_service.py": {
+    "mtime": 1781387267.9666946,
+    "ast_hash": "fca989260e1dc4a331888722a5c25684",
+    "semantic_hash": "fca989260e1dc4a331888722a5c25684"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\src\\services\\voice_emotion.py": {
+    "mtime": 1781198649.2435722,
+    "ast_hash": "dc468ca218e6c327e9e5bccdc88d8a73",
+    "semantic_hash": "dc468ca218e6c327e9e5bccdc88d8a73"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\src\\services\\voice_listener.py": {
+    "mtime": 1781387283.9144692,
+    "ast_hash": "b50a02d1828107b21485d903664f6067",
+    "semantic_hash": "b50a02d1828107b21485d903664f6067"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\src\\services\\wake_detector.py": {
+    "mtime": 1781024097.215999,
+    "ast_hash": "6a3ec764212ce427787017af523baf2e",
+    "semantic_hash": "6a3ec764212ce427787017af523baf2e"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\src\\services\\who_indexer.py": {
+    "mtime": 1781274175.514209,
+    "ast_hash": "b12419234ba34dc85edfdfa6a5772fb3",
+    "semantic_hash": "b12419234ba34dc85edfdfa6a5772fb3"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\src\\services\\who_rag.py": {
+    "mtime": 1781386267.68076,
+    "ast_hash": "7cdb00c05ed3f598455c593ecda0d52d",
+    "semantic_hash": "7cdb00c05ed3f598455c593ecda0d52d"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\src\\utils\\__init__.py": {
+    "mtime": 1781256261.9504135,
+    "ast_hash": "d9328595ad126bdb2e930cfad3a4d785",
+    "semantic_hash": "d9328595ad126bdb2e930cfad3a4d785"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\src\\utils\\beta_telemetry.py": {
+    "mtime": 1781380594.8320408,
+    "ast_hash": "f2b2b216e0e4d740cd161f005e0b37e4",
+    "semantic_hash": "f2b2b216e0e4d740cd161f005e0b37e4"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\src\\utils\\helpers.py": {
+    "mtime": 1781373280.4526684,
+    "ast_hash": "a2446cb44d5f9cd801c4c63ed6592c86",
+    "semantic_hash": "a2446cb44d5f9cd801c4c63ed6592c86"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\src\\utils\\observability.py": {
+    "mtime": 1781380594.85064,
+    "ast_hash": "c679b72c7c5e2d94445add31e46303a6",
+    "semantic_hash": "c679b72c7c5e2d94445add31e46303a6"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\tests\\benchmark\\benchmark_addrep_rag.py": {
+    "mtime": 1781359205.2433496,
+    "ast_hash": "59d1c961432d6cec7eac250d9ff62e1a",
+    "semantic_hash": "59d1c961432d6cec7eac250d9ff62e1a"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\tests\\benchmark\\benchmark_caching.py": {
+    "mtime": 1781380020.7892091,
+    "ast_hash": "ded4c0accd728f9ba4009c70be4b662e",
+    "semantic_hash": "ded4c0accd728f9ba4009c70be4b662e"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\tests\\benchmark\\benchmark_vad.py": {
+    "mtime": 1781360256.647692,
+    "ast_hash": "e37f813d9ff4e288b8681b5d48f3068a",
+    "semantic_hash": "e37f813d9ff4e288b8681b5d48f3068a"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\tests\\rafiq_full_test.py": {
+    "mtime": 1781877766.703778,
+    "ast_hash": "2759c48150198020ab87f01aa25d9141",
+    "semantic_hash": "2759c48150198020ab87f01aa25d9141"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\tests\\rafiq_v4_test.py": {
+    "mtime": 1781387656.679216,
+    "ast_hash": "1b171a379b8995c675212109f25c43c3",
+    "semantic_hash": "1b171a379b8995c675212109f25c43c3"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\tests\\test_addrep_rag.py": {
+    "mtime": 1781379222.152857,
+    "ast_hash": "4c85a9af0cbd776359ed4286ebde0525",
+    "semantic_hash": "4c85a9af0cbd776359ed4286ebde0525"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\tests\\test_beta_telemetry.py": {
+    "mtime": 1781362880.7563791,
+    "ast_hash": "60443659c148893033d0b975e2363a11",
+    "semantic_hash": "60443659c148893033d0b975e2363a11"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\tests\\test_caching.py": {
+    "mtime": 1781379227.1934407,
+    "ast_hash": "d379286666abaa558e20200a31fd3fb8",
+    "semantic_hash": "d379286666abaa558e20200a31fd3fb8"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\tests\\test_manual_barge_in.py": {
+    "mtime": 1781385481.5722377,
+    "ast_hash": "39f758bd0789bdf60583b13bcfbe1d93",
+    "semantic_hash": "39f758bd0789bdf60583b13bcfbe1d93"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\tests\\test_medication_confirmation_flow.py": {
+    "mtime": 1781387312.26797,
+    "ast_hash": "b79dca757407461f11697c0ada151e25",
+    "semantic_hash": "b79dca757407461f11697c0ada151e25"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\tests\\test_observability.py": {
+    "mtime": 1781360839.7735636,
+    "ast_hash": "543e6d84a8d960f89b3f57fdb96f6135",
+    "semantic_hash": "543e6d84a8d960f89b3f57fdb96f6135"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\tests\\test_privacy_leakage.py": {
+    "mtime": 1781259047.4985373,
+    "ast_hash": "e4e14a8fdcaa0f56be139fed4af4666d",
+    "semantic_hash": "e4e14a8fdcaa0f56be139fed4af4666d"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\tests\\test_real_tts_overlap_fix.py": {
+    "mtime": 1781387440.719329,
+    "ast_hash": "8985c831c5548bc411c8c91016d3bc4a",
+    "semantic_hash": "8985c831c5548bc411c8c91016d3bc4a"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\tests\\test_state_machine.py": {
+    "mtime": 1781387318.5983999,
+    "ast_hash": "c01323b26f6e392cf2e0bd7ee4a898b3",
+    "semantic_hash": "c01323b26f6e392cf2e0bd7ee4a898b3"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\tests\\test_structured_outputs.py": {
+    "mtime": 1781358074.6529586,
+    "ast_hash": "c2598cd9cf02f405f14a1e01f2a97a65",
+    "semantic_hash": "c2598cd9cf02f405f14a1e01f2a97a65"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\tests\\test_vad.py": {
+    "mtime": 1781387305.365501,
+    "ast_hash": "43b5bcdf05bef59d7cad19768b12abd5",
+    "semantic_hash": "43b5bcdf05bef59d7cad19768b12abd5"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\tests\\verify_phase1_flow.py": {
+    "mtime": 1781358631.481999,
+    "ast_hash": "38d3ee75adff361d86e62d6cff736f79",
+    "semantic_hash": "38d3ee75adff361d86e62d6cff736f79"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\tools\\benchmark.py": {
+    "mtime": 1781376682.3167276,
+    "ast_hash": "bd7da61ce50937a50bb8efd380397083",
+    "semantic_hash": "bd7da61ce50937a50bb8efd380397083"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\tools\\stability_test.py": {
+    "mtime": 1781383821.6025505,
+    "ast_hash": "8eefd386efdde39216bc0e4e4399297b",
+    "semantic_hash": "8eefd386efdde39216bc0e4e4399297b"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\.agents\\rules\\graphify.md": {
+    "mtime": 1781879010.4830146,
+    "ast_hash": "a0e4d192b9e2e17256124dbfc8e24e6a",
+    "semantic_hash": "a0e4d192b9e2e17256124dbfc8e24e6a"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\.agents\\workflows\\graphify.md": {
+    "mtime": 1781879010.4830146,
+    "ast_hash": "637776aa6f7496d069afe7520c845c8a",
+    "semantic_hash": "637776aa6f7496d069afe7520c845c8a"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\.github\\workflows\\ci.yml": {
+    "mtime": 1780587765.6503386,
+    "ast_hash": "e191e20dcab951ba845ff4d8cb14ef61",
+    "semantic_hash": "e191e20dcab951ba845ff4d8cb14ef61"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\.github\\workflows\\who-index-refresh.yml": {
+    "mtime": 1780567558.2067204,
+    "ast_hash": "6b5e90d227af436384a62bad57232e23",
+    "semantic_hash": "6b5e90d227af436384a62bad57232e23"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\README.md": {
+    "mtime": 1781256513.5606387,
+    "ast_hash": "acd89a3ed8edf5429efe281e4f19f9bd",
+    "semantic_hash": "acd89a3ed8edf5429efe281e4f19f9bd"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\API_REFERENCE.md": {
+    "mtime": 1781380563.6709785,
+    "ast_hash": "eb96d5baa3ee17ed4b9e3168858aeeff",
+    "semantic_hash": "eb96d5baa3ee17ed4b9e3168858aeeff"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\ARCHITECTURE.md": {
+    "mtime": 1781380563.6848862,
+    "ast_hash": "e59219c7cba6e3e6f09e5966a032f635",
+    "semantic_hash": "e59219c7cba6e3e6f09e5966a032f635"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\CHANGELOG.md": {
+    "mtime": 1781354560.8229263,
+    "ast_hash": "17c4892352b031efcfffe903acb12578",
+    "semantic_hash": "17c4892352b031efcfffe903acb12578"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\COMPATIBILITY.md": {
+    "mtime": 1781354560.8411248,
+    "ast_hash": "800e2e06a6e5a47f161b8a3cd6a0113e",
+    "semantic_hash": "800e2e06a6e5a47f161b8a3cd6a0113e"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\CONTRIBUTING.md": {
+    "mtime": 1781354560.816911,
+    "ast_hash": "a911a069bc067557502d934bbde01ec3",
+    "semantic_hash": "a911a069bc067557502d934bbde01ec3"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\DATA_FLOW.md": {
+    "mtime": 1781354560.8499742,
+    "ast_hash": "c7d2e512e203a0891999dd6df6b4b1b2",
+    "semantic_hash": "c7d2e512e203a0891999dd6df6b4b1b2"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\DECISIONS.md": {
+    "mtime": 1781354560.816911,
+    "ast_hash": "0534ab8f7b8d6d9ba3251063f12755a9",
+    "semantic_hash": "0534ab8f7b8d6d9ba3251063f12755a9"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\DEPENDENCIES.md": {
+    "mtime": 1781354560.8334632,
+    "ast_hash": "595659966bb9cb61f5d136d71f3e469c",
+    "semantic_hash": "595659966bb9cb61f5d136d71f3e469c"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\DEPLOYMENT.md": {
+    "mtime": 1781354560.8309479,
+    "ast_hash": "417e06c9bac3e905029c495e0ed7196c",
+    "semantic_hash": "417e06c9bac3e905029c495e0ed7196c"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\EMERGENCY_PROTOCOLS.md": {
+    "mtime": 1781354560.8411248,
+    "ast_hash": "bd6e2bd54f55b7353845304e80029652",
+    "semantic_hash": "bd6e2bd54f55b7353845304e80029652"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\ERROR_HANDLING.md": {
+    "mtime": 1781354560.828941,
+    "ast_hash": "8b05dc56d25dfbf79b56d8a8fa9fc922",
+    "semantic_hash": "8b05dc56d25dfbf79b56d8a8fa9fc922"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\EVENTS.md": {
+    "mtime": 1781354560.8499742,
+    "ast_hash": "feca7c4e34b999a0a7d800b063dbb492",
+    "semantic_hash": "feca7c4e34b999a0a7d800b063dbb492"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\FEATURE_FLAGS.md": {
+    "mtime": 1781354560.8499742,
+    "ast_hash": "53d0400e2e8cf4109343267c565e991a",
+    "semantic_hash": "53d0400e2e8cf4109343267c565e991a"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\MEDICAL_GUARDRAILS.md": {
+    "mtime": 1781354560.8411248,
+    "ast_hash": "b69d27e7155296d912c697fd758bb56d",
+    "semantic_hash": "b69d27e7155296d912c697fd758bb56d"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\MISSION.md": {
+    "mtime": 1781354560.808707,
+    "ast_hash": "4ce794dcf5af515b820e0005a1a14c01",
+    "semantic_hash": "4ce794dcf5af515b820e0005a1a14c01"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\OBSERVABILITY.md": {
+    "mtime": 1781354560.8334632,
+    "ast_hash": "24e0b82b45369d8d0cdfa681ab2cc054",
+    "semantic_hash": "24e0b82b45369d8d0cdfa681ab2cc054"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\ONBOARDING.md": {
+    "mtime": 1781013078.0272534,
+    "ast_hash": "5ac508fd676fe63c6adda34c4a7e0c55",
+    "semantic_hash": "5ac508fd676fe63c6adda34c4a7e0c55"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\PERFORMANCE.md": {
+    "mtime": 1781354560.8334632,
+    "ast_hash": "656c7d070b25300a571a96431a9f4911",
+    "semantic_hash": "656c7d070b25300a571a96431a9f4911"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\PRD.md": {
+    "mtime": 1781354560.8128963,
+    "ast_hash": "7d10fb7084634e5cba493a3cc91b8cc0",
+    "semantic_hash": "7d10fb7084634e5cba493a3cc91b8cc0"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\PRIVACY_MODEL.md": {
+    "mtime": 1781354560.8462255,
+    "ast_hash": "bcec5e9ccf9d8e92d1867c1e1924137f",
+    "semantic_hash": "bcec5e9ccf9d8e92d1867c1e1924137f"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\PROJECT_IDENTITY.md": {
+    "mtime": 1781354560.8008833,
+    "ast_hash": "4ab3ce4064e0d66f3cd8e32e45596c57",
+    "semantic_hash": "4ab3ce4064e0d66f3cd8e32e45596c57"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\RISKS.md": {
+    "mtime": 1781354560.8334632,
+    "ast_hash": "f050355b093a0db8f70d2e5dd39e1716",
+    "semantic_hash": "f050355b093a0db8f70d2e5dd39e1716"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\ROADMAP.md": {
+    "mtime": 1781354560.8149056,
+    "ast_hash": "00c7123a05bd3a72e002cce74f605fa0",
+    "semantic_hash": "00c7123a05bd3a72e002cce74f605fa0"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\RULES.md": {
+    "mtime": 1781354560.8209217,
+    "ast_hash": "95d595ef475b01ddd05ddb6d4183ef0a",
+    "semantic_hash": "95d595ef475b01ddd05ddb6d4183ef0a"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\SCALABILITY.md": {
+    "mtime": 1781354560.8334632,
+    "ast_hash": "6165f224129e4fb069b2173bf574c44e",
+    "semantic_hash": "6165f224129e4fb069b2173bf574c44e"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\SECURITY.md": {
+    "mtime": 1781354560.8249307,
+    "ast_hash": "f48c3b385058c47184d53d279b07a99c",
+    "semantic_hash": "f48c3b385058c47184d53d279b07a99c"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\STATE_MACHINE.md": {
+    "mtime": 1781354560.8499742,
+    "ast_hash": "afcebc40c16335e08191af076b83b47f",
+    "semantic_hash": "afcebc40c16335e08191af076b83b47f"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\STYLEGUIDE.md": {
+    "mtime": 1781354560.8209217,
+    "ast_hash": "b1de435c57b3838c478783139729e83c",
+    "semantic_hash": "b1de435c57b3838c478783139729e83c"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\SYSTEM_DESIGN.md": {
+    "mtime": 1781354560.8209217,
+    "ast_hash": "d5c8f4e179a00ab55dfcfd896c6bba1f",
+    "semantic_hash": "d5c8f4e179a00ab55dfcfd896c6bba1f"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\TASKS.md": {
+    "mtime": 1781354560.8229263,
+    "ast_hash": "c7cf7e442c2eae93464e554c5d9b1bfc",
+    "semantic_hash": "c7cf7e442c2eae93464e554c5d9b1bfc"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\TECH_DEBT.md": {
+    "mtime": 1781354560.8334632,
+    "ast_hash": "8f6315c22ffd4c8dbfd483ba20ddb648",
+    "semantic_hash": "8f6315c22ffd4c8dbfd483ba20ddb648"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\TESTING.md": {
+    "mtime": 1781354560.8249307,
+    "ast_hash": "9cd375fbbc41b1e1ea147ade7d0ed621",
+    "semantic_hash": "9cd375fbbc41b1e1ea147ade7d0ed621"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\VISION.md": {
+    "mtime": 1781354560.808707,
+    "ast_hash": "6030c9d9b43622e0b089abb26fb40457",
+    "semantic_hash": "6030c9d9b43622e0b089abb26fb40457"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\adr\\ADR-001.md": {
+    "mtime": 1781354560.8499742,
+    "ast_hash": "79224361049d4ca4950311b4fa322a88",
+    "semantic_hash": "79224361049d4ca4950311b4fa322a88"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\adr\\ADR-002.md": {
+    "mtime": 1781354560.8499742,
+    "ast_hash": "9577716e051e8cadec174de9a253ec08",
+    "semantic_hash": "9577716e051e8cadec174de9a253ec08"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\adr\\ADR-003.md": {
+    "mtime": 1781354560.8574595,
+    "ast_hash": "4c1b48634d306a86d704ddb3c699e969",
+    "semantic_hash": "4c1b48634d306a86d704ddb3c699e969"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\archive\\agents\\AGENTS.md": {
+    "mtime": 1781354560.876301,
+    "ast_hash": "2c5d0b957ae3774d5a6b6a6d4d99188e",
+    "semantic_hash": "2c5d0b957ae3774d5a6b6a6d4d99188e"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\archive\\agents\\AIDER.md": {
+    "mtime": 1781354560.8859208,
+    "ast_hash": "b6c44090f5e17b23f81ec1cfe678aeca",
+    "semantic_hash": "b6c44090f5e17b23f81ec1cfe678aeca"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\archive\\agents\\CLAUDE.md": {
+    "mtime": 1781354560.8795853,
+    "ast_hash": "152bd6973924a8953f4d6e6ca48c0370",
+    "semantic_hash": "152bd6973924a8953f4d6e6ca48c0370"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\archive\\agents\\CODEX.md": {
+    "mtime": 1781354560.8821993,
+    "ast_hash": "ef8322528df9dc78cdc20a30df443e2e",
+    "semantic_hash": "ef8322528df9dc78cdc20a30df443e2e"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\archive\\agents\\CURSOR.md": {
+    "mtime": 1781354560.882595,
+    "ast_hash": "56162a9fdfca0cb1914f4aafb9ffef68",
+    "semantic_hash": "56162a9fdfca0cb1914f4aafb9ffef68"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\archive\\agents\\GEMINI.md": {
+    "mtime": 1781354560.8859208,
+    "ast_hash": "fbc0377c49cc6ba4ee1de381fec234aa",
+    "semantic_hash": "fbc0377c49cc6ba4ee1de381fec234aa"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\archive\\memory\\bugs.md": {
+    "mtime": 1781354560.8574595,
+    "ast_hash": "c8af28ef02cabfb7239fb74dcc2df0c3",
+    "semantic_hash": "c8af28ef02cabfb7239fb74dcc2df0c3"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\archive\\memory\\current_context.md": {
+    "mtime": 1781354560.8574595,
+    "ast_hash": "e0610bd9408923fdc7aae193d826f693",
+    "semantic_hash": "e0610bd9408923fdc7aae193d826f693"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\archive\\memory\\future_features.md": {
+    "mtime": 1781354560.8659594,
+    "ast_hash": "8881a1c2a5bdcabe6d4074e56460fa0e",
+    "semantic_hash": "8881a1c2a5bdcabe6d4074e56460fa0e"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\archive\\memory\\ideas.md": {
+    "mtime": 1781354560.8574595,
+    "ast_hash": "9482a1c32406433b33929a8ee8ecc60e",
+    "semantic_hash": "9482a1c32406433b33929a8ee8ecc60e"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\archive\\memory\\known_limitations.md": {
+    "mtime": 1781354560.8659594,
+    "ast_hash": "7818b935d0817ff19a82b4ce0e245e9e",
+    "semantic_hash": "7818b935d0817ff19a82b4ce0e245e9e"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\archive\\memory\\lessons.md": {
+    "mtime": 1781354560.8574595,
+    "ast_hash": "9ca7c0039884ca33c4bc87758a44324f",
+    "semantic_hash": "9ca7c0039884ca33c4bc87758a44324f"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\archive\\memory\\meeting_notes.md": {
+    "mtime": 1781354560.863238,
+    "ast_hash": "219c4ade2a5d64072b94f9a4c87e35be",
+    "semantic_hash": "219c4ade2a5d64072b94f9a4c87e35be"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\external_reviews\\local_voice_ai_review.md": {
+    "mtime": 1781355539.1841288,
+    "ast_hash": "cdff73d18ffca8b366cfbf16a9579ef4",
+    "semantic_hash": "cdff73d18ffca8b366cfbf16a9579ef4"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\external_reviews\\mediblaze_review.md": {
+    "mtime": 1781355539.1510954,
+    "ast_hash": "e58673039c03d3994ef98383b6f06d40",
+    "semantic_hash": "e58673039c03d3994ef98383b6f06d40"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\external_reviews\\openmed_review.md": {
+    "mtime": 1781355539.1510954,
+    "ast_hash": "a96799eb09e276a069c4270e46e8cdba",
+    "semantic_hash": "a96799eb09e276a069c4270e46e8cdba"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\external_reviews\\openocto_review.md": {
+    "mtime": 1781355539.1788085,
+    "ast_hash": "01d70eae14f09553b0bc2efe8fee3ec1",
+    "semantic_hash": "01d70eae14f09553b0bc2efe8fee3ec1"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\external_reviews\\paper_review.md": {
+    "mtime": 1781355539.1841288,
+    "ast_hash": "d55050f17bcee918f9dc11e7f1efa876",
+    "semantic_hash": "d55050f17bcee918f9dc11e7f1efa876"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\refactoring\\acceptance_criteria.md": {
+    "mtime": 1781356024.2906232,
+    "ast_hash": "08c4c411206f2528b8f01678265c9e59",
+    "semantic_hash": "08c4c411206f2528b8f01678265c9e59"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\refactoring\\architecture_improvements.md": {
+    "mtime": 1781355539.1841288,
+    "ast_hash": "243895597d8d9e510e774a1833143385",
+    "semantic_hash": "243895597d8d9e510e774a1833143385"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\refactoring\\component_replacements.md": {
+    "mtime": 1781355539.1916819,
+    "ast_hash": "75c45b7c78a284642bf682c7315393f3",
+    "semantic_hash": "75c45b7c78a284642bf682c7315393f3"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\refactoring\\dependency_graph.md": {
+    "mtime": 1781356024.289662,
+    "ast_hash": "157201dbebd5885b5e629cb1769a0b4e",
+    "semantic_hash": "157201dbebd5885b5e629cb1769a0b4e"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\refactoring\\execution_strategy.md": {
+    "mtime": 1781356024.2845702,
+    "ast_hash": "c80576d9e8e800119c94489cdc40817d",
+    "semantic_hash": "c80576d9e8e800119c94489cdc40817d"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\refactoring\\migration_plan.md": {
+    "mtime": 1781355539.1924756,
+    "ast_hash": "0e7c9ededdb38c962ba93a3a533d80d5",
+    "semantic_hash": "0e7c9ededdb38c962ba93a3a533d80d5"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\refactoring\\phase1\\phase1_design.md": {
+    "mtime": 1781356563.4299693,
+    "ast_hash": "aa8614c603a43440c5090ba65a325122",
+    "semantic_hash": "aa8614c603a43440c5090ba65a325122"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\refactoring\\phase1\\phase1_file_impact.md": {
+    "mtime": 1781356563.4299693,
+    "ast_hash": "915644d643c186ee15f2d0d73c7c8d13",
+    "semantic_hash": "915644d643c186ee15f2d0d73c7c8d13"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\refactoring\\phase1\\phase1_risk_review.md": {
+    "mtime": 1781356563.43678,
+    "ast_hash": "c271c29b61747125e01ddd78ccc83990",
+    "semantic_hash": "c271c29b61747125e01ddd78ccc83990"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\refactoring\\phase1\\phase1_rollback.md": {
+    "mtime": 1781356563.43678,
+    "ast_hash": "545ae23c2bff3ce8c9bee0acd1550e69",
+    "semantic_hash": "545ae23c2bff3ce8c9bee0acd1550e69"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\refactoring\\phase1\\phase1_test_plan.md": {
+    "mtime": 1781356563.4299693,
+    "ast_hash": "d7dbeb570cc062cb7475634cf1b07fdd",
+    "semantic_hash": "d7dbeb570cc062cb7475634cf1b07fdd"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\refactoring\\phase1\\phi_leak_assessment.md": {
+    "mtime": 1781356563.43678,
+    "ast_hash": "75e7243eec7f1321031d3a3469416cdd",
+    "semantic_hash": "75e7243eec7f1321031d3a3469416cdd"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\refactoring\\phase1\\privacy_architecture_review.md": {
+    "mtime": 1781356940.289936,
+    "ast_hash": "f1d2e619e8f465a6e5480b13ff9cbe25",
+    "semantic_hash": "f1d2e619e8f465a6e5480b13ff9cbe25"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\refactoring\\phase1\\privacy_decision_matrix.md": {
+    "mtime": 1781356940.289936,
+    "ast_hash": "3b09e439aca7968c4ef1fd7f2931d324",
+    "semantic_hash": "3b09e439aca7968c4ef1fd7f2931d324"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\refactoring\\phase1\\privacy_tradeoffs.md": {
+    "mtime": 1781356940.289936,
+    "ast_hash": "69617f18810a5d583f52af87657460ba",
+    "semantic_hash": "69617f18810a5d583f52af87657460ba"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\refactoring\\phase_reports\\repository_hygiene_scorecard.md": {
+    "mtime": 1781380226.5959263,
+    "ast_hash": "716c06ef0743848361c75f82d838e638",
+    "semantic_hash": "716c06ef0743848361c75f82d838e638"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\refactoring\\phase_reports\\repository_refactor_plan.md": {
+    "mtime": 1781379748.1344821,
+    "ast_hash": "226183dc4e8aec835b8f35bca87b58ea",
+    "semantic_hash": "226183dc4e8aec835b8f35bca87b58ea"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\refactoring\\phase_reports\\repository_tree_after_phase1.md": {
+    "mtime": 1781379994.3576326,
+    "ast_hash": "1550c77d7b7d6b491433dd8de0fae366",
+    "semantic_hash": "1550c77d7b7d6b491433dd8de0fae366"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\refactoring\\phase_reports\\repository_tree_comparison.md": {
+    "mtime": 1781380914.6455061,
+    "ast_hash": "b15ab06ec9bb409a2ccbe721399cfa73",
+    "semantic_hash": "b15ab06ec9bb409a2ccbe721399cfa73"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\refactoring\\phase_reports\\rollback_plan.md": {
+    "mtime": 1781380906.1401258,
+    "ast_hash": "bd141319dbdc0c410955b19b560927ed",
+    "semantic_hash": "bd141319dbdc0c410955b19b560927ed"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\refactoring\\phase_reports\\root_directory_reduction_plan.md": {
+    "mtime": 1781380216.5383584,
+    "ast_hash": "10548be97e48985e1a540c5b69c8f6b1",
+    "semantic_hash": "10548be97e48985e1a540c5b69c8f6b1"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\refactoring\\phase_structured_outputs\\affected_files.md": {
+    "mtime": 1781357601.5038674,
+    "ast_hash": "24e1ce23dc875fb88ab14aaa65e96b22",
+    "semantic_hash": "24e1ce23dc875fb88ab14aaa65e96b22"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\refactoring\\phase_structured_outputs\\architecture_design.md": {
+    "mtime": 1781357601.5038674,
+    "ast_hash": "bd1869d27e2caa9c13a41c581d529d94",
+    "semantic_hash": "bd1869d27e2caa9c13a41c581d529d94"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\refactoring\\phase_structured_outputs\\migration_results.md": {
+    "mtime": 1781358134.2476676,
+    "ast_hash": "68aa77e840ed44df2a3a6e60368abf8d",
+    "semantic_hash": "68aa77e840ed44df2a3a6e60368abf8d"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\refactoring\\phase_structured_outputs\\migration_strategy.md": {
+    "mtime": 1781357601.5038674,
+    "ast_hash": "42cced81fb158d3088c2f815f74ffc89",
+    "semantic_hash": "42cced81fb158d3088c2f815f74ffc89"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\refactoring\\phase_structured_outputs\\rollback_plan.md": {
+    "mtime": 1781357601.510584,
+    "ast_hash": "1150a1ea9f38f8dc431ea7a983b045f2",
+    "semantic_hash": "1150a1ea9f38f8dc431ea7a983b045f2"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\refactoring\\phase_structured_outputs\\schema_catalog.md": {
+    "mtime": 1781357601.5038674,
+    "ast_hash": "726f07dd6aabce93adbfbfbe4f74ad97",
+    "semantic_hash": "726f07dd6aabce93adbfbfbe4f74ad97"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\refactoring\\phase_structured_outputs\\testing_plan.md": {
+    "mtime": 1781357601.510584,
+    "ast_hash": "f9e03f02dd921062fb40eb5d1cce865a",
+    "semantic_hash": "f9e03f02dd921062fb40eb5d1cce865a"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\refactoring\\phase_structured_outputs\\validation_metrics.md": {
+    "mtime": 1781358139.9723458,
+    "ast_hash": "4639de8c82d39d642e679af9703b3fad",
+    "semantic_hash": "4639de8c82d39d642e679af9703b3fad"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\refactoring\\priorities.md": {
+    "mtime": 1781356024.2845702,
+    "ast_hash": "51e630913128fba7d3a9623a6897d784",
+    "semantic_hash": "51e630913128fba7d3a9623a6897d784"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\refactoring\\product_value_ranking.md": {
+    "mtime": 1781357268.5548778,
+    "ast_hash": "9948d768579c79395c4c3a0db76014d8",
+    "semantic_hash": "9948d768579c79395c4c3a0db76014d8"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\refactoring\\risk_matrix.md": {
+    "mtime": 1781356024.2845702,
+    "ast_hash": "a05c0c05892daf82ba24b90aea3b2073",
+    "semantic_hash": "a05c0c05892daf82ba24b90aea3b2073"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\refactoring\\rollback_plan.md": {
+    "mtime": 1781356024.2906232,
+    "ast_hash": "74b6603ec8972ed95e216415d2ae767c",
+    "semantic_hash": "74b6603ec8972ed95e216415d2ae767c"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\refactoring\\technical_debt.md": {
+    "mtime": 1781355539.1841288,
+    "ast_hash": "7ae826386416a5c497c9827351c3ee07",
+    "semantic_hash": "7ae826386416a5c497c9827351c3ee07"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\docs\\refactoring\\testing_strategy.md": {
+    "mtime": 1781356024.2906232,
+    "ast_hash": "169b550beac507fa8b78e17d50ffe5ff",
+    "semantic_hash": "169b550beac507fa8b78e17d50ffe5ff"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\in.md": {
+    "mtime": 1781648495.7512496,
+    "ast_hash": "21309130f092cdfedabac3d73b023ce3",
+    "semantic_hash": "21309130f092cdfedabac3d73b023ce3"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\features\\README.md": {
+    "mtime": 1781036112.0,
+    "ast_hash": "8f7f5fe51a3a3062ee865836ca1ab1bc",
+    "semantic_hash": "8f7f5fe51a3a3062ee865836ca1ab1bc"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\components\\layout\\README.md": {
+    "mtime": 1781036106.0,
+    "ast_hash": "cde9dbf71065825f02a8739ce557cf94",
+    "semantic_hash": "cde9dbf71065825f02a8739ce557cf94"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\services\\README.md": {
+    "mtime": 1781036120.0,
+    "ast_hash": "4bf40524f8349ca27f34dddde70702e9",
+    "semantic_hash": "4bf40524f8349ca27f34dddde70702e9"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\src\\types\\README.md": {
+    "mtime": 1781036128.0,
+    "ast_hash": "c43cb537709ad512df46909abf321dbf",
+    "semantic_hash": "c43cb537709ad512df46909abf321dbf"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\requirements.txt": {
+    "mtime": 1781385318.5861142,
+    "ast_hash": "1833b42459b094cab381ae4be750c9be",
+    "semantic_hash": "1833b42459b094cab381ae4be750c9be"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\temp_append.md": {
+    "mtime": 1781643261.8787036,
+    "ast_hash": "f9a7fd7885e41a615484b7a12f6de928",
+    "semantic_hash": "f9a7fd7885e41a615484b7a12f6de928"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\temp_append2.md": {
+    "mtime": 1781643357.2534661,
+    "ast_hash": "f1f1e393d42722dfebaf0802890a3ef9",
+    "semantic_hash": "f1f1e393d42722dfebaf0802890a3ef9"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\temp_append3.md": {
+    "mtime": 1781643483.3632429,
+    "ast_hash": "b4c14adbbd7f5b29e608941372ff8d6c",
+    "semantic_hash": "b4c14adbbd7f5b29e608941372ff8d6c"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\temp_append4.md": {
+    "mtime": 1781643743.5127926,
+    "ast_hash": "b27703509837dbaaa704cdf4a487b360",
+    "semantic_hash": "b27703509837dbaaa704cdf4a487b360"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\temp_append5.md": {
+    "mtime": 1781644169.7696981,
+    "ast_hash": "11303355182e764e956b1dcffe1a1d9e",
+    "semantic_hash": "11303355182e764e956b1dcffe1a1d9e"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\temp_append6.md": {
+    "mtime": 1781644347.3620198,
+    "ast_hash": "01b7d1e170ef48e219c4cc5bfee71257",
+    "semantic_hash": "01b7d1e170ef48e219c4cc5bfee71257"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\temp_append7.md": {
+    "mtime": 1781644487.993062,
+    "ast_hash": "bae05a5e8316dc0a5b38fd2c5c8ed7ef",
+    "semantic_hash": "bae05a5e8316dc0a5b38fd2c5c8ed7ef"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\tests\\coverage.md": {
+    "mtime": 1781354560.876301,
+    "ast_hash": "ce539a2cb270962431a4ed054f0b946a",
+    "semantic_hash": "ce539a2cb270962431a4ed054f0b946a"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\tests\\strategy.md": {
+    "mtime": 1781354560.8739092,
+    "ast_hash": "d406dd50b3ba069e5e88f641ec9c4cf0",
+    "semantic_hash": "d406dd50b3ba069e5e88f641ec9c4cf0"
+  },
+  "C:\\Users\\aboha\\Desktop\\rafiq-system\\rafiq-gui\\rafiq-gui\\public\\phantoms-logo.png": {
+    "mtime": 1781288059.8615584,
+    "ast_hash": "0e41e08287458b376ec2185f80ffbf32",
+    "semantic_hash": "0e41e08287458b376ec2185f80ffbf32"
+  }
+}

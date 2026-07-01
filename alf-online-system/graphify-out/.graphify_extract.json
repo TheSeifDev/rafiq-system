@@ -1,0 +1,1439 @@
+{
+  "nodes": [
+    {
+      "id": "avatar_aiavatar_aiavatar",
+      "label": "AIAvatar",
+      "file_type": "code",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/features/avatar/AIAvatar.tsx",
+      "source_location": "L49",
+      "_origin": "ast"
+    },
+    {
+      "id": "settings_settingsbutton_settingsbutton",
+      "label": "SettingsButton",
+      "file_type": "code",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/features/settings/SettingsButton.tsx",
+      "source_location": "L18",
+      "_origin": "ast"
+    },
+    {
+      "id": "layout_auroralayers_auroralayers",
+      "label": "AuroraLayers",
+      "file_type": "code",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/layout/AuroraLayers.tsx",
+      "source_location": "L17",
+      "_origin": "ast"
+    },
+    {
+      "id": "layout_connectionbadge_connectionbadge",
+      "label": "ConnectionBadge",
+      "file_type": "code",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/layout/ConnectionBadge.tsx",
+      "source_location": "L4",
+      "_origin": "ast"
+    },
+    {
+      "id": "layout_wavebackground_wavebackground",
+      "label": "WaveBackground",
+      "file_type": "code",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/layout/WaveBackground.tsx",
+      "source_location": "L6",
+      "_origin": "ast"
+    },
+    {
+      "id": "ui_badge_badgeprops",
+      "label": "BadgeProps",
+      "file_type": "code",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/badge.tsx",
+      "source_location": "L25",
+      "_origin": "ast"
+    },
+    {
+      "id": "ui_button_buttonprops",
+      "label": "ButtonProps",
+      "file_type": "code",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/button.tsx",
+      "source_location": "L34",
+      "_origin": "ast"
+    },
+    {
+      "id": "ui_chart_chartconfig",
+      "label": "ChartConfig",
+      "file_type": "code",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/chart.tsx",
+      "source_location": "L9",
+      "_origin": "ast"
+    },
+    {
+      "id": "hooks_use_mobile_useismobile",
+      "label": "useIsMobile",
+      "file_type": "code",
+      "source_file": "rafiq-gui/rafiq-gui/src/hooks/use-mobile.tsx",
+      "source_location": "L5",
+      "_origin": "ast"
+    },
+    {
+      "id": "hooks_usemedsquery_usemedsquery",
+      "label": "useMedsQuery",
+      "file_type": "code",
+      "source_file": "rafiq-gui/rafiq-gui/src/hooks/useMedsQuery.ts",
+      "source_location": "L4",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_error_capture_consumelastcapturederror",
+      "label": "consumeLastCapturedError",
+      "file_type": "code",
+      "source_file": "rafiq-gui/rafiq-gui/src/lib/error-capture.ts",
+      "source_location": "L18",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_error_page_rendererrorpage",
+      "label": "renderErrorPage",
+      "file_type": "code",
+      "source_file": "rafiq-gui/rafiq-gui/src/lib/error-page.ts",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "lib_utils_cn",
+      "label": "cn",
+      "file_type": "code",
+      "source_file": "rafiq-gui/rafiq-gui/src/lib/utils.ts",
+      "source_location": "L4",
+      "_origin": "ast"
+    },
+    {
+      "id": "src_routetree_gen_fileroutesbyfullpath",
+      "label": "FileRoutesByFullPath",
+      "file_type": "code",
+      "source_file": "rafiq-gui/rafiq-gui/src/routeTree.gen.ts",
+      "source_location": "L20",
+      "_origin": "ast"
+    },
+    {
+      "id": "src_routetree_gen_fileroutesbyto",
+      "label": "FileRoutesByTo",
+      "file_type": "code",
+      "source_file": "rafiq-gui/rafiq-gui/src/routeTree.gen.ts",
+      "source_location": "L23",
+      "_origin": "ast"
+    },
+    {
+      "id": "src_routetree_gen_fileroutesbyid",
+      "label": "FileRoutesById",
+      "file_type": "code",
+      "source_file": "rafiq-gui/rafiq-gui/src/routeTree.gen.ts",
+      "source_location": "L26",
+      "_origin": "ast"
+    },
+    {
+      "id": "src_routetree_gen_fileroutetypes",
+      "label": "FileRouteTypes",
+      "file_type": "code",
+      "source_file": "rafiq-gui/rafiq-gui/src/routeTree.gen.ts",
+      "source_location": "L30",
+      "_origin": "ast"
+    },
+    {
+      "id": "src_routetree_gen_rootroutechildren",
+      "label": "RootRouteChildren",
+      "file_type": "code",
+      "source_file": "rafiq-gui/rafiq-gui/src/routeTree.gen.ts",
+      "source_location": "L38",
+      "_origin": "ast"
+    },
+    {
+      "id": "services_api_fetchmedications",
+      "label": "fetchMedications",
+      "file_type": "code",
+      "source_file": "rafiq-gui/rafiq-gui/src/services/api.ts",
+      "source_location": "L25",
+      "_origin": "ast"
+    },
+    {
+      "id": "services_api_fetchreminders",
+      "label": "fetchReminders",
+      "file_type": "code",
+      "source_file": "rafiq-gui/rafiq-gui/src/services/api.ts",
+      "source_location": "L35",
+      "_origin": "ast"
+    },
+    {
+      "id": "services_api_sendchatmessage",
+      "label": "sendChatMessage",
+      "file_type": "code",
+      "source_file": "rafiq-gui/rafiq-gui/src/services/api.ts",
+      "source_location": "L45",
+      "_origin": "ast"
+    },
+    {
+      "id": "services_api_fetchmemory",
+      "label": "fetchMemory",
+      "file_type": "code",
+      "source_file": "rafiq-gui/rafiq-gui/src/services/api.ts",
+      "source_location": "L59",
+      "_origin": "ast"
+    },
+    {
+      "id": "services_api_addmemoryfact",
+      "label": "addMemoryFact",
+      "file_type": "code",
+      "source_file": "rafiq-gui/rafiq-gui/src/services/api.ts",
+      "source_location": "L70",
+      "_origin": "ast"
+    },
+    {
+      "id": "services_api_updatememoryfact",
+      "label": "updateMemoryFact",
+      "file_type": "code",
+      "source_file": "rafiq-gui/rafiq-gui/src/services/api.ts",
+      "source_location": "L80",
+      "_origin": "ast"
+    },
+    {
+      "id": "services_api_deletememoryfact",
+      "label": "deleteMemoryFact",
+      "file_type": "code",
+      "source_file": "rafiq-gui/rafiq-gui/src/services/api.ts",
+      "source_location": "L90",
+      "_origin": "ast"
+    },
+    {
+      "id": "services_api_addreminder",
+      "label": "addReminder",
+      "file_type": "code",
+      "source_file": "rafiq-gui/rafiq-gui/src/services/api.ts",
+      "source_location": "L100",
+      "_origin": "ast"
+    },
+    {
+      "id": "services_api_updatereminder",
+      "label": "updateReminder",
+      "file_type": "code",
+      "source_file": "rafiq-gui/rafiq-gui/src/services/api.ts",
+      "source_location": "L110",
+      "_origin": "ast"
+    },
+    {
+      "id": "services_api_deletereminder",
+      "label": "deleteReminder",
+      "file_type": "code",
+      "source_file": "rafiq-gui/rafiq-gui/src/services/api.ts",
+      "source_location": "L120",
+      "_origin": "ast"
+    },
+    {
+      "id": "services_api_addmedication",
+      "label": "addMedication",
+      "file_type": "code",
+      "source_file": "rafiq-gui/rafiq-gui/src/services/api.ts",
+      "source_location": "L130",
+      "_origin": "ast"
+    },
+    {
+      "id": "services_api_updatemedication",
+      "label": "updateMedication",
+      "file_type": "code",
+      "source_file": "rafiq-gui/rafiq-gui/src/services/api.ts",
+      "source_location": "L140",
+      "_origin": "ast"
+    },
+    {
+      "id": "services_api_deletemedication",
+      "label": "deleteMedication",
+      "file_type": "code",
+      "source_file": "rafiq-gui/rafiq-gui/src/services/api.ts",
+      "source_location": "L150",
+      "_origin": "ast"
+    },
+    {
+      "id": "services_electron_electronapi",
+      "label": "ElectronAPI",
+      "file_type": "code",
+      "source_file": "rafiq-gui/rafiq-gui/src/services/electron.ts",
+      "source_location": "L1",
+      "_origin": "ast"
+    },
+    {
+      "id": "services_sse_connectsse",
+      "label": "connectSSE",
+      "file_type": "code",
+      "source_file": "rafiq-gui/rafiq-gui/src/services/sse.ts",
+      "source_location": "L19",
+      "_origin": "ast"
+    },
+    {
+      "id": "services_sse_disconnectsse",
+      "label": "disconnectSSE",
+      "file_type": "code",
+      "source_file": "rafiq-gui/rafiq-gui/src/services/sse.ts",
+      "source_location": "L118",
+      "_origin": "ast"
+    },
+    {
+      "id": "store_aistore_aistate",
+      "label": "AIState",
+      "file_type": "code",
+      "source_file": "rafiq-gui/rafiq-gui/src/store/aiStore.ts",
+      "source_location": "L3",
+      "_origin": "ast"
+    },
+    {
+      "id": "store_aistore_emotion",
+      "label": "Emotion",
+      "file_type": "code",
+      "source_file": "rafiq-gui/rafiq-gui/src/store/aiStore.ts",
+      "source_location": "L17",
+      "_origin": "ast"
+    },
+    {
+      "id": "store_aistore_connectionstatus",
+      "label": "ConnectionStatus",
+      "file_type": "code",
+      "source_file": "rafiq-gui/rafiq-gui/src/store/aiStore.ts",
+      "source_location": "L26",
+      "_origin": "ast"
+    },
+    {
+      "id": "store_aistore_fact",
+      "label": "Fact",
+      "file_type": "code",
+      "source_file": "rafiq-gui/rafiq-gui/src/store/aiStore.ts",
+      "source_location": "L28",
+      "_origin": "ast"
+    },
+    {
+      "id": "store_aistore_emergency",
+      "label": "Emergency",
+      "file_type": "code",
+      "source_file": "rafiq-gui/rafiq-gui/src/store/aiStore.ts",
+      "source_location": "L34",
+      "_origin": "ast"
+    },
+    {
+      "id": "store_settingsstore_brightness",
+      "label": "Brightness",
+      "file_type": "code",
+      "source_file": "rafiq-gui/rafiq-gui/src/store/settingsStore.ts",
+      "source_location": "L4",
+      "_origin": "ast"
+    }
+  ],
+  "edges": [
+    {
+      "source": "avatar_aiavatar",
+      "target": "store_aistore_aistate",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/features/avatar/AIAvatar.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "avatar_aiavatar",
+      "target": "store_aistore_emotion",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/features/avatar/AIAvatar.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "chat_askinput",
+      "target": "services_api_sendchatmessage",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/features/chat/AskInput.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "settings_settingsbutton",
+      "target": "store_settingsstore_brightness",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/features/settings/SettingsButton.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "layout_topbar",
+      "target": "settings_settingsbutton_settingsbutton",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/layout/TopBar.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "ui_accordion",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/accordion.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "ui_alert_dialog",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/alert-dialog.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "ui_alert",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/alert.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "ui_avatar",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/avatar.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "ui_badge",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/badge.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "ui_breadcrumb",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/breadcrumb.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "ui_button",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/button.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "ui_calendar",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/calendar.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "ui_card",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/card.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "ui_carousel",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/carousel.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "ui_chart",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/chart.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "ui_checkbox",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/checkbox.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "ui_command",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/command.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "ui_context_menu",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/context-menu.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "ui_dialog",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/dialog.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "ui_drawer",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/drawer.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "ui_dropdown_menu",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/dropdown-menu.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "ui_form",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/form.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "ui_hover_card",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/hover-card.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "ui_input_otp",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/input-otp.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "ui_input",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/input.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "ui_label",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/label.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "ui_menubar",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/menubar.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "ui_navigation_menu",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/navigation-menu.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "ui_pagination",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/pagination.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "ui_pagination",
+      "target": "ui_button_buttonprops",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/pagination.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "ui_popover",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/popover.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "ui_progress",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/progress.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "ui_radio_group",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/radio-group.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "ui_resizable",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/resizable.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "ui_scroll_area",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/scroll-area.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "ui_select",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/select.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "ui_separator",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/separator.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "ui_sheet",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/sheet.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "ui_sidebar",
+      "target": "hooks_use_mobile_useismobile",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/sidebar.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "ui_sidebar",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/sidebar.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "ui_skeleton",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/skeleton.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "ui_slider",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/slider.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "ui_switch",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/switch.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "ui_table",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/table.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "ui_tabs",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/tabs.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "ui_textarea",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/textarea.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "ui_toggle_group",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/toggle-group.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "ui_toggle",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/toggle.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "ui_tooltip",
+      "target": "lib_utils_cn",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/ui/tooltip.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "hooks_usemedsquery",
+      "target": "services_api_fetchmedications",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/hooks/useMedsQuery.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "hooks_usemedsquery",
+      "target": "services_api_fetchreminders",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/hooks/useMedsQuery.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "routes_index",
+      "target": "avatar_aiavatar_aiavatar",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/routes/index.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "routes_index",
+      "target": "layout_connectionbadge_connectionbadge",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/routes/index.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "routes_index",
+      "target": "layout_wavebackground_wavebackground",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/routes/index.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "routes_index",
+      "target": "services_sse_connectsse",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/routes/index.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "routes_index",
+      "target": "services_sse_disconnectsse",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/routes/index.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "routes_index",
+      "target": "layout_auroralayers_auroralayers",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/routes/index.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "routes_index",
+      "target": "hooks_usemedsquery_usemedsquery",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/routes/index.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "routes_index",
+      "target": "services_api_fetchmemory",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/routes/index.tsx",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "src_server",
+      "target": "lib_error_capture_consumelastcapturederror",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/server.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_server",
+      "target": "lib_error_page_rendererrorpage",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/server.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_start",
+      "target": "lib_error_page_rendererrorpage",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/start.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "types_electron_d",
+      "target": "services_electron_electronapi",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/types/electron.d.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "core_emergency_handler",
+      "target": "core_privacy",
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/core/emergency_handler.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "core_medical_agents",
+      "target": "config_settings",
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/core/medical_agents.py",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "core_medical_agents",
+      "target": "services_rxnav_interactions",
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/core/medical_agents.py",
+      "source_location": "L45",
+      "weight": 1.0
+    },
+    {
+      "source": "core_medical_agents",
+      "target": "core_privacy",
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/core/medical_agents.py",
+      "source_location": "L173",
+      "weight": 1.0
+    },
+    {
+      "source": "core_medical_guardrails",
+      "target": "services_trusted_web",
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/core/medical_guardrails.py",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "core_medical_router",
+      "target": "services_trusted_web",
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/core/medical_router.py",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "database_clinical_memory",
+      "target": "core_privacy",
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/database/clinical_memory.py",
+      "source_location": "L137",
+      "weight": 1.0
+    },
+    {
+      "source": "database_db_operational",
+      "target": "core_privacy",
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/database/db_operational.py",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "src_gui_bridge",
+      "target": "core_privacy",
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/gui_bridge.py",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "src_gui_bridge",
+      "target": "config_settings",
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/gui_bridge.py",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "services_cache_service",
+      "target": "config_settings",
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/services/cache_service.py",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "services_conv_processor",
+      "target": "core_medical_guardrails",
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/services/conv_processor.py",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "services_conv_processor",
+      "target": "core_medical_router",
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/services/conv_processor.py",
+      "source_location": "L33",
+      "weight": 1.0
+    },
+    {
+      "source": "services_conv_processor",
+      "target": "core_privacy",
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/services/conv_processor.py",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "services_conv_processor",
+      "target": "services_rxnav_interactions",
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/services/conv_processor.py",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "services_conv_processor",
+      "target": "services_trusted_web",
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/services/conv_processor.py",
+      "source_location": "L36",
+      "weight": 1.0
+    },
+    {
+      "source": "services_conv_processor",
+      "target": "services_who_rag",
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/services/conv_processor.py",
+      "source_location": "L37",
+      "weight": 1.0
+    },
+    {
+      "source": "services_conv_processor",
+      "target": "config_settings",
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/services/conv_processor.py",
+      "source_location": "L1148",
+      "weight": 1.0
+    },
+    {
+      "source": "services_embedding_service",
+      "target": "config_settings",
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/services/embedding_service.py",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "services_llm_client",
+      "target": "config_settings",
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/services/llm_client.py",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "services_motivation_manager",
+      "target": "core_privacy",
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/services/motivation_manager.py",
+      "source_location": "L78",
+      "weight": 1.0
+    },
+    {
+      "source": "services_voice_listener",
+      "target": "services_stt_service",
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/services/voice_listener.py",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "services_voice_listener",
+      "target": "core_privacy",
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/services/voice_listener.py",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "services_who_indexer",
+      "target": "services_trusted_web",
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/services/who_indexer.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "services_who_rag",
+      "target": "services_trusted_web",
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/services/who_rag.py",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "utils_beta_telemetry",
+      "target": "config_settings",
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/utils/beta_telemetry.py",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "utils_observability",
+      "target": "config_settings",
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/utils/observability.py",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_rafiq_full_test",
+      "target": "config_settings",
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/rafiq_full_test.py",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_rafiq_full_test",
+      "target": "utils_helpers",
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/rafiq_full_test.py",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_rafiq_full_test",
+      "target": "database_db_operational",
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/rafiq_full_test.py",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_rafiq_full_test",
+      "target": "services_tts_service",
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/rafiq_full_test.py",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_rafiq_full_test",
+      "target": "services_stt_service",
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/rafiq_full_test.py",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_rafiq_full_test",
+      "target": "services_wake_detector",
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/rafiq_full_test.py",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_rafiq_full_test",
+      "target": "services_scheduler_service",
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/rafiq_full_test.py",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_rafiq_full_test",
+      "target": "services_conv_processor",
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/rafiq_full_test.py",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_rafiq_full_test",
+      "target": "services_rxnav_interactions",
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/rafiq_full_test.py",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_rafiq_full_test",
+      "target": "core_medical_guardrails",
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/rafiq_full_test.py",
+      "source_location": "L58",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_rafiq_full_test",
+      "target": "core_medical_router",
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/rafiq_full_test.py",
+      "source_location": "L59",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_rafiq_full_test",
+      "target": "core_privacy",
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/rafiq_full_test.py",
+      "source_location": "L60",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_rafiq_full_test",
+      "target": "services_trusted_web",
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/rafiq_full_test.py",
+      "source_location": "L61",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_rafiq_full_test",
+      "target": "services_who_indexer",
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/rafiq_full_test.py",
+      "source_location": "L62",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_rafiq_full_test",
+      "target": "services_who_rag",
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/rafiq_full_test.py",
+      "source_location": "L63",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_test_privacy_leakage",
+      "target": "core_privacy",
+      "relation": "imports_from",
+      "context": "submodule_import",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_privacy_leakage.py",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "chat_askinput_submit",
+      "target": "services_api_sendchatmessage",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/components/features/chat/AskInput.tsx",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "src_server_brandederrorresponse",
+      "target": "lib_error_page_rendererrorpage",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/server.ts",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "src_server_normalizecatastrophicssrresponse",
+      "target": "lib_error_capture_consumelastcapturederror",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/server.ts",
+      "source_location": "L65",
+      "weight": 1.0
+    },
+    {
+      "source": "types_electron_d_window",
+      "target": "services_electron_electronapi",
+      "relation": "references",
+      "context": "field",
+      "confidence": "EXTRACTED",
+      "source_file": "rafiq-gui/rafiq-gui/src/types/electron.d.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": [],
+  "input_tokens": 0,
+  "output_tokens": 0
+}
