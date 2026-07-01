@@ -1,0 +1,113 @@
+{
+  "aliases": {
+    "aspirin": ["aspirin", "اسبرين", "أسبرين", "اسبوسيد", "aspocid"],
+    "warfarin": ["warfarin", "وارفارين", "كومادين", "coumadin"],
+    "ibuprofen": ["ibuprofen", "ايبوبروفين", "إيبوبروفين", "بروفين", "brufen", "advil"],
+    "naproxen": ["naproxen", "نابروكسين", "aleve"],
+    "clopidogrel": ["clopidogrel", "كلوبيدوجريل", "بلافيكس", "plavix"],
+    "sildenafil": ["sildenafil", "سيلدينافيل", "فياجرا", "viagra"],
+    "nitrate": ["nitroglycerin", "isosorbide", "nitrate", "نيتروجلسرين", "ايزوسوربيد", "إيزوسوربيد", "نترات"],
+    "simvastatin": ["simvastatin", "سيمفاستاتين", "zocor"],
+    "clarithromycin": ["clarithromycin", "كلاريثروميسين", "klacid", "كلاسيد"],
+    "digoxin": ["digoxin", "ديجوكسين", "lanoxin"],
+    "spironolactone": ["spironolactone", "سبيرونولاكتون", "aldactone", "الداكتون"],
+    "ace_inhibitor": ["captopril", "enalapril", "lisinopril", "ramipril", "كابتوبريل", "إنالابريل", "راميبريل", "ليسينوبريل"],
+    "ssri": ["fluoxetine", "sertraline", "paroxetine", "escitalopram", "فلوكستين", "سيرترالين", "باروكستين", "اسيتالوبرام"],
+    "grapefruit": ["grapefruit", "جريب فروت", "جريبفروت", "عصير جريب فروت"],
+    "ginkgo": ["ginkgo", "جينكو", "جينكوبيلوبا", "جينكو بيلوبا", "ginkgo biloba"],
+    "ginger": ["ginger", "زنجبيل", "الزنجبيل"]
+  },
+  "interactions": [
+    {
+      "drugs": ["warfarin", "aspirin"],
+      "severity": "high",
+      "severity_ar": "عالٍ",
+      "message": "Warfarin with aspirin can increase bleeding risk.",
+      "message_ar": "الجمع بين وارفارين وأسبرين قد يرفع خطر النزيف. لازم مراجعة الطبيب أو الصيدلي قبل الاستخدام."
+    },
+    {
+      "drugs": ["warfarin", "ibuprofen"],
+      "severity": "high",
+      "severity_ar": "عالٍ",
+      "message": "Warfarin with NSAIDs such as ibuprofen can increase bleeding risk.",
+      "message_ar": "الجمع بين وارفارين وبروفين/إيبوبروفين قد يرفع خطر النزيف، خصوصاً نزيف المعدة."
+    },
+    {
+      "drugs": ["warfarin", "naproxen"],
+      "severity": "high",
+      "severity_ar": "عالٍ",
+      "message": "Warfarin with NSAIDs such as naproxen can increase bleeding risk.",
+      "message_ar": "الجمع بين وارفارين ونابروكسين قد يرفع خطر النزيف ويحتاج مراجعة طبية."
+    },
+    {
+      "drugs": ["aspirin", "ibuprofen"],
+      "severity": "medium",
+      "severity_ar": "متوسط",
+      "message": "Ibuprofen may interfere with aspirin's antiplatelet effect and can add stomach bleeding risk.",
+      "message_ar": "بروفين/إيبوبروفين قد يقلل تأثير الأسبرين الوقائي ويزيد تهيج أو نزيف المعدة."
+    },
+    {
+      "drugs": ["aspirin", "clopidogrel"],
+      "severity": "medium",
+      "severity_ar": "متوسط",
+      "message": "Aspirin with clopidogrel may be intentional but increases bleeding risk.",
+      "message_ar": "أسبرين مع كلوبيدوجريل قد يكون مقصوداً طبياً، لكنه يزيد خطر النزيف ولازم يكون بتوجيه طبي."
+    },
+    {
+      "drugs": ["sildenafil", "nitrate"],
+      "severity": "high",
+      "severity_ar": "عالٍ",
+      "message": "Sildenafil with nitrates can cause a dangerous blood pressure drop.",
+      "message_ar": "سيلدينافيل/فياجرا مع أدوية النترات قد يسبب هبوط ضغط خطير."
+    },
+    {
+      "drugs": ["simvastatin", "clarithromycin"],
+      "severity": "high",
+      "severity_ar": "عالٍ",
+      "message": "Clarithromycin can raise simvastatin exposure and muscle toxicity risk.",
+      "message_ar": "كلاريثروميسين/كلاسيد قد يرفع مستوى سيمفاستاتين ويزيد خطر ألم أو تلف العضلات."
+    },
+    {
+      "drugs": ["digoxin", "clarithromycin"],
+      "severity": "medium",
+      "severity_ar": "متوسط",
+      "message": "Clarithromycin can increase digoxin levels in some patients.",
+      "message_ar": "كلاريثروميسين قد يرفع مستوى ديجوكسين عند بعض المرضى، وده يحتاج متابعة."
+    },
+    {
+      "drugs": ["spironolactone", "ace_inhibitor"],
+      "severity": "medium",
+      "severity_ar": "متوسط",
+      "message": "Spironolactone with ACE inhibitors can raise potassium.",
+      "message_ar": "سبيرونولاكتون مع أدوية ACE قد يرفع البوتاسيوم ويحتاج متابعة تحاليل."
+    },
+    {
+      "drugs": ["ssri", "ibuprofen"],
+      "severity": "medium",
+      "severity_ar": "متوسط",
+      "message": "SSRIs with NSAIDs can increase bleeding risk.",
+      "message_ar": "بعض مضادات الاكتئاب من نوع SSRI مع بروفين/إيبوبروفين قد تزود خطر النزيف."
+    },
+    {
+      "drugs": ["simvastatin", "grapefruit"],
+      "severity": "high",
+      "severity_ar": "عالٍ",
+      "message": "Grapefruit can increase simvastatin levels and risk of muscle toxicity.",
+      "message_ar": "تناول الجريب فروت مع سيمفاستاتين قد يزيد من تركيز الدواء في الدم ويرفع خطر تلف أو ألم العضلات بشكل كبير."
+    },
+    {
+      "drugs": ["warfarin", "ginkgo"],
+      "severity": "high",
+      "severity_ar": "عالٍ",
+      "message": "Ginkgo biloba with warfarin can increase risk of bleeding.",
+      "message_ar": "عشبة الجينكو بيلوبا قد تزيد من خطر النزيف عند تناولها مع وارفارين بسبب تأثيرها المضاد للتجلط."
+    },
+    {
+      "drugs": ["warfarin", "ginger"],
+      "severity": "medium",
+      "severity_ar": "متوسط",
+      "message": "Large amounts of ginger with warfarin can increase risk of bleeding.",
+      "message_ar": "الزنجبيل بكميات كبيرة قد يرفع خطر النزيف عند جمعه مع وارفارين. يرجى الاعتدال واستشارة الطبيب."
+    }
+  ]
+}
